@@ -1,0 +1,32 @@
+<ion-content class="folder-content-background">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/folders"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="folder-content-title">{{ folderName }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button expand="block" class="header-button" (click)="logout()">Cerrar Sesión</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="images-container">
+    <div class="image-card" *ngFor="let image of images">
+      <img [src]="image.src" alt="Image in folder" class="image-icon"/>
+      <p>{{ image.name }}</p>
+    </div>
+  </div>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <ion-buttons slot="primary" class="scan-button-wrapper">
+      <ion-button class="scan-button" (click)="openCamera()">
+        <ion-icon name="scan-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+  
+</ion-content>
