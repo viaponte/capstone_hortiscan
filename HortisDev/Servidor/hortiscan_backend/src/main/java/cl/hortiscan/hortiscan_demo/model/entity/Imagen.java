@@ -2,8 +2,6 @@ package cl.hortiscan.hortiscan_demo.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -11,8 +9,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@Getter
-@Setter
 @ToString
 @Table(name = "imagen")
 public class Imagen implements Serializable {
@@ -25,7 +21,7 @@ public class Imagen implements Serializable {
   @JoinColumn(name = "id_formulario")
   private Formulario idFormulario;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "id_carpeta")
   private Carpeta idCarpeta;
 
