@@ -1,13 +1,12 @@
 <ion-content class="login-background">
   <div class="login-container">
-    <ion-img src="assets/img/logo_ciren.png" alt="CIREN Logo"></ion-img>
-    <ion-text color="primary">
+    <ion-text class="app-title">
       <h2>Iniciar Sesión</h2>
     </ion-text>
-    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-      <ion-item class="">
-        <ion-label >Nombre de Usuario</ion-label>
+    <form class="login-card" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <ion-item class="input-item">
         <ion-input
+          placeholder="Nombre de Usuario"
           type="text"
           id="username"
           name="username"
@@ -19,9 +18,9 @@
       <ion-text color="danger" *ngIf="usernameInput.invalid && usernameInput.touched">
         <p>El nombre de usuario es requerido.</p>
       </ion-text>
-      <ion-item class="">
-        <ion-label >Contraseña</ion-label>
+      <ion-item class="input-item">
         <ion-input
+          placeholder="Contraseña"
           type="password"
           id="password"
           name="password"
@@ -33,13 +32,15 @@
       <ion-text color="danger" *ngIf="passwordInput.invalid && passwordInput.touched">
         <p>La contraseña es requerida.</p>
       </ion-text>
-      <ion-button expand="block" type="submit" class="login-btn" [disabled]="loginForm.invalid">Entrar</ion-button>
+      <ion-button expand="block" type="submit" class="login-button" [disabled]="loginForm.invalid">Entrar</ion-button>
       <ion-text>
         <a href="#" class="">¿Olvidaste tu contraseña?</a>
       </ion-text>
     </form>
-    <div class="footer">
-      <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
+    <div class="logo-container">
+      <ion-img src="assets/ciren_logo.png" alt="Ciren Logo" class="logo"></ion-img>
+      <ion-img src="assets/minagri_logo.png" alt="Minagri Logo" class="logo"></ion-img>
     </div>
+    <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
   </div>
 </ion-content>
