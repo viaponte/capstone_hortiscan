@@ -1,41 +1,41 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs'
+import { AuthService } from '../../services/authservice/authservice.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule, RouterModule, FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  // email: string = '';
-  // password: string = '';
+  username: string = 'newuser2'; 
+  password: string = 'password123';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  onLogin() {
-    const loginData = { username: this.email, password: this.password };
-
-    this.http.post<{ jwt: string}>('http://localhost:8000/auth', loginData)
-      .pipe(
-        catchError(error => {
-          console.error('Login error', error);
-          alert('Logeo fallido. Checkea tus credenciales.');
-          return of(null);
-        })
-      )
-      .subscribe(response => {
-        if (response && response.jwt) {
-          // guardar token en el almacenamiento local
-          localStorage.setItem('jwt', response.jwt)
-          // ir al menú
-          this.router.navigate(['/menu'])
-        }
-      })
+  onLogin(form: NgForm) {
+    if (form.valid) {
+      this.authService.login(this.username, this.password)
+        .pipe(
+          catchError(error => {
+            console.error('Login error', error);
+            alert('Logeo fallido. Checkea tus credenciales.');
+            return of(null);
+          })
+        )
+        .subscribe(response => {
+          if (response && response.jtw) {
+            this.authService.saveToken(response.jtw);
+            this.router.navigate(['/menu']);
+          }
+        });
+    }
   }
-
 }
