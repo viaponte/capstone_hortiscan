@@ -9,10 +9,8 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.util.List;
 
-@Data
-@Getter
-@Setter
 @Entity
+@Data
 @ToString
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -28,14 +26,14 @@ public class Usuario implements Serializable {
   private String password;
 
   // Relacion con Carpeta
-  @OneToMany(mappedBy = "usuario")
+  @OneToMany(mappedBy = "idUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Carpeta> carpetas;
 
   // Relacion con Notificacion
-  @OneToMany(mappedBy = "usuario")
+  @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Notificacion> notificaciones;
 
   // Relacion con Formulario
-  @OneToMany(mappedBy = "usuario")
+  @OneToMany(mappedBy = "idUsuario", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Formulario> formularios;
 }

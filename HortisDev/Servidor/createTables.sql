@@ -28,13 +28,13 @@ DROP TABLE IF EXISTS ocr CASCADE;
 
 -- CREATE TABLES
 CREATE TABLE usuario(
-  id_usuario INTEGER NOT NULL CONSTRAINT pk_usuario PRIMARY KEY,
+  id_usuario SERIAL NOT NULL CONSTRAINT pk_usuario PRIMARY KEY,
   nombre_usuario VARCHAR(20) NOT NULL,
-  password_usuario VARCHAR(20) NOT NULL
+  password_usuario VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE notificacion(
-  id_notificacion INTEGER NOT NULL CONSTRAINT pk_notificacion PRIMARY KEY,
+  id_notificacion SERIAL NOT NULL CONSTRAINT pk_notificacion PRIMARY KEY,
   id_usuario INTEGER NOT NULL,
   mensaje_notificacion VARCHAR(300) NOT NULL,
   fecha_notificacion TIMESTAMP WITHOUT TIME ZONE NOT NULL,
@@ -42,16 +42,15 @@ CREATE TABLE notificacion(
 );
 
 CREATE TABLE carpeta(
-  id_carpeta INTEGER NOT NULL CONSTRAINT pk_carpeta PRIMARY KEY,
+  id_carpeta SERIAL NOT NULL CONSTRAINT pk_carpeta PRIMARY KEY,
   id_usuario INTEGER NOT NULL,
   nombre_carpeta VARCHAR(30),
   ruta_carpeta VARCHAR(50),
-  fecha_creacion_carpeta TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-
+  fecha_creacion_carpeta TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
 CREATE TABLE formulario(
-  id_formulario INTEGER NOT NULL CONSTRAINT pk_formulario PRIMARY KEY,
+  id_formulario SERIAL NOT NULL CONSTRAINT pk_formulario PRIMARY KEY,
   id_usuario INTEGER NOT NULL,
   nombre_formulario VARCHAR(20),
   estado_formulario VARCHAR(20),
@@ -59,7 +58,7 @@ CREATE TABLE formulario(
 );
 
 CREATE TABLE imagen(
-  id_imagen INTEGER NOT NULL CONSTRAINT pk_imagen PRIMARY KEY,
+  id_imagen SERIAL NOT NULL CONSTRAINT pk_imagen PRIMARY KEY,
   id_formulario INTEGER NOT NULL,
   id_carpeta INTEGER NOT NULL,
   ruta_almacenamiento VARCHAR(30),
@@ -69,12 +68,13 @@ CREATE TABLE imagen(
 );
 
 CREATE TABLE ocr(
-  id_ocr INTEGER NOT NULL CONSTRAINT pk_ocr PRIMARY KEY,
+  id_ocr SERIAL NOT NULL CONSTRAINT pk_ocr PRIMARY KEY,
   id_imagen INTEGER NOT NULL,
   texto_extraido VARCHAR(1000),
   precision_ocr INTEGER,
-  CONSTRAINT fk_ocr_imagen FOREIGN KEY (id_imagen) REFERENCES imagen(id_magen)
+  CONSTRAINT fk_ocr_imagen FOREIGN KEY (id_imagen) REFERENCES imagen(id_imagen)
 );
+
 
 -- ALTER TABLES
 ALTER TABLE usuario OWNER TO hortiscan_admin;

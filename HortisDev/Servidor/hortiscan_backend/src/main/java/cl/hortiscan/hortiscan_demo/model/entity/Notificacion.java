@@ -11,8 +11,6 @@ import java.util.Date;
 
 @Entity
 @Data
-@Getter
-@Setter
 @ToString
 @Table(name = "notificacion")
 public class Notificacion implements Serializable {
@@ -24,12 +22,12 @@ public class Notificacion implements Serializable {
 
   @ManyToOne
   @JoinColumn(name = "id_usuario", nullable = false)
-  private Usuario idUsuario;
+  private Usuario usuario;
 
   @Column(name = "mensaje_notificacion")
   private String mensajeNotificacion;
 
   @Column(name = "fecha_notificacion")
   private Date fechaNotificacion;
-
 }
+
