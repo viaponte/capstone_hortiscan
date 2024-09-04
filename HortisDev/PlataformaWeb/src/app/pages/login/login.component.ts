@@ -12,8 +12,8 @@ import { of } from 'rxjs'
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  // email: string = '';
+  // password: string = '';
 
   constructor(private router: Router, private http: HttpClient) {}
 
