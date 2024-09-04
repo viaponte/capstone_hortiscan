@@ -10,8 +10,6 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@Getter
-@Setter
 @ToString
 @Table(name = "ocr")
 public class Ocr implements Serializable {

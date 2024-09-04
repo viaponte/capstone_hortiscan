@@ -11,8 +11,6 @@ import java.util.List;
 
 @Entity
 @Data
-@Getter
-@Setter
 @ToString
 @Table(name = "formulario")
 public class Formulario implements Serializable {
@@ -32,6 +30,6 @@ public class Formulario implements Serializable {
   private String estadoFormulario;
 
   // Relacion con imagen
-  @OneToMany(mappedBy = "formulario")
+  @OneToMany(mappedBy = "idFormulario", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Imagen> imagenes;
 }
