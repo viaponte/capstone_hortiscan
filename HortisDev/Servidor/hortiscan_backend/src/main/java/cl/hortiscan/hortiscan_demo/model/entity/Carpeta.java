@@ -12,8 +12,6 @@ import java.util.List;
 
 @Entity
 @Data
-@Getter
-@Setter
 @ToString
 @Table(name = "carpeta")
 public class Carpeta implements Serializable {
@@ -36,7 +34,7 @@ public class Carpeta implements Serializable {
   private Date fechaCreacionCarpeta;
 
   // Relacion con Imagen
-  @OneToMany
+  @OneToMany(mappedBy = "idCarpeta", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Imagen> imagenes;
 
 }
