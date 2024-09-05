@@ -6,7 +6,7 @@ import { FolderComponent } from './pages/folder/folder.component';
 import { FormComponent } from './pages/form/form.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/formulario', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'menu', component: MainComponent, data: { title: 'Menu' } },
   { path: 'carpeta', component: FolderComponent, data: { title: 'Carpeta' } },
