@@ -34,7 +34,7 @@ export class LoginPage {
         .subscribe(response => {
           if (response && response.jtw) {
             this.authService.saveToken(response.jtw);
-            this.router.navigate(['/menu']);
+            this.router.navigate(['/folders']);
           }
         });
     }
