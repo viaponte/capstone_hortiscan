@@ -16,36 +16,65 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #a3d9a5;
-    padding: 10px;
-    border-radius: 8px;
+    background-color: #85be87;
+    padding: 20px;
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px; 
 }
 
 .logo img {
     height: 50px;
-    margin-right: 10px;
+    margin-left: 70px;
 }
 
 .logout-button {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
+    background-color: #ff6f61; 
+    color: #ffffff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: bold; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-right: 100px;
+}
+
+.logout-button:hover {
+    background-color: #e53935; 
+    transform: scale(1.05); 
+}
+
+.logout-button:active {
+    background-color: #d32f2f; 
+    transform: scale(0.95); 
 }
 
 .main-content {
     background-color: #e0f7fa;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 40px;
+    width: 100%;
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    right: 0;
+    height: calc(100vh - 60px); 
+    overflow-y: auto; 
 }
 
 .folders {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start; 
+    padding-left: 100px; 
 }
 
 .folder {
@@ -60,13 +89,29 @@ body {
 .create-folder-button {
     display: block;
     margin: 30px auto 0;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 15px 30px;
-    cursor: pointer;
-    font-size: 16px;
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    padding: 15px 30px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: bold; 
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; 
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); 
+    margin-right: 100px;
+}
+
+.create-folder-button:hover {
+    background-color: #0056b3; 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.6); 
+}
+
+.create-folder-button:active {
+    background-color: #004085; 
+    transform: translateY(2px); 
+    box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4); 
 }
 
 /* Estilos previos */
@@ -133,7 +178,6 @@ input[type="text"] {
 .create-button:hover {
     background-color: #ccc;
 }
-
 /* Estilo básico para el modal */
 .modal {
     display: none; /* Oculto por defecto */

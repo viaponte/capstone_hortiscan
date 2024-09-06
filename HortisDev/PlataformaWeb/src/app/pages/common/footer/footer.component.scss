@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    flex: 1; /* Esto permite que el contenido de la página ocupe el espacio disponible */
+  }
+  
+  footer {
+    background-color: #f1f1f1; /* Color de fondo del footer */
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: relative; /* Permite mantener el footer al final del contenido */
+  }
+  
+  .footer p {
+    margin: 0;
+  }

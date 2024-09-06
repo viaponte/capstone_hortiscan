@@ -11,13 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100"})
 @RequestMapping("/api/auth")
 public class AuthCtrl {
   @Autowired
@@ -40,6 +38,7 @@ public class AuthCtrl {
     try {
       // Autenticar al usuario usando los detalles proporcionados
       authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+      System.out.println("Conexión valida");
 
       // Obtener el ID del usuario
       Integer idUsuario = usuarioService.findIdByUsername(authRequest.getUsername());
