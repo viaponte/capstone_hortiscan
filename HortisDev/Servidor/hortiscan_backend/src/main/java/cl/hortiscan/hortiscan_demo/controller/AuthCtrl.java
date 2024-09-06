@@ -40,6 +40,12 @@ public class AuthCtrl {
     try {
       // Autenticar al usuario usando los detalles proporcionados
       authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+
+      // Obtener el ID del usuario
+      Integer idUsuario = usuarioService.findIdByUsername(authRequest.getUsername());
+
+      // Validar o crear carpeta asociada al usuario
+      usuarioService.validateOrCreateFolder(idUsuario);
     } catch (Exception e) {
       throw new Exception("Invalid username or password", e);
     }
