@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
-  private final String ROOT_DIRECTORY = "HortisDev/Servidor/hortiscan_backend/folderToUsers";
+  private final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
   @Override
   public UsuarioDTO saveUser(UsuarioRegistroDTO usuarioRegistro) {
@@ -66,6 +66,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Override
   public void validateOrCreateFolder(Integer idUsuario) {
+    File rootDirectory = new File(ROOT_DIRECTORY);
+    if (!rootDirectory.exists()) {
+      System.out.println("El directorio raíz no existe: " + ROOT_DIRECTORY);
+      rootDirectory.mkdir();
+    }
+
+
     // Crea la ruta de la carpeta basada en el ID del usuario
     String userFolder = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario;
 
