@@ -1,0 +1,11 @@
+### Validar o crear carpeta
+POST http://localhost:8080/api/usuario/validar-carpeta/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuZXd1c2VyIiwiZXhwIjoxNzI1MzY0NTk3LCJpYXQiOjE3MjUzMjg1OTd9.idmv72YG3YQy6MvxPMnQust_BO8dp1erqQwZ-fo56Ic
+
+### Crear carpeta dentro de la carpeta de usuario
+POST http://localhost:8080/api/usuario/3/crear-carpeta
+Content-Type: application/x-www-form-urlencoded
+
+nombreCarpeta=miNuevaCarpeta
+
+
