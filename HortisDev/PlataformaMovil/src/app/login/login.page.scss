@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .login-background {
-    --background: #71B25F; /* Color de fondo verde similar al original */
+    --background: #000000; /* Color de fondo verde similar al original */
   }
   
   .login-container {
@@ -16,7 +18,15 @@
     color: white;
     margin-bottom: 20px;
     font-weight: bold;
+    font-family: "Staatliches", sans-serif;
   }
+
+  .staatliches-regular {
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
   
   .login-card {
     width: 100%;
@@ -27,16 +37,23 @@
   }
   
   .input-item {
-    background-color: #333333; /* Fondo oscuro para los inputs */
-    color: white; /* Texto en blanco */
+    background-color: #FFFFFF; /* Fondo oscuro para los inputs */
+    border-color: #000000;
+    border: solid 1px;
+    color: rgb(0, 0, 0); /* Texto en blanco */
     border-radius: 5px;
     margin-bottom: 10px;
     --background: transparent;
   }
+
+  .label-inputlogin {
+    color: #646464;
+    font-size: 15px;
+  }
   
   .login-button {
-    --background: #333333; /* Color del botón */
-    color: white;
+    --background: #DAFFDA; /* Color del botón */
+    color: rgb(8, 7, 7);
     font-weight: bold;
     margin-top: 10px;
     border-radius: 5px;
@@ -54,5 +71,11 @@
     height: 60px;  /* Ajusta este valor al tamaño adecuado según el diseño original */
     width: auto;  /* Mantiene la proporción de la imagen */
   }
+
+  .forgetpass{
+    text-align: center;
+    font-size: 15px;
+  }
+  
   
   

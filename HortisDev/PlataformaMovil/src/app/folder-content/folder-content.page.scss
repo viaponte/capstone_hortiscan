@@ -1,5 +1,5 @@
 .folder-content-background {
-    --background: #71B25F; /* Fondo verde */
+    --background: #000000; /* Fondo verde */
     display: flex;
     flex-direction: column;
     height: 100%; /* Asegura que el contenido ocupe todo el espacio */
@@ -10,6 +10,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background-color: #000000;
   }
   
 
@@ -24,8 +25,9 @@
   .folder-content-title {
     color: white;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     text-align: center;
+    margin-top: 20px;
   }
   
   
@@ -57,7 +59,7 @@
     left: 0;
     right: 0;
     height: 70px;
-    background-color: #333333; /* Color oscuro del footer */
+    background-color: #ffffff; /* Color oscuro del footer */
     display: flex;
     justify-content: center; /* Centra el botón horizontalmente */
     align-items: center; /* Centra el botón verticalmente */
@@ -72,7 +74,7 @@
   }
   
   .scan-button {
-    --background: #FDC54E; /* Color amarillo del botón */
+    --background: #ffffff; /* Color amarillo del botón */
     color: black; /* Color del ícono */
     width: 60px; /* Ancho del botón */
     height: 60px; /* Altura del botón, igual que el ancho para hacer un círculo */

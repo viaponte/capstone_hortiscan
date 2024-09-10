@@ -26,4 +26,7 @@ export class FoldersPage {
   createFolder() {
     this.navCtrl.navigateForward('/create-folder');
   }
+  goBack() {
+    this.navCtrl.back();
+  }
 }
