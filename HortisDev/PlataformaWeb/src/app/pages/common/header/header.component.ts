@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../../login/login.component';
-import { AuthService } from '../../../services/authservice/authservice.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/authservice/authservice.service';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
