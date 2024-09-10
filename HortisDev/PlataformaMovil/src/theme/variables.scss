@@ -2,14 +2,15 @@
 // http://ionicframework.com/docs/theming/
 
 // Body
-.content-background {
+.content-background,
+.logout-button,
+.ion-content {
     --background: #131212;
     font-family: "Staatliches", sans-serif;
 }
 
-.ion-content {
-    --background: #131212;
-    font-family: "Staatliches", sans-serif;
+.logout-button {
+    font-size: 18px;
 }
 
 // Titulo de la pagina
@@ -18,11 +19,14 @@
     color: white;
     margin-bottom: 20px;
     font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Login - Register - CreateFolder */
 // Body form 
-.container-form{
+.container-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,6 +34,7 @@
     height: 100%;
     padding: 20px;
 }
+
 
 .card-form {
     width: 100%;
@@ -100,4 +105,21 @@
 .logo {
     height: 60px;
     width: auto;
+}
+
+// Folder-views
+
+.no-content-message {
+    color: #ffffff5d;
+    padding-top: 3em;
+    font-size: 3rem;
+    text-align: center;
+}
+
+// Footer Folders
+.footer-button {
+    padding: 20px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    --background: #DAFFDA;
 }
