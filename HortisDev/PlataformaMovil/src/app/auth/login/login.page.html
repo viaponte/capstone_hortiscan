@@ -1,50 +1,46 @@
-<ion-content class="login-background">
-  <div class="login-container">
-    <ion-text class="app-title">
-      <h2>HORTaaISCAN</h2>
-    </ion-text>
-    <form class="login-card" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-      <h2 class="label-inputlogin">Ingrese Usuario</h2>
-      <ion-item class="input-item">
-        <ion-input
-          placeholder="Nombre de Usuario"
-          type="text"
-          id="username"
-          name="username"
-          [(ngModel)]="username"
-          required
-          #usernameInput="ngModel"
-        ></ion-input>
-      </ion-item>
-      <ion-text color="danger" *ngIf="usernameInput.invalid && usernameInput.touched">
-        <p>El nombre de usuario es requerido.</p>
-      </ion-text>
-      <h2 class="label-inputlogin">Ingrese Contraseña</h2>
-      <ion-item class="input-item">
-        <ion-input
-          placeholder="Contraseña"
-          type="password"
-          id="password"
-          name="password"
-          [(ngModel)]="password"
-          required
-          #passwordInput="ngModel"
-        ></ion-input>
-      </ion-item>
-      <ion-text color="danger" *ngIf="passwordInput.invalid && passwordInput.touched">
-        <p>La contraseña es requerida.</p>
-      </ion-text>
-      <ion-button expand="block" type="submit" class="login-button" [disabled]="loginForm.invalid">Entrar</ion-button>
+<ion-content class="content-background">
+  <div class="container-form">
+    <ion-text class="app-title">HORTISCAN</ion-text>
+
+    <form class="card-form" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <div class="title-input">
+        <ion-text>Ingreso Usuario</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input class="input-font" placeholder="Nombre de Usuario" type="text" id="username" name="username"
+          [(ngModel)]="username" required #usernameInput="ngModel"></ion-input>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger" *ngIf="usernameInput.invalid && usernameInput.touched">
+          El nombre de usuario es requerido.
+        </ion-text>
+      </div>
+      <div class="title-input">
+        <ion-text>Ingrese Contraseña</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input placeholder="Contraseña" type="password" id="password" name="password" [(ngModel)]="password"
+          required #passwordInput="ngModel"></ion-input>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger" *ngIf="passwordInput.invalid && passwordInput.touched">
+          La contraseña es requerida.
+        </ion-text>
+      </div>
+      <ion-button expand="block" type="submit" class="design-button" [disabled]="loginForm.invalid">Entrar</ion-button>
       <ion-text>
         <div class="forgetpass">
-          <a href="#" >¿Olvidaste tu contraseña?</a>
+          <a href="#">¿Olvidaste tu contraseña?</a>
         </div>
       </ion-text>
     </form>
+
     <div class="logo-container">
-      <ion-img src="assets/ciren_logo.png" alt="Ciren Logo" class="logo"></ion-img>
+      <ion-img src="assets/ciren-logo.png" alt="Ciren Logo" class="logo"></ion-img>
       <ion-img src="assets/minagri_logo.png" alt="Minagri Logo" class="logo"></ion-img>
     </div>
-    <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
+    <div class="copyright">
+      <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
+    </div>
   </div>
 </ion-content>

@@ -1,2 +1,103 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+// Body
+.content-background {
+    --background: #131212;
+    font-family: "Staatliches", sans-serif;
+}
+
+.ion-content {
+    --background: #131212;
+    font-family: "Staatliches", sans-serif;
+}
+
+// Titulo de la pagina
+.app-title {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: lighter;
+}
+
+/* Login - Register - CreateFolder */
+// Body form 
+.container-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.card-form {
+    width: 100%;
+    max-width: 300px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+// Titulo del input
+.title-input {
+    color: #646464;
+    margin-bottom: 5px;
+}
+
+// Entrada de texto de Formulario
+.input-form {
+    background: #FFFFFF;
+    border-color: #000000;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .input-font {
+        font-family: "Staatliches", sans-serif;
+    }
+}
+
+// Texto de advertencia en Formulario
+.text-danger {
+    padding-bottom: 5px;
+}
+
+// Diseño de Boton en Formulario
+.design-button {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    --background: #DAFFDA;
+    color: rgb(8, 7, 7);
+    font-weight: normal;
+    font-size: 1.2rem;
+    font-family: "Staatliches", sans-serif;
+    transition: letter-spacing 0.3s ease;
+
+    &:hover {
+        letter-spacing: 5px;
+    }
+}
+
+// Footer Formulario
+.copyright {
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
