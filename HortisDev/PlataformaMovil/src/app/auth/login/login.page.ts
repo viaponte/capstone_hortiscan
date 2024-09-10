@@ -5,7 +5,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from '../../app/services/authservice/authservice.service';
+import { AuthService } from '../../../app/services/authservice/authservice.service';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -16,8 +16,8 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string = 'newuser2';
-  password: string = 'password123';
+  username: string = 'lucas';
+  password: string = 'lucas';
 
   constructor(private router: Router, private authService: AuthService) {}
 
