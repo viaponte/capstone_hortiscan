@@ -5,7 +5,7 @@
 
 .back-button {
   --background: #333; // Color del botón de "Atrás"
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 12px;
   padding: 5px 15px;
   font-size: 14px;
@@ -13,7 +13,7 @@
 }
 
 .create-folder-page {
-  --background: #6ec064; // Fondo verde
+  --background: #000000; // Fondo verde
   display: flex;
   justify-content: center;  // Centrado horizontal
   align-items: center;      // Centrado vertical
@@ -44,15 +44,16 @@
 }
 
 .input-item {
-  --background: #333333; // Fondo gris claro del input
+  --background: #aaaaaa; // Fondo gris claro del input
   margin-bottom: 20px;
-  border-radius: 10px;
+  border-radius: 0px;
   padding-left: 15px;
+  color: #000000;
 }
 
 .create-button {
-  --background: #333333; // Color gris del botón "Crear"
-  color: white;
+  --background: #DAFFDA; // Color gris del botón "Crear"
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   font-weight: bold;
   margin-top: 15px;

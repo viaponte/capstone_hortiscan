@@ -1,19 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .folders-background {
-    --background: #71B25F; /* Color de fondo verde */
+    --background: #000000; /* Color de fondo verde */
   }
   
   .header-button {
-    --background: #333333; /* Botones de la cabecera */
+    --background: #000000; /* Botones de la cabecera */
     color: white;
     border-radius: 20px;
     padding: 0 20px;
   }
+
+  .backbutton {
+    --background: #000000;
+    color: white;
+  }
+  .foldertitle {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: "Staatliches", sans-serif;
+    text-align: center;
+  }
   
   .folders-title {
-    text-align: center;
+    text-align: left;
     color: white;
     font-weight: bold;
     font-size: 1rem;
+  }
+  .headerup {
+    --background: #000000;
   }
   
   .folders-container {
@@ -43,12 +61,18 @@
   }
   
   .create-folder-button-container {
-    padding: 20px;
+    padding: 40px 0 20px 0; /* Aumenta el padding superior para mover el botón hacia abajo */
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    --background: #DAFFDA;
   }
   
   .create-folder-button {
-    --background: #333333; /* Botón de crear carpeta */
-    color: white;
+    --background: #DAFFDA; /* Botón de crear carpeta */
+    color: rgb(0, 0, 0);
     border-radius: 20px;
+    padding: 5px 30px; /* Reduce el tamaño del botón ajustando el padding */
+    font-size: 0.8rem; /* Opcional: reducir el tamaño de la fuente */
+    width: auto; /* Permitir que el botón se ajuste automáticamente según su contenido */
   }
   

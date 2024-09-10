@@ -1,13 +1,13 @@
 <ion-content class="folders-background">
   <ion-header class="ion-no-border">
-    <ion-toolbar>
-      <ion-title class="folders-title">CARPETAS</ion-title>
+    <ion-toolbar class="headerup">
+      <ion-button color="white" class="backbutton" (click)="goBack()">Atras</ion-button>
       <ion-buttons slot="end">
         <ion-button expand="block" class="header-button" (click)="logout()">Cerrar Sesión</ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-
+  <h2 class="foldertitle">Carpetas</h2>
   <div class="folders-container">
     <div class="folder" *ngFor="let folder of folders" (click)="openFolder(folder.name)">
       <img src="assets/folder_icon.png" alt="Carpeta" class="folder-icon" />
