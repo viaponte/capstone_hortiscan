@@ -13,10 +13,10 @@ export class FolderContentPage implements OnInit {
   folderName: string = '';
   images: Array<{ src: string, name: string }> = [];
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController) {}
+  constructor(private route: ActivatedRoute, private navCtrl: NavController) { }
 
   logout() {
-    this.navCtrl.navigateBack('/login'); // Navega a la página de login
+    this.navCtrl.navigateBack('/login'); 
   }
 
   ngOnInit() {
@@ -26,17 +26,15 @@ export class FolderContentPage implements OnInit {
   }
 
   loadFolderContent() {
-    // Simulación de la carga del contenido de la carpeta.
-    // Debes reemplazar esto con la lógica para cargar los archivos/imágenes reales.
-    if (this.folderName === 'Maipu') {
-      this.images = [
-        { src: 'assets/images/form.png', name: 'Maipu - 1' },
-        { src: 'assets/images/form.png', name: 'Maipu - 2' },
-        { src: 'assets/images/form.png', name: 'Maipu - 3' },
-        { src: 'assets/images/form.png', name: 'Maipu - 4' }
-      ];
-    }
-    // Añadir más casos según las carpetas disponibles.
+    // if (this.folderName === 'Maipu') {
+    //   this.images = [
+    //     { src: 'assets/images/form.png', name: 'Maipu - 1' },
+    //     { src: 'assets/images/form.png', name: 'Maipu - 2' },
+    //     { src: 'assets/images/form.png', name: 'Maipu - 3' },
+    //     { src: 'assets/images/form.png', name: 'Maipu - 4' }
+    //   ];
+    // }
+    this.images = [];
   }
   async openCamera() {
     const image = await Camera.getPhoto({

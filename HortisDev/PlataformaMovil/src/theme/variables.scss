@@ -107,12 +107,21 @@
     width: auto;
 }
 
-// Folder-views
+/* Folder-views*/
 
+// No presenta contenido
 .no-content-message {
     color: #ffffff5d;
     padding-top: 3em;
     font-size: 3rem;
+    text-align: center;
+}
+
+// Folder name
+.folder p {
+    margin-top: 5px;
+    font-size: 1rem;
+    color: white;
     text-align: center;
 }
 
