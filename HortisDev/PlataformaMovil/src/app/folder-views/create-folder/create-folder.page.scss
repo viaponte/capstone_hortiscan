@@ -1,0 +1,66 @@
+.custom-toolbar {
+    --background: transparent;
+    padding-left: 10px;
+  }
+  
+  .back-button {
+    --background: #333; // Color del botón de "Atrás"
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .create-folder-page {
+    --background: #000000; // Fondo verde
+    display: flex;
+    justify-content: center;  // Centrado horizontal
+    align-items: center;      // Centrado vertical
+    height: 100vh;            // Altura completa de la pantalla
+    padding: 0;
+    position: relative;
+  }
+  
+  .folder-container {
+    background-color: #f1f1f1; // Fondo blanco del contenedor
+    padding: 25px 20px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  // Centrado exacto en la pantalla
+  }
+  
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  .input-item {
+    --background: #aaaaaa; // Fondo gris claro del input
+    margin-bottom: 20px;
+    border-radius: 0px;
+    padding-left: 15px;
+    color: #000000;
+  }
+  
+  .create-button {
+    --background: #DAFFDA; // Color gris del botón "Crear"
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+    height: 45px;
+    width: 100%;
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
