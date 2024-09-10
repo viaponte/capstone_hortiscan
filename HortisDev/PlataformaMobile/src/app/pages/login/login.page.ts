@@ -1,20 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { AuthService } from '../../services/authservice/authservice.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule, IonicModule]
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  username: string = 'newuser2';
+  password: string = 'password123';
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {
+  onLogin(form: NgForm) {
+    if (form.valid) {
+      this.authService.login(this.username, this.password)
+        .pipe(
+          catchError(error => {
+            console.error('Login error', error);
+            alert('Logeo fallido. Checkea tus credenciales.');
+            return of(null);
+          })
+        )
+        .subscribe(response => {
+          if (response && response.jtw) {
+            this.authService.saveToken(response.jtw);
+            this.router.navigate(['/folders']);
+          }
+        });
+    }
   }
-
 }
