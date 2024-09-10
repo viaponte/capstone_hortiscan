@@ -24,8 +24,8 @@
     align-items: center;
 }
 
-/* Login - Register - CreateFolder */
-// Body form 
+/* Login - Register  */
+// Body form auth
 .container-form {
     display: flex;
     flex-direction: column;
@@ -83,7 +83,7 @@
     font-size: 1.2rem;
     font-family: "Staatliches", sans-serif;
     transition: letter-spacing 0.3s ease;
-
+    
     &:hover {
         letter-spacing: 5px;
     }
@@ -117,7 +117,7 @@
     text-align: center;
 }
 
-// Folder name
+// Folder name 
 .folder p {
     margin-top: 5px;
     font-size: 1rem;
@@ -131,4 +131,21 @@
     display: flex;
     justify-content: center;
     --background: #DAFFDA;
+}
+
+// Create-folder
+.container-form-cf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+    padding: 20px;
+}
+.app-title-cf {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: lighter;
+    text-align: center;
+
 }
