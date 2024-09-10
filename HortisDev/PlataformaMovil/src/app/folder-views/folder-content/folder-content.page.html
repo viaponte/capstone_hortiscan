@@ -1,32 +1,31 @@
-<ion-content class="folder-content-background">
-  <ion-header class="ion-no-border">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/folders"></ion-back-button>
-      </ion-buttons>
-      <ion-title class="folder-content-title">{{ folderName }}</ion-title>
-      <ion-buttons slot="end">
-        <ion-button expand="block" class="header-button" (click)="logout()">Cerrar Sesión</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <div class="images-container">
-    <div class="image-card" *ngFor="let image of images">
-      <img [src]="image.src" alt="Image in folder" class="image-icon"/>
-      <p>{{ image.name }}</p>
-    </div>
-  </div>
-
-<ion-footer>
-  <ion-toolbar class="footer-toolbar">
-    <ion-buttons slot="primary" class="scan-button-wrapper">
-      <ion-button class="scan-button" (click)="openCamera()">
-        <ion-icon name="scan-outline"></ion-icon>
-      </ion-button>
+<ion-header>
+  <ion-toolbar class="content-background">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/folders"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button expand="block" class="logout-button" (click)="logout()">Cerrar Sesión</ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-footer>
-
-  
+</ion-header>
+<ion-content class="content-background">
+  <div class="container-folder">
+    <ion-text  class="app-title">{{ folderName }}</ion-text>
+    <div *ngIf="images.length === 0" class="no-content-message">
+      <ion-text>NO SE ENCONTRARON FORMULARIOS</ion-text>
+    </div>
+    <div class="images-container">
+      <div class="image-card" *ngFor="let image of images">
+        <img [src]="image.src" alt="Image in folder" class="image-icon" />
+        <p>{{ image.name }}</p>
+      </div>
+    </div>
+  </div>
 </ion-content>
+<ion-footer>
+  <div class="footer-button">
+    <ion-button class="scan-button" (click)="openCamera()">
+      <img src="assets/icon/icon-cam.png" alt="Custom Icon" class="icon-scan" />
+    </ion-button>
+  </div>
+</ion-footer>
