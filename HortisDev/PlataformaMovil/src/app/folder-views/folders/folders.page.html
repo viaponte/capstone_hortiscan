@@ -1,21 +1,29 @@
-<ion-content>
-  <ion-header class="ion-no-border">
-    <ion-toolbar class="headerup">
-      <ion-button color="white" class="backbutton" (click)="goBack()">Atras</ion-button>
-      <ion-buttons slot="end">
-        <ion-button expand="block" class="header-button" (click)="logout()">Cerrar Sesión</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <h2 class="foldertitle">Carpetas</h2>
-  <div class="folders-container">
-    <div class="folder" *ngFor="let folder of folders" (click)="openFolder(folder.name)">
-      <img src="assets/folder_icon.png" alt="Carpeta" class="folder-icon" />
-      <p>{{ folder.name }}</p>
+<ion-header>
+  <ion-toolbar class="content-background">
+    <ion-buttons slot="end">
+      <ion-button expand="block" class="logout-button" (click)="logout()">Cerrar Sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+  <div class="container-folder">
+    <ion-text class="app-title">CARPETAS</ion-text>
+
+    <div *ngIf="folders.length === 0" class="no-content-message">
+      <ion-text>NO SE ENCONTRARON CARPETAS</ion-text>
+    </div>
+    <div class="folders-container">
+      <div class="folder" *ngFor="let folder of folders" (click)="openFolder(folder.name)">
+        <img src="assets/folder_icon.png" alt="Carpeta" class="folder-icon" />
+        <p>{{ folder.name }}</p>
+      </div>
     </div>
   </div>
-
-  <div class="create-folder-button-container">
-    <ion-button expand="block" class="create-folder-button" (click)="createFolder()">Crear carpeta</ion-button>
-  </div>
 </ion-content>
+
+<ion-footer>
+  <div class="footer-button">
+    <ion-button expand="block" class="design-button" (click)="createFolder()">Crear carpeta</ion-button>
+  </div>
+</ion-footer>
