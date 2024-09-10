@@ -8,16 +8,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'register',
+    loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'folders',
     loadChildren: () => import('./folder-views/folders/folders.module').then( m => m.FoldersPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'create-folder',

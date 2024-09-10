@@ -16,6 +16,11 @@ export class AuthService {
     return this.http.post<{ jwt: string }>(`${apiUrl}/api/auth/login`, loginData);
   }
 
+  signup(username: string, password: string): Observable<any> {
+    const signupData = { username, password };
+    return this.http.post(`${apiUrl}/api/auth/register`, signupData);
+  }
+  
   saveToken(token: string): void {
     localStorage.setItem('jwtToken', token);
   }
