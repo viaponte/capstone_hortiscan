@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #131212;
+    background-color: #91eb91;
     /* Color de fondo consistente */
     font-family: "Staatliches", sans-serif;
 }
@@ -41,13 +41,6 @@ body {
 .logout-button {
     --background: #131212;
     font-family: "Staatliches", sans-serif;
-
-    position: relative;
-    z-index: 1;
-    /* El contenido está por encima de las hojas */
-
-
-
 }
 
 .logout-button {
@@ -57,7 +50,7 @@ body {
 // Titulo de la pagina
 .app-title {
     font-size: 3rem;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 20px;
     font-weight: lighter;
     display: flex;
@@ -122,6 +115,7 @@ body {
 
 // Diseño de Boton en Formulario
 .design-button {
+    margin-top: 10px;
     width: 100%;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -141,7 +135,7 @@ body {
 .copyright {
     margin-top: 20px;
     text-align: center;
-    color: #ffffff;
+    color: #000000;
 }
 
 .logo-container {
