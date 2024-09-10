@@ -1,7 +1,0 @@
-{
-  "name": "PlataformaMobile",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}
