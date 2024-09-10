@@ -1,8 +1,9 @@
 <main>
   <div class="content-background">
     <div class="container-form">
-      <h2 class="app-title">Registrarse</h2>
+      <h2 class="app-title">HORTISCAN</h2>
       <form class="card-form" [formGroup]="newUserForm" (ngSubmit)="createUser()">
+        <h3 class="title-form">Registro</h3>
         <!-- Campo de Nombre de Usuario -->
         <div>
           <div class="title-input">
@@ -65,7 +66,10 @@
         <button class="design-button" (click)="clearInputs()">Limpiar</button>
         <a routerLink="/login" class="forgetpass">¿Ya estás registrado? Inicia sesión aquí</a>
       </form>
-      <div class="footer">
+      <div class="logo-container">
+        <img src="ciren-logo.png" alt="CIREN Logo" class="logo" />
+      </div>
+      <div class="copyright">
         <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
       </div>
     </div>
