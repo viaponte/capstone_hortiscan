@@ -1,4 +1,5 @@
 <body>
+<<<<<<< HEAD
   <app-header></app-header>
   <main class="cont-folder">
       <div class="container-folder">
@@ -37,4 +38,55 @@
           </div>
       </div>
   </main>
+=======
+    <app-header></app-header>
+    <main class="cont-folder">
+        <div class="container-folder">
+            <div class="button-position">
+                <button id="openModalButton" type="button" class="create-folder-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Crear Carpeta</button>
+            </div>
+            <div class="folders">
+                <a [routerLink]="['/carpeta', 1]" class="folder-link">
+                    <div class="folder">
+                        <img class="folder-icon" src="logo_carpeta.png" alt="Carpeta 1">
+                        <p>Comuna 1</p>
+                    </div>
+                </a>
+            </div>
+            <div class="folders">
+                <a [routerLink]="['/carpeta', 1]" class="folder-link">
+                    <div class="folder">
+                        <img class="folder-icon" src="logo_carpeta.png" alt="Carpeta 1">
+                        <p>Comuna 1</p>
+                    </div>
+                </a>
+            </div>
+            <div class="folders">
+                <a [routerLink]="['/carpeta', 1]" class="folder-link">
+                    <div class="folder">
+                        <img class="folder-icon" src="logo_carpeta.png" alt="Carpeta 1">
+                        <p>Comuna 1</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Creación de Carpeta</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Nombre de Carpeta">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="create-button">Crear</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 </body>

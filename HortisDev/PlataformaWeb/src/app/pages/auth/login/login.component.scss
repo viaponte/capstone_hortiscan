@@ -1,10 +1,16 @@
 .logo-container {
+<<<<<<< HEAD
   display: flex;
   justify-content: space-evenly;
+=======
+    display: flex;
+    justify-content: space-evenly;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 
 }
 
 .logo {
+<<<<<<< HEAD
   height: 20px;
   width: auto;
 }
@@ -14,6 +20,17 @@
   width: auto;
   padding-right: 20px;
   padding-left: 20px;
+=======
+    height: 20px;
+    width: auto;
+}
+
+.logo-min {
+    height: 70px;
+    width: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 
@@ -21,16 +38,26 @@
 .content-background,
 .logout-button,
 .title-form {
+<<<<<<< HEAD
   --background: #131212;
   font-family: "Staatliches", sans-serif;
 }
 
 .logout-button {
   font-size: 18px;
+=======
+    --background: #131212;
+    font-family: "Staatliches", sans-serif;
+}
+
+.logout-button {
+    font-size: 18px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // Titulo de la pagina
 .app-title {
+<<<<<<< HEAD
   font-size: 3rem;
   color: rgb(0, 0, 0);
   margin-bottom: 20px;
@@ -39,21 +66,41 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+=======
+    font-size: 3rem;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 /* Login - Register  */
 // Body form auth
 .container-form {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   padding: 70px;
+=======
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 70px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 
 .card-form {
+<<<<<<< HEAD
   width: 100%;
   max-width: 400px;
   background: #DAFFDA;
@@ -68,10 +115,27 @@
 .title-input {
   color: #646464;
   margin-bottom: 5px;
+=======
+    width: 100%;
+    max-width: 400px;
+    background: #DAFFDA;
+    border-radius: 10px;
+    padding: 40px 40px 10px 40px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.title-form{
+    text-align: center;
+}
+// Titulo del input
+.title-input {
+    color: #646464;
+    margin-bottom: 5px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // Entrada de texto de Formulario
 .input-form {
+<<<<<<< HEAD
   width: 100%;
   padding: 10px;
   border: 1px solid #ffffff;
@@ -80,26 +144,49 @@
   box-sizing: border-box;
   font-size: 16px;
   margin-bottom: 10px;
+=======
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // links
 .forgetpass {
+<<<<<<< HEAD
   display: flex;
   justify-content: center;
   text-align: center;
   font-size: 16px;
   padding-top: 12px;
+=======
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    padding-top: 12px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 
 
 // Texto de advertencia en Formulario
 .text-danger {
+<<<<<<< HEAD
   padding-bottom: 5px;
+=======
+    padding-bottom: 5px;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // Diseño de Boton en Formulario
 .design-button {
+<<<<<<< HEAD
   margin-top: 10px;
   width: 100%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -115,10 +202,28 @@
   &:hover {
       letter-spacing: 5px;
   }
+=======
+    margin-top: 10px;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #ccc;
+    color: rgb(8, 7, 7);
+    font-weight: normal;
+    font-size: 1.5rem;
+    transition: letter-spacing 0.3s ease;
+    font-family:"Staatliches", sans-serif ;
+
+    &:hover {
+        letter-spacing: 5px;
+    }
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // Footer Formulario
 .copyright {
+<<<<<<< HEAD
   margin-top: 20px;
   text-align: center;
   color: #000000;
@@ -135,30 +240,69 @@
 .logo {
   height: 60px;
   width: auto;
+=======
+    margin-top: 20px;
+    text-align: center;
+    color: #000000;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 /* Folder-views*/
 
 // No presenta contenido
 .no-content-message {
+<<<<<<< HEAD
   color: #ffffff5d;
   padding-top: 3em;
   font-size: 3rem;
   text-align: center;
+=======
+    color: #ffffff5d;
+    padding-top: 3em;
+    font-size: 3rem;
+    text-align: center;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // Folder name 
 .folder p {
+<<<<<<< HEAD
   margin-top: 5px;
   font-size: 1rem;
   color: white;
   text-align: center;
+=======
+    margin-top: 5px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
 
 // Footer Folders
 .footer-button {
+<<<<<<< HEAD
   padding: 20px 0 20px 0;
   display: flex;
   justify-content: center;
   --background: #DAFFDA;
+=======
+    padding: 20px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    --background: #DAFFDA;
+>>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
 }
