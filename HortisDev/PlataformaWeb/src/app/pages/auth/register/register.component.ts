@@ -14,10 +14,10 @@ import { catchError, of } from 'rxjs';
 })
 export class RegisterComponent {
   newUserForm = new FormGroup({
-    username: new FormControl('usuario', Validators.required),
+    username: new FormControl('', Validators.required),
     // email: new FormControl('', Validators.required),
-    password: new FormControl('123456', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('123456', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    confirmPassword: new FormControl('', Validators.required),
   }, { validators: this.passwordsMatchValidator() });
 
   constructor(private router: Router, private authService: AuthService) {}
@@ -29,6 +29,8 @@ export class RegisterComponent {
       const username = this.newUserForm.get('username')?.value ?? ''; // Se obtiene el username
       const password = this.newUserForm.get('password')?.value ?? ''; // Se obtiene el password
   
+      console.log(username, password);
+
       this.authService.signup(username, password)
         .pipe(
           catchError(error => {
@@ -39,7 +41,9 @@ export class RegisterComponent {
         )
         .subscribe(response => {
           if(response) {
-            this.login(username, password);
+            alert('Usuario registrado con exito');
+            this.router.navigate(['/login']);
+            // this.login(username, password); 
           }
         })
     };
