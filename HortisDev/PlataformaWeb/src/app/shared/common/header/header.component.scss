@@ -1,98 +1,88 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.container-fluid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #FFFFFF;
-    padding: 20px;
-    width: 100%;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.logo img {
-    height: 63px;
-    margin-left: 70px;
+.logo-container {
+  flex-shrink: 0;
+  max-width: 200px; /* Ajusta el ancho del contenedor del logo */
 }
 
-.logout-button {
-    background-color: #ff6f61; 
-    color: #ffffff; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    font-weight: bold; 
-    transition: background-color 0.3s ease, transform 0.2s ease; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    margin-right: 100px;
+.title-container {
+  flex-grow: 1;
+  text-align: center;
 }
 
-.logout-button:hover {
-    background-color: #e53935; 
-    transform: scale(1.05); 
+.title-container h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  margin: 0;
 }
 
-.logout-button:active {
-    background-color: #d32f2f; 
-    transform: scale(0.95); 
+.title-container p {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0;
 }
 
-.main-content {
-    background-color: #e0f7fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 40px;
-    width: 100%;
-    position: fixed;
-    top: 60px; 
-    left: 0;
-    right: 0;
-    height: calc(100vh - 60px); 
-    overflow-y: auto; 
+.icon-container {
+  display: flex;
+  align-items: center;
 }
 
-.v-line{
-    border-left: thick solid #000;
-    height:100%;
-    left: 50%;
-    position: absolute;
-   }
-
-header {
-    background-color: #f8f9fa; /* Color claro para el fondo */
+.icon-person {
+  font-size: 28px;
+  margin-right: -7px;
 }
 
-.logout-button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 5px;
+.icon-gear {
+  font-size: 11px;
+  margin-right: -8px;
+  margin-bottom: 21px;
 }
 
-.logout-button:hover {
-    background-color: #ff4c4c;
+.icon-logout {
+  font-size: 14px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
 }
 
-h1.display-6 {
-    font-size: 1.5rem;
-    letter-spacing: 0.3rem;
+.dropdown > button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown > button:focus {
+  outline: none;
+}
+
+.dropdown-menu {
+  border-radius: 0;
+}
+
+.dropdown.show .icon-logout {
+  transform: rotate(180deg);
 }
