@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
-import { FooterComponent } from "./pages/common/footer/footer.component";
-import { HeaderComponent } from "./pages/common/header/header.component";
 import { AuthInterceptor } from './services/authinterceptor/auth.interceptor';
 import { AuthService } from './services/authservice/authservice.service';
+import { HeaderComponent } from './shared/common/header/header.component';
+import { FooterComponent } from './shared/common/footer/footer.component';
 
 @Component({
   selector: 'app-root',
