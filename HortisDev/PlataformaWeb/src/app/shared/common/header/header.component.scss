@@ -1,9 +1,9 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
-  margin: 0;
-  padding: 0;
-}
+// body {
+//   font-family:"Staatliches", sans-serif;
+//   background-color: #f0f8ff;
+//   margin: 0;
+//   padding: 0;
+// }
 
 .container-fluid {
   width: 100%;
@@ -11,17 +11,18 @@ body {
   margin: 0 auto;
 }
 
-.header {
+header {
+  font-family:"Staatliches", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #FFFFFF;
-  padding: 20px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  //padding: 20px;
+  // width: 100%;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
 }
 
 .logo-container {
