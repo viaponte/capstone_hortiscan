@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../common/header/header.component";
+import { HeaderComponent } from '../../shared/common/header/header.component';
 
 @Component({
   selector: 'app-main',

@@ -33,7 +33,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/normalize.scss"
+              "src/normalize.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": []
           },
