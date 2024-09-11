@@ -1,6 +1,7 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
 import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
+import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,9 @@ import java.util.stream.Collectors;
 public class UsuarioServiceImpl implements UsuarioService {
   @Autowired
   private UsuarioDAO usuarioDAO;
+
+  @Autowired
+  private CarpetaServiceImpl carpetaServiceImpl;
 
   @Autowired
   private PasswordEncoder passwordEncoder;
@@ -48,6 +53,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
     return new UsuarioDTO(usuario.getIdUsuario(), usuario.getUsername(), null);
+  }
+
+  @Override
+  public Usuario findUsuarioById(Integer idUsuario) {
+    return usuarioDAO.findById(idUsuario).orElse(null);
   }
 
   @Override
@@ -94,19 +104,32 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   @Override
-  public void createFolderUser(Integer idUsuario, String nameFolder) {
-    String userFolder = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario;
-    String newFolderPath = userFolder + File.separator + nameFolder;
+  public void createFolderUser(CarpetaDTO carpetaDTO) {
 
+    // Crea la ruta de la carpeta del usuario basada en el ID
+    String userFolder = ROOT_DIRECTORY + File.separator + "usuario_" + carpetaDTO.getIdUsuario();
+    String newFolderPath = userFolder + File.separator + carpetaDTO.getNombreCarpeta();
+
+    // Crea un nuevo objeto File basado en la ruta de la nueva carpeta
     File newFolder = new File(newFolderPath);
-    if(!newFolder.exists()) {
+
+    if (!newFolder.exists()) {
       boolean folderCreated = newFolder.mkdir();
 
-      if(!folderCreated) {
+      if (!folderCreated) {
         throw new RuntimeException("Error al crear la nueva carpeta: " + newFolderPath);
       }
+
+      // Si la carpeta se creó, guarda la información de la carpeta en el DTO
+      carpetaDTO.setRutaCarpeta(newFolderPath);
+      carpetaDTO.setFechaCreacionCarpeta(new Date());
+
+      // Guarda datos de carpetaDTO en BD
+      carpetaServiceImpl.saveCarpeta(carpetaDTO);
+
+      System.out.println("Carpeta creada exitosamente: " + newFolderPath);
     } else {
-      System.out.println("Carpeta ya existe para el usuario con ID: " + idUsuario);
+      System.out.println("Carpeta ya existe para el usuario con ID: " + carpetaDTO.getIdUsuario());
     }
   }
 
