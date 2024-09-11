@@ -33,7 +33,7 @@ export class LoginComponent {
         )
         .subscribe(response => {
           if (response && response.jtw) {
-            this.authService.saveToken(response.jtw);
+            this.authService.saveSession(response.jwt, this.username);
             this.router.navigate(['/menu']);
           }
         });

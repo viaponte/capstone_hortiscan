@@ -15,13 +15,12 @@ import { AuthService } from '../../../services/authservice/authservice.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = ''; 
-  password: string = '';
+  username: string = 'newuser2'; 
+  password: string = 'password123';
 
   constructor(private router: Router, private authService: AuthService) {}
 
   onLogin(form: NgForm) {
-    console.log(this.authService.isLoggedIn());
     if (form.valid) {
       this.authService.login(this.username, this.password)
         .pipe(
@@ -32,11 +31,13 @@ export class LoginComponent {
           })
         )
         .subscribe(response => {
-          if (response && response.jtw) {
-            this.authService.saveToken(response.jtw);
+          if (response && response.jwt) {
+            this.authService.saveSession(response.jwt, this.username);
             this.router.navigate(['/menu']);
+          } else {
+            alert('No se pudo recibir el token. Login fallido.');
           }
         });
     }
-  }
+  }  
 }
