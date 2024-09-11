@@ -1,93 +1,75 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+main {
     margin: 0;
     padding: 0;
+    height: 100%;
+    background-color: #DAFFDA;
+    /* Color de fondo consistente */
+    font-family:"Staatliches", sans-serif;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
-.header {
+.cont-folder {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* Centra horizontalmente */
     align-items: center;
-    background-color: #85be87;
+    /* Centra verticalmente */
+    min-height: 100vh;
+    /* Ocupa el 100% de la altura del viewport */
+    
+}
+
+.container-folder {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-direction: row; /* Aseguramos que los elementos se ubiquen en fila */
+    flex-wrap: wrap; /* Permitir que los elementos pasen a la siguiente línea si no caben */
+    /* Los elementos estarán alineados en columna */
+    align-items:flex-start;
+    /* Centra el contenido dentro del container */
     padding: 20px;
-    width: 100%;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px; 
+    border: 1px solid #ccc;
+    /* Añadir borde si es necesario */
+    border-radius: 10px;
+    /* Añadir borde redondeado si es necesario */
+    background-color: #f9f9f9;
+    /* Cambiar el color de fondo si es necesario */
+    width: 1200px; /* Ancho fijo del contenedor */
+    height: auto; /* Altura fija del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto elevado */
 }
 
-.logo img {
-    height: 50px;
-    margin-left: 70px;
-}
 
-.logout-button {
-    background-color: #ff6f61; 
-    color: #ffffff; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    font-weight: bold; 
-    transition: background-color 0.3s ease, transform 0.2s ease; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    margin-right: 100px;
-}
-
-.logout-button:hover {
-    background-color: #e53935; 
-    transform: scale(1.05); 
-}
-
-.logout-button:active {
-    background-color: #d32f2f; 
-    transform: scale(0.95); 
-}
-
-.main-content {
-    background-color: #e0f7fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 40px;
-    width: 100%;
-    position: fixed;
-    top: 60px; 
-    left: 0;
-    right: 0;
-    height: calc(100vh - 60px); 
-    overflow-y: auto; 
-}
-
-.folders {
+.folders-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start; 
-    padding-left: 100px; 
+    justify-content: space-around;
+    padding: 20px;
 }
 
 .folder {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
 }
 
-.folder img {
-    width: 100px;
-    height: 100px;
+.folder-icon {
+    width: 80px;
+    height: 80px;
 }
 
+.button-position {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/*Diseño de boton crear carpeta*/
 .create-folder-button {
-    display: block;
     margin: 30px auto 0;
     background-color: #007bff; 
     color: white; 
@@ -113,46 +95,12 @@ body {
     transform: translateY(2px); 
     box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4); 
 }
-
-/* Estilos previos */
-
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4); 
-    padding-top: 60px;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
+/*---------------*/
 .close-button {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 input[type="text"] {
@@ -177,28 +125,6 @@ input[type="text"] {
 
 .create-button:hover {
     background-color: #ccc;
-}
-/* Estilo básico para el modal */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4); /* Fondo oscuro */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px; /* Ancho máximo del modal */
 }
 
 .close-button {
