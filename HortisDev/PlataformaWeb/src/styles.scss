@@ -1,19 +1,12 @@
-// html {
-//     box-sizing: border-box;
-//     font-size: 62.5%; /* 1 rem = 10px */    
-// }
 
-// *, *:before, *:after {
-//     box-sizing: inherit;
-// }
 html,
 body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #131212;
+    background-color: #DAFFDA;
     /* Color de fondo consistente */
-    font-family: "Staatliches", sans-serif;
+    font-family:"Staatliches", sans-serif;
 }
 
 
@@ -24,7 +17,7 @@ body {
 }
 
 .logo {
-    height: 70px;
+    height: 20px;
     width: auto;
 }
 
@@ -38,16 +31,10 @@ body {
 
 // Body
 .content-background,
-.logout-button {
+.logout-button,
+.title-form {
     --background: #131212;
     font-family: "Staatliches", sans-serif;
-
-    position: relative;
-    z-index: 1;
-    /* El contenido está por encima de las hojas */
-
-
-
 }
 
 .logout-button {
@@ -57,7 +44,7 @@ body {
 // Titulo de la pagina
 .app-title {
     font-size: 3rem;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 20px;
     font-weight: lighter;
     display: flex;
@@ -83,9 +70,12 @@ body {
     max-width: 400px;
     background: #DAFFDA;
     border-radius: 10px;
-    padding: 40px;
+    padding: 40px 40px 10px 40px;
+    font-family:Arial, Helvetica, sans-serif;
 }
-
+.title-form{
+    text-align: center;
+}
 // Titulo del input
 .title-input {
     color: #646464;
@@ -122,6 +112,7 @@ body {
 
 // Diseño de Boton en Formulario
 .design-button {
+    margin-top: 10px;
     width: 100%;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -131,6 +122,7 @@ body {
     font-weight: normal;
     font-size: 1.5rem;
     transition: letter-spacing 0.3s ease;
+    font-family:"Staatliches", sans-serif ;
 
     &:hover {
         letter-spacing: 5px;
@@ -141,7 +133,7 @@ body {
 .copyright {
     margin-top: 20px;
     text-align: center;
-    color: #ffffff;
+    color: #000000;
 }
 
 .logo-container {
