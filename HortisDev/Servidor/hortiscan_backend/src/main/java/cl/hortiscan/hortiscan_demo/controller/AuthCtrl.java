@@ -13,6 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100"})
@@ -36,8 +39,11 @@ public class AuthCtrl {
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) throws Exception {
     try {
+      Integer idUsuario = usuarioService.findIdByUsername(authRequest.getUsername());
+
       // Autenticar al usuario usando los detalles proporcionados
       authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+      usuarioService.validateOrCreateFolder(idUsuario);
       System.out.println("Conexión valida");
     } catch (Exception e) {
       throw new Exception("Invalid username or password", e);
@@ -47,7 +53,10 @@ public class AuthCtrl {
     final UserDetails userDetails = usuarioService.loadUserByUsername(authRequest.getUsername());
     final String jwt = jwtUtil.generateToken(userDetails);
 
-    return ResponseEntity.ok(new AuthResponse(jwt));
+    Map<String, String> response = new HashMap<>();
+    response.put("jwt", jwt);
+    return ResponseEntity.ok(response);
+
   }
 
   /*
@@ -57,8 +66,9 @@ public class AuthCtrl {
   */
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody UsuarioRegistroDTO usuarioRegistroDTO) throws Exception {
-    System.out.println(usuarioRegistroDTO);
+    Integer idUsuario = usuarioService.findIdByUsername(usuarioRegistroDTO.getUsername());
     UsuarioDTO savedUser = usuarioService.saveUser(usuarioRegistroDTO);
+    usuarioService.validateOrCreateFolder(idUsuario);
     return ResponseEntity.ok(savedUser);
   }
 }
