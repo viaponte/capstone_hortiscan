@@ -1,22 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/common/header/header.component';
-<<<<<<< HEAD
-import { UsuarioService } from '../../services/usuarioservice/usuario.service';
-import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/authservice/authservice.service';
-=======
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
->>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
+import { UsuarioService } from '../../services/usuarioservice/usuario.service';
+import { AuthService } from '../../services/authservice/authservice.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-<<<<<<< HEAD
-  imports: [HeaderComponent, FormsModule],
-=======
-  imports: [HeaderComponent, RouterModule],
->>>>>>> ce136559ea4beb99498f43ac5516fd69bf1324f2
+  imports: [HeaderComponent, RouterModule, FormsModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
   providers: [
