@@ -1,23 +1,30 @@
 <header>
   <div class="container-fluid p-3">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-center align-items-center">
       <!-- Logo -->
-      <div class="d-flex align-items-center">
+      <div class="logo-container me-auto">
         <img src="logo_ciren.png" alt="Logo CIREN" class="img-fluid" style="max-height: 60px;">
       </div>
       <!-- Título y subtítulo -->
-      <div class="text-center">
+      <div class="text-center title-container">
         <h1 class="display-6 mb-1">H o r t i S c a n</h1>
         <p class="text-muted mb-0">Recuerda que las fotos se suben desde la app</p>
       </div>
-      <!-- Íconos de usuario y logout -->
-      <div class="d-flex align-items-center">
-        <!-- Ícono de perfil -->
-        <i class="bi bi-person-fill fs-3"></i>
-        <!-- Ícono de configuración -->
-        <i class="bi bi-gear-fill ms-2 fs-4"></i>
-        <!-- Ícono de logout -->
-        <i class="bi bi-caret-left-fill ms-3 fs-4"></i>
+      <!-- Íconos de usuario y logout con clases personalizadas -->
+      <div class="dropdown ms-auto">
+        <button class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="icon-container">
+            <!-- Ícono de perfil -->
+            <i class="icon-person bi bi-person-fill"></i>
+            <!-- Ícono de configuración -->
+            <i class="icon-gear bi bi-gear-fill"></i>
+            <!-- Ícono de logout que rotará -->
+            <i class="icon-logout bi bi-caret-left-fill"></i>
+          </div>
+        </button>
+        <ul class="dropdown-menu">
+          <li style="cursor: pointer;"><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
+        </ul>
       </div>
     </div>
   </div>
