@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
-import { AuthInterceptor } from './services/authinterceptor/auth.interceptor';
 import { AuthService } from './services/authservice/authservice.service';
 import { HeaderComponent } from './shared/common/header/header.component';
 import { FooterComponent } from './shared/common/footer/footer.component';
@@ -13,7 +12,6 @@ import { FooterComponent } from './shared/common/footer/footer.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, HttpClientModule],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

@@ -57,7 +57,7 @@ export class RegisterComponent {
       )
       .subscribe(response => {
         if (response && response.jtw) {
-          this.authService.saveToken(response.jtw);
+          this.authService.saveSession(response.jwt, username);
           this.router.navigate(['/menu']);
         }
       });

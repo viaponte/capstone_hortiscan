@@ -1,31 +1,40 @@
 <body>
-    <app-header></app-header>
-    <div class="container"> 
-        <main class="main-content">
-            <div class="folders">
-                <!-- Repite el siguiente div para cada carpeta -->
-                <a href="../Carpeta/carpeta.html" class="folder-link">
-                    <div class="folder">
-                        <img src="logo_carpeta.png" alt="Carpeta 1">
-                        <p>Comuna 1</p>
-                    </div>
-                </a>
-                <!-- Más carpetas aquí -->
-            </div>
-            <button class="create-folder-button" id="openModalButton">Crear Carpeta</button>
-        </main>
-    </div>
-
-    <!-- Modal -->
-    <div id="folderModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" id="closeModalButton">&times;</span>
-            <h2>Creación de Carpeta</h2>
-            <input type="text" placeholder="Nombre de Carpeta">
-            <button class="create-button">Crear</button>
-        </div>
-    </div>
-
-    <script src="mainModal.js"></script>
-
+  <app-header></app-header>
+  <main class="cont-folder">
+      <div class="container-folder">
+          <div class="folders">
+              <a href="../Carpeta/carpeta.html" class="folder-link">
+                  <div class="folder">
+                      <img class="folder-icon" src="logo_carpeta.png" alt="Carpeta 1">
+                      <p>Comuna 1</p>
+                  </div>
+              </a>
+          </div>
+          <!-- Botón para abrir el modal de creación de carpeta -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Crear Carpeta
+          </button>
+      </div>
+      <!-- Modal para creación de carpeta -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Creación de Carpeta</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <!-- Input para el nombre de la carpeta -->
+                      <input type="text" [(ngModel)]="folderName" class="form-control" placeholder="Nombre de Carpeta">
+                  </div>
+                  <div class="modal-footer">
+                      <!-- Botón para crear la carpeta -->
+                      <button type="button" class="btn btn-primary" (click)="crearCarpeta()">Crear</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
 </body>
