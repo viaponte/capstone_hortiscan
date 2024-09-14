@@ -5,24 +5,36 @@ import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../services/usuarioservice/usuario.service';
 import { AuthService } from '../../services/authservice/authservice.service';
 import { FormsModule } from '@angular/forms';
+import { CarpetaDTO } from '../../models/CarpetaDTO';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [HeaderComponent, RouterModule, FormsModule],
+  imports: [HeaderComponent, RouterModule, FormsModule, CommonModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
   providers: [
     
   ]
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+  carpetas: CarpetaDTO[] = []; // Variable para almacenar las carpetas
+  archivos: string[] = []; // Variable para almacenar los archivos dentro de la carpeta
   folderName: string = '';  // Variable para almacenar el nombre de la carpeta
   username: string | null = '';  // Variable para almacenar el nombre de usuario
+  carpetaSeleccionada: CarpetaDTO | null = null; // Almacenar la carpeta seleccionada
 
   constructor(private usuarioService: UsuarioService, private authService: AuthService) {
     // Almacena el nombre de usuario al inicializar el componente
     this.username = this.authService.getUsername();
+  }
+
+  ngOnInit(): void {
+    if(this.username) {
+      this.loadCarpetas();
+    } else {
+      alert('Usuario no autenticado');
+    }
   }
 
   // Método para crear una nueva carpeta llamando al servicio
@@ -56,6 +68,17 @@ export class MainComponent {
         alert('Error al crear la carpeta');
       }
     );
-  }  
+  }
 
+  // Método para cargar las carpetas del usuario desde el backend
+  loadCarpetas() {
+    this.usuarioService.getCarpetas(this.username!).subscribe(
+      (response) => {
+        this.carpetas = response;  // Cargar las carpetas en la variable
+      },
+      (error) => {
+        console.error('Error al cargar las carpetas:', error);
+      }
+    );
+  }
 }

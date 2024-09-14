@@ -15,8 +15,8 @@ import { AuthService } from '../../../services/authservice/authservice.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = ''; 
-  password: string = '';
+  username: string = 'newuser2'; 
+  password: string = 'password123';
 
   constructor(private router: Router, private authService: AuthService) {}
 
