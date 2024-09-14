@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'menu', component: MainComponent, data: { title: 'Menu' } },
-  { path: 'carpeta/:id', component: FolderComponent, data: { title: 'Carpeta' } },
+  { path: 'carpeta/:nombreCarpeta', component: FolderComponent, data: { title: 'Carpeta' } },
   { path: 'formulario', component: FormComponent, data: { title: 'Formulario' } },
   { path: 'registrarse', component: RegisterComponent, data: { title: "Registrarse" } },
   { path: '**', component: ErrorComponent, data: { title: 'Error' }}
