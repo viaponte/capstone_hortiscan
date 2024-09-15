@@ -69,7 +69,7 @@ public class CarpetaServiceImpl implements CarpetaService {
     final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
     // Ruta en el sistema de archivos donde deberían existir las carpetas
-    String carpetaRuta = STR."\{ROOT_DIRECTORY}\{File.separator}usuario_\{idUsuario}\{File.separator}\{nombreCarpeta}";
+    String carpetaRuta = ROOT_DIRECTORY + File.separator + idUsuario + File.separator + nombreCarpeta;
 
     System.out.println(carpetaRuta);
 
