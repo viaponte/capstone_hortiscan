@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
     // Redirige al menú si el usuario ya está autenticado
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/menu']);  // Asegúrate de que esta ruta esté definida
+    } else {
+      this.router.navigate(['/login'])
     }
 
     this.router.events.pipe(
