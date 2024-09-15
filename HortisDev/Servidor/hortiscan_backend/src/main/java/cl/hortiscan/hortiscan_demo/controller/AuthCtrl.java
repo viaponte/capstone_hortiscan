@@ -4,9 +4,11 @@ import cl.hortiscan.hortiscan_demo.model.auth.AuthRequest;
 import cl.hortiscan.hortiscan_demo.model.auth.AuthResponse;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
+import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
 import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
 import cl.hortiscan.hortiscan_demo.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -66,9 +68,13 @@ public class AuthCtrl {
   */
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody UsuarioRegistroDTO usuarioRegistroDTO) throws Exception {
-    Integer idUsuario = usuarioService.findIdByUsername(usuarioRegistroDTO.getUsername());
-    UsuarioDTO savedUser = usuarioService.saveUser(usuarioRegistroDTO);
-    usuarioService.validateOrCreateFolder(idUsuario);
-    return ResponseEntity.ok(savedUser);
+    try {
+      UsuarioDTO savedUser = usuarioService.saveUser(usuarioRegistroDTO);
+      return ResponseEntity.ok(savedUser);
+    } catch (UsernameExists ex) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    }
   }
 }

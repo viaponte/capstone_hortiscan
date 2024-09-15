@@ -5,6 +5,7 @@ import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
+import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,14 +37,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Override
   public UsuarioDTO saveUser(UsuarioRegistroDTO usuarioRegistro) {
+    // Almacena en las variables el username y password
     String username = usuarioRegistro.getUsername();
     String password = usuarioRegistro.getPassword();
 
+    // Valida si el username está registrado mediante su ID
+    if (findIdByUsername(usuarioRegistro.getUsername()) > 0) {
+      throw new UsernameExists("Usuario existente");
+    }
+
+    // Se crea objeto tipo usuario con username y contraseña encriptada
     Usuario usuario = new Usuario();
     usuario.setUsername(username);
     usuario.setPassword(passwordEncoder.encode(password));
 
+    // Se crea objeto que registra el usuario
     Usuario usuarioGuardado = usuarioDAO.save(usuario);
+
+    // Valida o crea carpeta por id del usuario
+    validateOrCreateFolder(usuarioGuardado.getIdUsuario());
 
     return new UsuarioDTO(usuarioGuardado.getIdUsuario(), usuarioGuardado.getUsername(), null);
   }
@@ -62,8 +74,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Override
   public Integer findIdByUsername(String username) {
-    Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-    return usuario.getIdUsuario();
+    try {
+      Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+      return usuario.getIdUsuario();
+    } catch (RuntimeException e) {
+      return 0;
+    }
   }
 
   @Override
