@@ -1,0 +1,52 @@
+<ion-content class="content-background">
+  <div class="container-form">
+    <ion-text class="app-title">HORTISCAN</ion-text>
+
+    <form class="card-form" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <div class="title-input">
+        <ion-text>Ingreso Usuario</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input class="input-font" placeholder="Nombre de Usuario" type="text" id="username" name="username"
+          [(ngModel)]="username" required #usernameInput="ngModel"></ion-input>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger" *ngIf="usernameInput.invalid && usernameInput.touched">
+          El nombre de usuario es requerido.
+        </ion-text>
+      </div>
+      <div class="title-input">
+        <ion-text>Ingrese Contraseña</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input placeholder="Contraseña" type="password" id="password" name="password" [(ngModel)]="password"
+          required #passwordInput="ngModel"></ion-input>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger" *ngIf="passwordInput.invalid && passwordInput.touched">
+          La contraseña es requerida.
+        </ion-text>
+      </div>
+      <ion-button expand="block" type="submit" class="design-button" [disabled]="loginForm.invalid">Entrar</ion-button>
+      <ion-text>
+        <div class="forgetpass">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+      </ion-text>
+      <ion-text>
+        <div class="forgetpass">
+          <a routerLink="/register">Registrarse</a>
+        </div>
+
+      </ion-text>
+    </form>
+
+    <div class="logo-container">
+      <ion-img src="assets/ciren-logo.png" alt="Ciren Logo" class="logo"></ion-img>
+      <ion-img src="assets/minagri_logo.png" alt="Minagri Logo" class="logo"></ion-img>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
+    </div>
+  </div>
+</ion-content>

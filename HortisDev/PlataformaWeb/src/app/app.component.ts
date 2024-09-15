@@ -3,17 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
-import { FooterComponent } from "./pages/common/footer/footer.component";
-import { HeaderComponent } from "./pages/common/header/header.component";
-import { AuthInterceptor } from './services/authinterceptor/auth.interceptor';
 import { AuthService } from './services/authservice/authservice.service';
+import { HeaderComponent } from './shared/common/header/header.component';
+import { FooterComponent } from './shared/common/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, HttpClientModule],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -31,6 +29,8 @@ export class AppComponent implements OnInit {
     // Redirige al menú si el usuario ya está autenticado
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/menu']);  // Asegúrate de que esta ruta esté definida
+    } else {
+      this.router.navigate(['/login'])
     }
 
     this.router.events.pipe(

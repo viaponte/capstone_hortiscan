@@ -15,8 +15,8 @@ import { AuthService } from '../../services/authservice/authservice.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = 'lucas'; 
-  password: string = 'lucas';
+  username: string = '';
+  password: string = '';
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -33,7 +33,7 @@ export class LoginComponent {
         )
         .subscribe(response => {
           if (response && response.jtw) {
-            this.authService.saveToken(response.jtw);
+            this.authService.saveSession(response.jwt, this.username);
             this.router.navigate(['/menu']);
           }
         });

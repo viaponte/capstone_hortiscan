@@ -1,8 +1,10 @@
-html {
-    box-sizing: border-box;
-    font-size: 62.5%; /* 1 rem = 10px */    
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
+

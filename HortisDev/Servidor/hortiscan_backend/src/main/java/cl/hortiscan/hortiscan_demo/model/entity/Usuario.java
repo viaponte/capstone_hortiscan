@@ -1,10 +1,7 @@
 package cl.hortiscan.hortiscan_demo.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +9,8 @@ import java.util.List;
 @Entity
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "usuario")
 public class Usuario implements Serializable {
   @Id
