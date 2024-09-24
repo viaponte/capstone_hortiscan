@@ -11,9 +11,9 @@
     <ion-text class="app-title-cf">CREACIÓN DE CARPETA</ion-text>
     <form class="card-form">
       <div class="input-form">
-        <ion-input class="input-font" placeholder="Nombre de Carpeta"></ion-input>
+        <ion-input class="input-font" placeholder="Nombre de Carpeta" [(ngModel)]="folderName"></ion-input>
       </div>
-      <ion-button expand="block" class="design-button">Crear</ion-button>
+      <ion-button expand="block" class="design-button" (click)="crearCarpeta()">Crear</ion-button>
     </form>
   </div>
 </ion-content>

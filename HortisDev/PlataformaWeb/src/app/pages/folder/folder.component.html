@@ -1,24 +1,23 @@
 <app-header></app-header>
-<main class="cont-folder">
+<main>
   <div class="container-folder">
-    <div class="folders">
-      <a class="folder-link">
-        <div class="folders">
-          <div class="folder" *ngFor="let file of contenidoCarpeta">
-            <img 
-              class="folder-icon"
-              [src]="getImagePath(file)"
-              alt="{{ file }}"
-              (click)="openModal(file)"
-              data-bs-toggle="modal"
-              data-bs-target="#imageModal"
-            />
+    <h2>IMAGENES</h2>
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+      data-bs-smooth-scroll="true" class="container-folder scrollspy-example bg-body-tertiary p-3 rounded-2"
+      tabindex="0">
+      <div class="folders">
+        <a class="folder-link" *ngFor="let file of contenidoCarpeta">
+          <div class="folder">
+            <img class="folder-icon" [src]="getImagePath(file)" alt="{{ file }}" (click)="openModal(file)"
+              data-bs-toggle="modal" data-bs-target="#imageModal" />
             <p>{{ file }}</p>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
-  </div>  
+  </div>
+
+
 
   <!-- Modal para visualizar la imagen -->
   <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
