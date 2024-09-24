@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FolderContentPageRoutingModule } from './folder-content-routing.module';
 
 import { FolderContentPage } from './folder-content.page';
+import { HeaderComponent } from 'src/app/shared/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderContentPageRoutingModule
+    FolderContentPageRoutingModule,
+    HeaderComponent
   ],
   declarations: [FolderContentPage]
 })

@@ -16,8 +16,8 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string = 'newuser2';
-  password: string = 'password123';
+  username: string = 'lucas';
+  password: string = 'lucas';
 
   constructor(private router: Router, private authService: AuthService) {}
 
