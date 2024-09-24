@@ -1,0 +1,37 @@
+<app-header></app-header>
+<main class="cont-folder">
+  <div class="container-folder">
+    <div class="folders">
+      <a class="folder-link">
+        <div class="folders">
+          <div class="folder" *ngFor="let file of contenidoCarpeta">
+            <img 
+              class="folder-icon"
+              [src]="getImagePath(file)"
+              alt="{{ file }}"
+              (click)="openModal(file)"
+              data-bs-toggle="modal"
+              data-bs-target="#imageModal"
+            />
+            <p>{{ file }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>  
+
+  <!-- Modal para visualizar la imagen -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">{{ selectedFile }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img [src]="selectedFile" class="img-fluid" alt="Imagen" *ngIf="selectedFile" />
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
