@@ -18,21 +18,28 @@
 </ion-content>
 
 <!-- Modal para visualizar la imagen -->
-<ion-modal [isOpen]="selectedFile !== null" (didDismiss)="selectedFile = null">
+<ion-modal *ngFor="let file of contenidoCarpeta" [isOpen]="selectedFile !== null" (didDismiss)="selectedFile = null">
   <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>{{ selectedFile }}</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="selectedFile = null">Cerrar</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <img [src]="selectedFile" class="img-fluid" alt="Imagen" *ngIf="selectedFile" />
-    </ion-content>
+
+      <ion-header>
+        <ion-toolbar class="content-background">
+          <ion-title>{{ file }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button class="logout-button"  (click)="selectedFile = null">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content>
+        <div class="image-modal-container">
+          <img [src]="selectedFile" class="img-fluid" alt="Imagen" *ngIf="selectedFile" />
+        </div>
+      </ion-content>
+      
   </ng-template>
 </ion-modal>
+
+
 
 <ion-footer>
   <div class="footer-button">
