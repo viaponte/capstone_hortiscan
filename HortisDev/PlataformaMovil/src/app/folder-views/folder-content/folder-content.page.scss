@@ -38,3 +38,16 @@
     width: 24px;
     height: 24px;
   }
+
+  // Modal
+
+  .image-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+  }
+  
