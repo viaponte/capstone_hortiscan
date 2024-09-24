@@ -1,27 +1,39 @@
-<ion-header>
-  <ion-toolbar class="content-background">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/folders"></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button expand="block" class="logout-button" (click)="logout()">Cerrar Sesión</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
+
 <ion-content class="content-background">
   <div class="container-folder">
-    <ion-text  class="app-title">{{ folderName }}</ion-text>
-    <div *ngIf="images.length === 0" class="no-content-message">
-      <ion-text>NO SE ENCONTRARON FORMULARIOS</ion-text>
+    <ion-text class="app-title">IMÁGENES</ion-text>
+
+    <div *ngIf="contenidoCarpeta.length === 0" class="no-content-message">
+      <ion-text>NO SE ENCONTRARON IMÁGENES</ion-text>
     </div>
+
     <div class="images-container">
-      <div class="image-card" *ngFor="let image of images">
-        <img [src]="image.src" alt="Image in folder" class="image-icon" />
-        <p>{{ image.name }}</p>
+      <div class="image-card" *ngFor="let file of contenidoCarpeta" (click)="openModal(file)">
+        <img [src]="getImagePath(file)" alt="Imagen en carpeta" class="image-icon" />
+        <p>{{ file }}</p>
       </div>
     </div>
   </div>
 </ion-content>
+
+<!-- Modal para visualizar la imagen -->
+<ion-modal [isOpen]="selectedFile !== null" (didDismiss)="selectedFile = null">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{ selectedFile }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="selectedFile = null">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <img [src]="selectedFile" class="img-fluid" alt="Imagen" *ngIf="selectedFile" />
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
 <ion-footer>
   <div class="footer-button">
     <ion-button class="scan-button" (click)="openCamera()">
