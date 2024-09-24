@@ -26,11 +26,7 @@ const routes: Routes = [
   {
     path: 'folder-content/:nombreCarpeta',
     loadChildren: () => import('./folder-views/folder-content/folder-content.module').then( m => m.FolderContentPageModule)
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
+  }
 ];
 
 @NgModule({
