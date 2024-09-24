@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./folder-views/folders/folders.module').then( m => m.FoldersPageModule)
   },
   {
-    path: 'create-folder',
-    loadChildren: () => import('./folder-views/create-folder/create-folder.module').then( m => m.CreateFolderPageModule)
-  },
-  {
     path: 'folder-content/:nombreCarpeta',
     loadChildren: () => import('./folder-views/folder-content/folder-content.module').then( m => m.FolderContentPageModule)
   }

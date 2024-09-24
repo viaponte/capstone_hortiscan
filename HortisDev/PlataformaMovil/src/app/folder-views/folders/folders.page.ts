@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuarioService } from '../../services/usuarioservice/usuario.service'; // Asegúrate de que la ruta sea correcta
-import { AuthService } from '../../services/authservice/authservice.service'; // Asegúrate de que la ruta sea correcta
+import { UsuarioService } from '../../services/usuarioservice/usuario.service';
+import { AuthService } from '../../services/authservice/authservice.service';
 import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { NavController } from '@ionic/angular';
 
@@ -16,8 +16,14 @@ export class FoldersPage implements OnInit {
   folderName: string = '';  // Variable para almacenar el nombre de la carpeta
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   carpetaSeleccionada: CarpetaDTO | null = null; // Almacenar la carpeta seleccionada
+  modalOpen: boolean = false;  // Variable para manejar el estado del modal
 
-  constructor(private router: Router, private usuarioService: UsuarioService, private authService: AuthService, private navCtrl: NavController) {
+  constructor(
+    private router: Router,
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {
     this.username = this.authService.getUsername();
   }
 
@@ -45,16 +51,42 @@ export class FoldersPage implements OnInit {
     this.router.navigate([`/folder-content/${folderName}`]);
   }
 
-  logout() {
-    this.authService.logout(); // Llama al método logout del AuthService
-    this.navCtrl.navigateRoot('/login'); // Usar navigateRoot para redirigir al login
+  // Abre el modal para crear carpeta
+  openModal() {
+    this.modalOpen = true;
   }
-  
-  createFolder() {
-    this.navCtrl.navigateForward('/create-folder');
-  }
-  
-  
 
+  // Cierra el modal
+  closeModal() {
+    this.modalOpen = false;
+  }
+
+  // Método para crear una nueva carpeta
+  crearCarpeta() {
+    if (this.folderName.trim() === '') {
+      alert('El nombre de la carpeta no puede estar vacío');
+      return;
+    }
+
+    const carpetaDTO = {
+      idUsuario: null, // El backend establecerá este valor
+      nombreCarpeta: this.folderName,
+      rutaCarpeta: '', // El backend generará la ruta
+      fechaCreacionCarpeta: null, // El backend establecerá la fecha
+      imagenes: []  // Inicialmente vacío
+    };
+
+    this.usuarioService.crearCarpeta(this.username!, carpetaDTO.nombreCarpeta).subscribe(
+      response => {
+        alert('Carpeta creada exitosamente');
+        this.folderName = '';  // Limpia el input después de crear la carpeta
+        this.closeModal();  // Cierra el modal después de crear la carpeta
+        this.loadCarpetas(); // Recarga las carpetas para que la nueva aparezca
+      },
+      error => {
+        console.error('Error al crear la carpeta:', error);
+        alert('Error al crear la carpeta');
+      }
+    );
+  }
 }
-
