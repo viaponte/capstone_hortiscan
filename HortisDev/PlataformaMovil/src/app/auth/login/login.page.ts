@@ -16,8 +16,8 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string = 'newuser2';
-  password: string = 'password123';
+  username: string = 'lucas';
+  password: string = 'lucas';
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -32,12 +32,13 @@ export class LoginPage {
           })
         )
         .subscribe(response => {
-          if (response && response.jtw) {
-            this.authService.saveToken(response.jtw);
-            this.router.navigate(['/folders']);
+          if (response && response.jwt) {
+            this.authService.saveSession(response.jwt, this.username);
+            this.router.navigate(['/folders']); // Ajusta esta ruta según la navegación en tu aplicación móvil
+          } else {
+            alert('No se pudo recibir el token. Login fallido.');
           }
         });
     }
   }
 }
-

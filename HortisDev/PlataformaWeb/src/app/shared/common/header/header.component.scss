@@ -1,89 +1,19 @@
-// body {
-//   font-family:"Staatliches", sans-serif;
-//   background-color: #f0f8ff;
-//   margin: 0;
-//   padding: 0;
-// }
-
-.container-fluid {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 header {
-  font-family:"Staatliches", sans-serif;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #FFFFFF;
-  //padding: 20px;
-  // width: 100%;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
+  padding: 1rem 0;
 }
 
-.logo-container {
-  flex-shrink: 0;
-  max-width: 200px; /* Ajusta el ancho del contenedor del logo */
-}
-
-.title-container {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.title-container h1 {
-  font-size: 1.5rem;
+.title-container h1,
+p {
+  font-size: 2rem;
   letter-spacing: 0.2rem;
   margin: 0;
+  font-family: "Staatliches", sans-serif;
 }
 
 .title-container p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #6c757d;
   margin: 0;
-}
-
-.icon-container {
-  display: flex;
-  align-items: center;
-}
-
-.icon-person {
-  font-size: 28px;
-  margin-right: -7px;
-}
-
-.icon-gear {
-  font-size: 11px;
-  margin-right: -8px;
-  margin-bottom: 21px;
-}
-
-.icon-logout {
-  font-size: 14px;
-  margin-left: 5px;
-  transition: transform 0.3s ease;
-}
-
-.dropdown > button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown > button:focus {
-  outline: none;
-}
-
-.dropdown-menu {
-  border-radius: 0;
-}
-
-.dropdown.show .icon-logout {
-  transform: rotate(180deg);
+  font-family: "Staatliches", sans-serif;
 }

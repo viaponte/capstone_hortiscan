@@ -57,9 +57,11 @@ export class RegisterPage implements OnInit {
         })
       )
       .subscribe(response => {
-        if (response && response.jtw) {
-          this.authService.saveToken(response.jtw);
-          this.router.navigate(['/folders']);
+        if (response && response.jwt) {
+          this.authService.saveSession(response.jwt, username); // Usa saveSession para guardar tanto el token como el nombre de usuario
+          this.router.navigate(['/folders']); // Asegúrate de que esta ruta sea la correcta
+        } else {
+          alert('No se pudo recibir el token. Login fallido.');
         }
       });
   }

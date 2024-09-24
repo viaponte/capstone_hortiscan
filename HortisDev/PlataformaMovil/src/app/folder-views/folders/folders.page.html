@@ -10,13 +10,13 @@
   <div class="container-folder">
     <ion-text class="app-title">CARPETAS</ion-text>
 
-    <div *ngIf="folders.length === 0" class="no-content-message">
+    <div *ngIf="carpetas.length === 0" class="no-content-message">
       <ion-text>NO SE ENCONTRARON CARPETAS</ion-text>
     </div>
     <div class="folders-container">
-      <div class="folder" *ngFor="let folder of folders" (click)="openFolder(folder.name)">
+      <div class="folder" *ngFor="let carpeta of carpetas" (click)="openFolder(carpeta.nombreCarpeta)">
         <img src="assets/folder_icon.png" alt="Carpeta" class="folder-icon" />
-        <p>{{ folder.name }}</p>
+        <p>{{ carpeta.nombreCarpeta }}</p>
       </div>
     </div>
   </div>

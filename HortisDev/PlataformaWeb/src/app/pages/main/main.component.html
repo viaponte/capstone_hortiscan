@@ -1,4 +1,50 @@
 <app-header></app-header>
+<main>
+  <div class="caja">
+    <div class=" d-flex ">
+      <div class=" ">
+        <button id="openModalButton" type="button" class="create-folder-button" data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop">Crear Carpeta</button>
+      </div>
+      <!-- <div class=" ">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div> -->
+    </div>
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+      data-bs-smooth-scroll="true" class="container-folder scrollspy-example bg-body-tertiary p-3 rounded-2"
+      tabindex="0">
+      <div *ngFor="let carpeta of carpetas" class="folders">
+        <a [routerLink]="['/carpeta', carpeta.nombreCarpeta]" class="folder-link">
+          <div class="folder">
+            <img class="folder-icon" src="logo_carpeta.png" alt="Carpeta" />
+            <p>{{ carpeta.nombreCarpeta }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Creación de Carpeta</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" [(ngModel)]="folderName" placeholder="Nombre de Carpeta">
+        </div>
+        <div class="modal-footer">
+          <button class="create-button" (click)="crearCarpeta()">Crear</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- <app-header></app-header>
 <main class="cont-folder">
   <div class="container-folder">
     <div class="button-position">
@@ -13,7 +59,6 @@
       </button>
     </div>
 
-    <!-- Lista de carpetas -->
     <div *ngFor="let carpeta of carpetas" class="folders">
       <a [routerLink]="['/carpeta', carpeta.nombreCarpeta]" class="folder-link">
         <div class="folder">
@@ -24,7 +69,6 @@
     </div>
   </div>
 
-  <!-- Modal para crear una nueva carpeta -->
   <div
     class="modal fade"
     id="staticBackdrop"
@@ -67,4 +111,4 @@
       </div>
     </div>
   </div>
-</main>
+</main> -->
