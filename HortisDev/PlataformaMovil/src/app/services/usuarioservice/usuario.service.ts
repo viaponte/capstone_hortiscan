@@ -36,6 +36,7 @@ export class UsuarioService {
   // Método para obtener la ruta de la imagen
   getImagePath(nombreCarpeta: string, fileName: string): Observable<string> {
     const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
+    console.log(request);
     return this.http.get(request, { responseType: 'blob' }).pipe(
       map(blob => URL.createObjectURL(blob))
     );
