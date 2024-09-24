@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular'; 
 import { filter } from 'rxjs/operators';
 import { NavController } from '@ionic/angular';
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -14,8 +13,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isFoldersPage: boolean = false; // Nueva propiedad
-
+  isFoldersPage: boolean = true; // Nueva propiedad
   constructor(
     private loginService: AuthService,
     private router: Router,
@@ -27,13 +25,8 @@ export class HeaderComponent {
         this.isFoldersPage = event.url === '/folders'; // Verifica si está en la página de folders
       });
   }
-
   logout() {
     this.loginService.logout();
     this.router.navigate(['/login']);
-  }
-
-  goBack(): void {
-    this.navController.back(); // Retorna a la página anterior
   }
 }

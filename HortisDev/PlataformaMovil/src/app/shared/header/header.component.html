@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="content-background">
     <ion-buttons slot="start" *ngIf="!isFoldersPage">
-      <ion-back-button (click)="goBack()"></ion-back-button>
+      <ion-back-button defaultHref="/folders"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button expand="block" class="logout-button" (click)="logout()">Cerrar Sesión</ion-button>
