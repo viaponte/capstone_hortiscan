@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class UsuarioController {
 
   // Crear una nueva carpeta dentro de la carpeta de un usuario
   @PostMapping("/{username}/crear-carpeta")
-  public ResponseEntity<?> createFolderOnUser(@PathVariable String username, @RequestBody Map<String, String> body) {
+  public ResponseEntity<Map<String, String>> createFolderOnUser(@PathVariable String username, @RequestBody Map<String, String> body) {
     // Encuentra el ID del usuario por su nombre de usuario
     Integer idUsuario = usuarioService.findIdByUsername(username);
 
@@ -57,14 +58,19 @@ public class UsuarioController {
     carpetaDTO.setNombreCarpeta(folderName);
     carpetaDTO.setFechaCreacionCarpeta(new Date());
 
-    // Asigna la ruta de la carpeta (ejemplo, la puedes definir como quieras)
+    // Asigna la ruta de la carpeta
     String rutaCarpeta = ROOT_DIRECTORY + "\\" + idUsuario + "\\" + carpetaDTO.getNombreCarpeta();
     carpetaDTO.setRutaCarpeta(rutaCarpeta);
 
     // Llamada al servicio para crear la carpeta
     usuarioService.createFolderUser(carpetaDTO);
 
-    return ResponseEntity.ok("Carpeta '" + carpetaDTO.getNombreCarpeta() + "' creada para el usuario con ID " + idUsuario);
+    // Prepara una respuesta en formato JSON
+    Map<String, String> response = new HashMap<>();
+    response.put("message", "Carpeta '" + carpetaDTO.getNombreCarpeta() + "' creada para el usuario con ID " + idUsuario);
+
+    // Devuelve la respuesta como JSON
+    return ResponseEntity.ok(response);
   }
 
   @GetMapping("/{username}/carpetas")

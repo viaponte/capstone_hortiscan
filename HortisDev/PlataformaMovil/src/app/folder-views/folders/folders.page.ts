@@ -77,8 +77,7 @@ export class FoldersPage implements OnInit {
     };
 
     this.usuarioService.crearCarpeta(this.username!, carpetaDTO.nombreCarpeta).subscribe(
-      response => {
-        alert('Carpeta creada exitosamente');
+      (response) => {
         this.folderName = '';  // Limpia el input después de crear la carpeta
         this.closeModal();  // Cierra el modal después de crear la carpeta
         this.loadCarpetas(); // Recarga las carpetas para que la nueva aparezca

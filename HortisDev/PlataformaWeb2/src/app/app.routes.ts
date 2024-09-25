@@ -7,7 +7,7 @@ import { MainComponent } from './pages/main/main.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/registrarse', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'menu', component: MainComponent, data: { title: 'Menu' } },
   { path: 'carpeta/:nombreCarpeta', component: FolderComponent, data: { title: 'Carpeta' } },
