@@ -1,9 +1,12 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
+import cl.hortiscan.hortiscan_demo.model.dao.ImagenDAO;
 import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
 import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
+import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
+import cl.hortiscan.hortiscan_demo.model.entity.Imagen;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
 import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,9 @@ import java.util.stream.Collectors;
 public class UsuarioServiceImpl implements UsuarioService {
   @Autowired
   private UsuarioDAO usuarioDAO;
+
+  @Autowired
+  private ImagenDAO imagenDAO;
 
   @Autowired
   private CarpetaServiceImpl carpetaServiceImpl;
@@ -155,11 +161,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     // Se asegura si la carpeta existe
     File folder = new File(userFolder);
-    if(!folder.exists()) {
+    if (!folder.exists()) {
       folder.mkdirs();
     }
 
-    // Guardar imagen
+    // Guardar imagen en la ruta del sistema de archivos
     String filePath = userFolder + File.separator + file.getOriginalFilename();
     File destiny = new File(filePath);
     try {
@@ -168,7 +174,20 @@ public class UsuarioServiceImpl implements UsuarioService {
       throw new RuntimeException(e);
     }
 
-    return filePath;
+    // Ahora obtenemos la entidad Carpeta usando el método del servicio
+    Carpeta carpeta = this.carpetaServiceImpl.getCarpetaIdByNombreAndUsuario(nameFolder, idUsuario);
+
+    // Creación de la entidad Imagen y guardado en la base de datos
+    Imagen imagen = new Imagen();
+    imagen.setIdFormulario(null);  // Si no tienes un formulario asignado aún
+    imagen.setIdCarpeta(carpeta);  // Usa la carpeta ya obtenida del servicio
+    imagen.setRutaAlmacenamiento(filePath);  // Almacena la ruta del archivo
+    imagen.setFechaCreacionImagen(new Date());  // Fecha actual
+
+    // Guardar la imagen en la base de datos
+    imagenDAO.save(imagen);
+
+    return filePath;  // Retorna la ruta donde se guardó la imagen
   }
 
   @Override

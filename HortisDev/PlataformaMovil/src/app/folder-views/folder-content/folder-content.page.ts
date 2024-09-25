@@ -82,11 +82,19 @@ export class FolderContentPage implements OnInit {
       source: CameraSource.Camera
     });
   
-    // Convertir la imagen capturada en un File
     const file = await this.photoToFile(image);
-    
+    console.log('Archivo creado: ', file);  // Verifica que el archivo contenga los datos correctos
+  
     // Enviar el archivo al backend
-    this.usuarioService.uploadImage(file, this.folderName);
+    this.usuarioService.uploadImage(file, this.folderName).subscribe(
+      (response) => {
+        console.log('Imagen subida correctamente: ', response);
+        this.loadContenidoCarpeta();
+      },
+      (error) => {
+        console.error('Error al subir imagen: ', error);
+      }
+    );
   }
   
   // Convertir una imagen Photo a File

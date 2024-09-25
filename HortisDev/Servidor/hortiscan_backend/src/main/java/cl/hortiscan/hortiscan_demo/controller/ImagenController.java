@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8100"})
 @RequestMapping("/api/imagen")
 public class ImagenController {
-  private UsuarioService usuarioService;
+  private final UsuarioService usuarioService;
 
   public ImagenController(UsuarioService usuarioService) {
     this.usuarioService = usuarioService;
@@ -25,7 +27,13 @@ public class ImagenController {
       Integer idUsuario = this.usuarioService.findIdByUsername(username);
 
       String filePath = usuarioService.saveImage(idUsuario, file, folderName);
-      return ResponseEntity.ok("Imagen guardada en: " + filePath);
+
+      // Prepara una respuesta en formato JSON
+      Map<String, String> response = new HashMap<>();
+      response.put("message", "Imagen súbida con éxito ");
+
+      // Devuelve la respuesta como JSON
+      return ResponseEntity.ok(response);
     } catch (Exception e) {
       return ResponseEntity.status(500).body("Error al guardar imagen: " + e.getMessage());
     }

@@ -1,6 +1,7 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
 import cl.hortiscan.hortiscan_demo.model.dao.CarpetaDAO;
+import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
 import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
@@ -18,6 +19,9 @@ import java.util.stream.Collectors;
 public class CarpetaServiceImpl implements CarpetaService {
   @Autowired
   private CarpetaDAO carpetaDAO;
+
+  @Autowired
+  private UsuarioDAO usuarioDAO;
 
   @Autowired
   private UsuarioService usuarioService;
@@ -90,5 +94,16 @@ public class CarpetaServiceImpl implements CarpetaService {
     System.out.println(carpetaRuta + File.separator + archivos[0]);
 
     return Arrays.asList(archivos);
+  }
+
+  @Override
+  public Carpeta getCarpetaIdByNombreAndUsuario(String nombreCarpeta, Integer idUsuario) {
+    // Obtén la entidad Usuario por su ID
+    Usuario usuario = usuarioDAO.findById(idUsuario)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+    // Usa la entidad Usuario en la búsqueda
+    return carpetaDAO.findByNombreCarpetaAndIdUsuario(nombreCarpeta, usuario)
+            .orElseThrow(() -> new RuntimeException("Carpeta no encontrada"));
   }
 }
