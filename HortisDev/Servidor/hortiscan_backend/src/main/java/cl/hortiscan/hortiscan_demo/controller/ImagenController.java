@@ -18,9 +18,12 @@ public class ImagenController {
   }
 
   // Subir una imagen a la carpeta de un usuario
-  @PostMapping("/subir/{idUsuario}")
-  public ResponseEntity<?> uploadImage(@PathVariable Integer idUsuario, @RequestParam("file") MultipartFile file, @RequestParam String folderName) {
+  @PostMapping("/subir/{username}")
+  public ResponseEntity<?> uploadImage(@PathVariable String username, @RequestParam("file") MultipartFile file, @RequestParam String folderName) {
+    System.out.println("Recibiendo solicitud de subida");
     try {
+      Integer idUsuario = this.usuarioService.findIdByUsername(username);
+
       String filePath = usuarioService.saveImage(idUsuario, file, folderName);
       return ResponseEntity.ok("Imagen guardada en: " + filePath);
     } catch (Exception e) {

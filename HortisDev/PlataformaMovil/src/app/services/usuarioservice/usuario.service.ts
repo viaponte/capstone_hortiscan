@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { apiUrl } from '../../../environments/environment'; // Asegúrate de que esta ruta sea correcta para el móvil
@@ -41,4 +41,21 @@ export class UsuarioService {
       map(blob => URL.createObjectURL(blob))
     );
   }  
+
+  uploadImage(file: File, folderName: string): Observable<any> {
+    const formData: FormData = new FormData();
+    console.log(file)
+
+    // Adjuntamos el archivo y los otros parámetros
+    formData.append('file', file);
+    formData.append('folderName', folderName);
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data'); // No es estrictamente necesario, Angular maneja FormData automáticamente
+
+    
+    // Realizamos la solicitud POST
+    const request = `${apiUrl}/api/imagen/subir/${this.username}`
+    return this.http.post(request, formData, { headers });
+  }
 }
