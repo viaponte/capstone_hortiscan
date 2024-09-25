@@ -1,22 +1,26 @@
 main {
-    margin: 0;
-    padding: 0;
-    height: 100%;
     background-color: #DAFFDA;
-    /* Color de fondo consistente */
-    font-family:"Staatliches", sans-serif;
-}
-
-
-.cont-folder {
+    font-family: "Staatliches", sans-serif;
     display: flex;
     justify-content: center;
     /* Centra horizontalmente */
     align-items: center;
-    /* Centra verticalmente */
-    min-height: 100vh;
-    /* Ocupa el 100% de la altura del viewport */
-    
+    // En caso de poner otro container folder comentar el height
+    height: 100vh;
+}
+
+.caja {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .container-folder {
@@ -24,22 +28,22 @@ main {
     margin-top: 30px;
     display: flex;
     justify-content: flex-start;
-    flex-direction: column;
-    flex-direction: row; /* Aseguramos que los elementos se ubiquen en fila */
-    flex-wrap: wrap; /* Permitir que los elementos pasen a la siguiente línea si no caben */
-    /* Los elementos estarán alineados en columna */
-    align-items:flex-start;
-    /* Centra el contenido dentro del container */
+    flex-wrap: wrap;
+    align-items: flex-start;
     padding: 20px;
     border: 1px solid #ccc;
-    /* Añadir borde si es necesario */
     border-radius: 10px;
-    /* Añadir borde redondeado si es necesario */
     background-color: #f9f9f9;
-    /* Cambiar el color de fondo si es necesario */
-    width: 1200px; /* Ancho fijo del contenedor */
-    height: auto; /* Altura fija del contenedor */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto elevado */
+    width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.scrollspy-example {
+    position: relative;
+    height: 300px;
+    overflow: auto;
 }
 
 
@@ -71,30 +75,31 @@ main {
 /*Diseño de boton crear carpeta*/
 .create-folder-button {
     margin: 30px auto 0;
-    background-color: #007bff; 
-    color: white; 
-    border: none; 
-    border-radius: 8px; 
-    padding: 15px 30px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    font-weight: bold; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; 
-    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4); 
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4);
     margin-right: 100px;
 }
 
 .create-folder-button:hover {
-    background-color: #0056b3; 
-    transform: translateY(-3px); 
-    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.6); 
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.6);
 }
 
 .create-folder-button:active {
-    background-color: #004085; 
-    transform: translateY(2px); 
-    box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4); 
+    background-color: #004085;
+    transform: translateY(2px);
+    box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4);
 }
+
 /*---------------*/
 .close-button {
     color: #aaa;
