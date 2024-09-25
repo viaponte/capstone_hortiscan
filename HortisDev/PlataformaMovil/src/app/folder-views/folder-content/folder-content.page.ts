@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';
 import { map, forkJoin } from 'rxjs';
 import { AuthService } from 'src/app/services/authservice/authservice.service';
@@ -81,8 +81,23 @@ export class FolderContentPage implements OnInit {
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera
     });
-
-    // Aquí puedes hacer algo con la imagen capturada, como guardarla o procesarla.
-    console.log('Imagen capturada: ', image);
+  
+    // Convertir la imagen capturada en un File
+    const file = await this.photoToFile(image);
+    
+    // Enviar el archivo al backend
+    this.usuarioService.uploadImage(file, this.folderName);
+  }
+  
+  // Convertir una imagen Photo a File
+  async photoToFile(photo: Photo): Promise<File> {
+    const response = await fetch(photo.webPath!);  // Obtener la imagen desde la URL
+    const blob = await response.blob();            // Convertirla a Blob
+  
+    // Crear un archivo a partir del Blob
+    const fileName = `${new Date().getTime()}.jpeg`;
+    return new File([blob], fileName, {
+      type: blob.type,
+    });
   }
 }
