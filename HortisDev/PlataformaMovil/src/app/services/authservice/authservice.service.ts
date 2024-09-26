@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { apiUrl } from '../../../environments/environment'; // Asegúrate de que esta ruta sea correcta
+import { environment } from '../../../environments/environment'; // Asegúrate de que esta ruta sea correcta
 import { Observable, tap } from 'rxjs';
 
 @Injectable({
@@ -9,9 +9,11 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
+  apiUrl = environment.apiUrl;
+
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
-    return this.http.post<{ jwt: string }>(`${apiUrl}/api/auth/login`, loginData).pipe(
+    return this.http.post<{ jwt: string }>(`${this.apiUrl}/api/auth/login`, loginData).pipe(
       tap(response => {
         if (response.jwt) {
           this.saveSession(response.jwt, username);
@@ -24,7 +26,7 @@ export class AuthService {
 
   signup(username: string, password: string): Observable<any> {
     const signupData = { username, password };
-    return this.http.post(`${apiUrl}/api/auth/register`, signupData);
+    return this.http.post(`${this.apiUrl}/api/auth/register`, signupData);
   }
 
   // Guarda tanto el token como el nombre de usuario en el localStorage
