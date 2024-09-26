@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { apiUrl } from '../../../environments/environment'; // Asegúrate de que esta ruta sea correcta para el móvil
+import { environment } from '../../../environments/environment'; // Asegúrate de que esta ruta sea correcta para el móvil
 import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { AuthService } from '../authservice/authservice.service'; // Asegúrate de que este servicio también esté disponible en el móvil
 
@@ -9,6 +9,8 @@ import { AuthService } from '../authservice/authservice.service'; // Asegúrate 
   providedIn: 'root'
 })
 export class UsuarioService {
+
+  apiUrl = environment.apiUrl;
 
   username: string | null = null;
 
@@ -18,24 +20,24 @@ export class UsuarioService {
 
   // Método para crear la carpeta
   crearCarpeta(username: string, folderName: string): Observable<any> {
-    const url = `${apiUrl}/api/usuario/${username}/crear-carpeta`;
+    const url = `${this.apiUrl}/api/usuario/${username}/crear-carpeta`;
     const body = { folderName: folderName };
     return this.http.post(url, body);
   }  
 
   // Método para obtener las carpetas del usuario
   getCarpetas(username: string): Observable<CarpetaDTO[]> {
-    return this.http.get<CarpetaDTO[]>(`${apiUrl}/api/usuario/${username}/carpetas`);
+    return this.http.get<CarpetaDTO[]>(`${this.apiUrl}/api/usuario/${username}/carpetas`);
   }
 
   // Método para obtener el contenido de una carpeta específica
   getCarpetaContenido(username: string, nombreCarpeta: string): Observable<string[]> {
-    return this.http.get<string[]>(`${apiUrl}/api/usuario/${username}/carpeta/${nombreCarpeta}/contenido`);
+    return this.http.get<string[]>(`${this.apiUrl}/api/usuario/${username}/carpeta/${nombreCarpeta}/contenido`);
   }
 
   // Método para obtener la ruta de la imagen
   getImagePath(nombreCarpeta: string, fileName: string): Observable<string> {
-    const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
+    const request = `${this.apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
     console.log(request);
     return this.http.get(request, { responseType: 'blob' }).pipe(
       map(blob => URL.createObjectURL(blob))
@@ -47,7 +49,7 @@ export class UsuarioService {
     formData.append('file', file);
     formData.append('folderName', folderName);
   
-    const request = `${apiUrl}/api/imagen/subir/${this.username}`;
+    const request = `${this.apiUrl}/api/imagen/subir/${this.username}`;
     console.log('URL de subida:', request);  // Verifica que la URL sea correcta
     return this.http.post(request, formData);
   }
