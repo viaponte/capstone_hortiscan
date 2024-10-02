@@ -1,19 +1,19 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import cl.hortiscan.hortiscan_demo.model.dao.CarpetaDAO;
 import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
 import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CarpetaServiceImpl implements CarpetaService {
@@ -59,13 +59,12 @@ public class CarpetaServiceImpl implements CarpetaService {
     List<Carpeta> carpetas = carpetaDAO.findByIdUsuario(usuario);
 
     return carpetas.stream().map(carpeta -> new CarpetaDTO(
-            carpeta.getIdCarpeta(),
-            carpeta.getIdUsuario().getIdUsuario(),
-            carpeta.getNombreCarpeta(),
-            carpeta.getRutaCarpeta(),
-            carpeta.getFechaCreacionCarpeta(),
-            null
-    )).collect(Collectors.toList());
+        carpeta.getIdCarpeta(),
+        carpeta.getIdUsuario().getIdUsuario(),
+        carpeta.getNombreCarpeta(),
+        carpeta.getRutaCarpeta(),
+        carpeta.getFechaCreacionCarpeta(),
+        null)).collect(Collectors.toList());
   }
 
   @Override
@@ -100,10 +99,45 @@ public class CarpetaServiceImpl implements CarpetaService {
   public Carpeta getCarpetaIdByNombreAndUsuario(String nombreCarpeta, Integer idUsuario) {
     // Obtén la entidad Usuario por su ID
     Usuario usuario = usuarioDAO.findById(idUsuario)
-            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
     // Usa la entidad Usuario en la búsqueda
     return carpetaDAO.findByNombreCarpetaAndIdUsuario(nombreCarpeta, usuario)
-            .orElseThrow(() -> new RuntimeException("Carpeta no encontrada"));
+        .orElseThrow(() -> new RuntimeException("Carpeta no encontrada"));
   }
+
+  @Override
+  public List<Carpeta> getAllCarpetas() {
+    return carpetaDAO.findAll();
+  }
+
+  @Override
+  public void deleteCarpeta(Integer idCarpeta) {
+    carpetaDAO.deleteById(idCarpeta);
+  }
+
+  @Override
+  public CarpetaDTO findByNombreCarpeta(String nombreCarpeta) {
+    Carpeta carpeta = carpetaDAO.findByNombreCarpeta(nombreCarpeta);
+
+    if (carpeta == null) {
+      return null;
+    } else {
+      // Mapea la entidad Carpeta a CarpetaDTO
+      return new CarpetaDTO(
+          carpeta.getIdCarpeta(),
+          carpeta.getIdUsuario().getIdUsuario(),
+          carpeta.getNombreCarpeta(),
+          carpeta.getRutaCarpeta(),
+          carpeta.getFechaCreacionCarpeta(),
+          null // Aquí puedes agregar el mapeo de imágenes si es necesario
+      );
+    }
+
+  }
+
+    @Override
+    public Carpeta getCarpetaById(Integer idCarpeta) {
+      return carpetaDAO.findById(idCarpeta).orElse(null);
+    }
 }

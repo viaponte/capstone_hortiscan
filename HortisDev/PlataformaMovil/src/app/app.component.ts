@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { AuthService } from './services/authservice/authservice.service'; // Asegúrate de que la ruta sea correcta
 import { Platform } from '@ionic/angular';
+import { SyncService } from './services/syncservice/sync.service';
 
 @Component({
   selector: 'app-root',
@@ -17,12 +18,19 @@ export class AppComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,  // Inyecta AuthService para verificar la autenticación
-    private platform: Platform  // Inyecta Platform para inicializar Ionic
+    private platform: Platform,  // Inyecta Platform para inicializar Ionic
+    private syncService: SyncService
   ) {
     this.initializeApp(); // Inicializar la app
   }
 
   ngOnInit() {
+    try {
+      this.syncService.initSyncCarpetas();
+    } catch (error) {
+      console.error('Error desde app.component.ts: ', error);
+    }
+    
     // Verificar si el usuario está autenticado y redirigir a la página correspondiente
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/folders']);  // Redirige a folders si está autenticado
