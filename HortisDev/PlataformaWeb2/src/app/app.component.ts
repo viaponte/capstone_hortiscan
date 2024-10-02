@@ -6,6 +6,7 @@ import { filter, map } from 'rxjs';
 import { AuthService } from './services/authservice/authservice.service';
 import { HeaderComponent } from './shared/common/header/header.component';
 import { FooterComponent } from './shared/common/footer/footer.component';
+import { SyncService } from './services/syncservice/sync.service';
 
 @Component({
   selector: 'app-root',
@@ -22,16 +23,12 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService  // Inyecta AuthService para verificar la autenticación
+    private authService: AuthService,
+    private syncService: SyncService
   ) {}
 
   ngOnInit() {
-    // Redirige al menú si el usuario ya está autenticado
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/menu']);  // Asegúrate de que esta ruta esté definida
-    } else {
-      this.router.navigate(['/login'])
-    }
+    this.isLogin();
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
@@ -46,4 +43,19 @@ export class AppComponent implements OnInit {
       this.titleService.setTitle(`HortiScan - ${pageTitle}`)
     });
   }
+  
+  isLogin() {
+    try {
+      this.syncService.initSyncCarpetas();
+    } catch (error) {
+      console.error('Error desde app.component.ts: ', error);
+    }
+    // Redirige al menú si el usuario ya está autenticado
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/menu']);  // Asegúrate de que esta ruta esté definida
+    } else {
+      this.router.navigate(['/login'])
+    }
+  }
+
 }
