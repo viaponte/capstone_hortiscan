@@ -6,6 +6,7 @@ import { UsuarioService } from '../../services/usuarioservice/usuario.service';
 import { AuthService } from '../../services/authservice/authservice.service';
 import { FormsModule } from '@angular/forms';
 import { CarpetaDTO } from '../../models/CarpetaDTO';
+import { SyncService } from '../../services/syncservice/sync.service';
 
 @Component({
   selector: 'app-main',
@@ -24,7 +25,7 @@ export class MainComponent implements OnInit {
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   carpetaSeleccionada: CarpetaDTO | null = null; // Almacenar la carpeta seleccionada
 
-  constructor(private usuarioService: UsuarioService, private authService: AuthService) {
+  constructor(private usuarioService: UsuarioService, private authService: AuthService, private syncService: SyncService) {
     // Almacena el nombre de usuario al inicializar el componente
     this.username = this.authService.getUsername();
   }
@@ -32,6 +33,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     if(this.username) {
       this.loadCarpetas();
+      
     } else {
       alert('Usuario no autenticado');
     }
@@ -75,6 +77,7 @@ export class MainComponent implements OnInit {
     this.usuarioService.getCarpetas(this.username!).subscribe(
       (response) => {
         this.carpetas = response;  // Cargar las carpetas en la variable
+        this.syncService.initSyncCarpetas();
       },
       (error) => {
         console.error('Error al cargar las carpetas:', error);

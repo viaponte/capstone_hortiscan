@@ -6,6 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../../../services/authservice/authservice.service';
+import { SyncService } from '../../../services/syncservice/sync.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
   username: string = 'lucas'; 
   password: string = 'lucas';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private syncService: SyncService) {}
 
   onLogin(form: NgForm) {
     if (form.valid) {
@@ -33,6 +34,7 @@ export class LoginComponent {
         .subscribe(response => {
           if (response && response.jwt) {
             this.authService.saveSession(response.jwt, this.username);
+            this.syncService.initSyncCarpetas();
             this.router.navigate(['/menu']);
           } else {
             alert('No se pudo recibir el token. Login fallido.');

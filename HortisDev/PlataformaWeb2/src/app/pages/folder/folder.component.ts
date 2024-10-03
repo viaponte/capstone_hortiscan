@@ -7,6 +7,7 @@ import { AuthService } from '../../services/authservice/authservice.service';
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SyncService } from '../../services/syncservice/sync.service';
 
 @Component({
   selector: 'app-folder',
@@ -22,7 +23,7 @@ export class FolderComponent implements OnInit {
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   selectedFile: string | null = null; // Archivo seleccionado para mostrar en el modal
 
-  constructor(private route: ActivatedRoute, private usuarioService: UsuarioService, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private usuarioService: UsuarioService, private authService: AuthService, private syncService: SyncService) {
     this.username = this.authService.getUsername();
   }
 
@@ -40,6 +41,7 @@ export class FolderComponent implements OnInit {
     this.usuarioService.getCarpetaContenido(this.username!, this.nombreCarpeta).subscribe(
       (response) => {
         this.contenidoCarpeta = response;  // Cargar el contenido de la carpeta
+        this.syncService.initSyncCarpetas();
         this.loadImages(); // Cargar las imágenes en miniatura
       },
       (error) => {
