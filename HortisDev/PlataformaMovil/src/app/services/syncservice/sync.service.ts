@@ -16,17 +16,20 @@ export class SyncService {
   syncCarpetas(): Observable<any> {
     return this.http.post(`${ this.apiUrl }/sync-carpetas-imagenes`, {}, { responseType: 'text' });
   }
-  
 
   // Método para llamar sincronización de carpetas
-  initSyncCarpetas() {
-    this.syncCarpetas().subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.error('Error al sincronizar carpetas', error);
-      }
-    );
+  initSyncCarpetas(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.syncCarpetas().subscribe(
+        (response) => {
+          console.log(response);
+          resolve();  // Resolvemos la promesa si la sincronización fue exitosa
+        },
+        (error) => {
+          console.error('Error al sincronizar carpetas', error);
+          reject(error);  // Rechazamos la promesa si ocurre un error
+        }
+      );
+    });
   }
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuarioservice/usuario.service';
 import { AuthService } from '../../services/authservice/authservice.service';
 import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { NavController } from '@ionic/angular';
+import { ReloadService } from 'src/app/services/reloadservice/reload.service';
 
 @Component({
   selector: 'app-folders',
@@ -22,7 +23,9 @@ export class FoldersPage implements OnInit {
     private router: Router,
     private usuarioService: UsuarioService,
     private authService: AuthService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private reloadService: ReloadService,
+    private cdr: ChangeDetectorRef
   ) {
     this.username = this.authService.getUsername();
   }
@@ -87,5 +90,12 @@ export class FoldersPage implements OnInit {
         alert('Error al crear la carpeta');
       }
     );
+  }
+
+  handleRefresh(event: any) {
+    this.reloadService.handleRefresh(event).then(() => {
+      this.cdr.detectChanges();
+      this.loadCarpetas();
+    });
   }
 }

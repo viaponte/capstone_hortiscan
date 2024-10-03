@@ -15,7 +15,7 @@ import { HeaderComponent } from "../../shared/header/header.component";
     FormsModule,
     IonicModule,
     FoldersPageRoutingModule,
-    HeaderComponent
+    HeaderComponent,
 ],
   declarations: [FoldersPage]
 })

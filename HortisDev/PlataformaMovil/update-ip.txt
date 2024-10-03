@@ -1,0 +1,3 @@
+Para otorgar permisos al script:        chmod +x src/environments/update-ip.sh
+
+Para correr el script (solo captura por wifi por el momento):         npm run update-ip

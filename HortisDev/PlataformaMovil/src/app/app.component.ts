@@ -25,11 +25,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    try {
-      this.syncService.initSyncCarpetas();
-    } catch (error) {
-      console.error('Error desde app.component.ts: ', error);
-    }
     
     // Verificar si el usuario está autenticado y redirigir a la página correspondiente
     if (this.authService.isLoggedIn()) {
@@ -58,6 +53,11 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       // Aquí puedes agregar cualquier lógica que necesites al iniciar la app móvil, como inicializar plugins de Ionic
       console.log('Plataforma lista');
+      try {
+        this.syncService.initSyncCarpetas();
+      } catch (error) {
+        console.error('Error desde app.component.ts: ', error);
+      }
     });
   }
 }

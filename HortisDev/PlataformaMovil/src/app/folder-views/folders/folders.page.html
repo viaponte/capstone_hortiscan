@@ -1,6 +1,10 @@
 <app-header></app-header>
 
 <ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
   <div class="container-folder">
     <ion-text class="app-title">CARPETAS</ion-text>
 
@@ -37,7 +41,8 @@
       <div class="container-form-cf">
         <form class="card-form" (ngSubmit)="crearCarpeta()">
           <div class="input-form">
-            <ion-input class="input-font" placeholder="Nombre de Carpeta" [(ngModel)]="folderName" name="folderName" required></ion-input>
+            <ion-input class="input-font" placeholder="Nombre de Carpeta" [(ngModel)]="folderName" name="folderName"
+              required></ion-input>
           </div>
           <ion-button class="design-button" expand="block" type="submit">Crear</ion-button>
         </form>

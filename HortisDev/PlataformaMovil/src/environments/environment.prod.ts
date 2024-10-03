@@ -1,4 +1,6 @@
+import { ipLocal } from "./ip-config";
+
 export const environment = {
   production: true,
-  apiUrl: 'http://192.168.1.87:8080'
+  apiUrl:  `http://${ ipLocal }:8080`
 };

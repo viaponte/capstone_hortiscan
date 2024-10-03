@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';
 import { map, forkJoin } from 'rxjs';
 import { AuthService } from 'src/app/services/authservice/authservice.service';
+import { ReloadService } from 'src/app/services/reloadservice/reload.service';
 import { UsuarioService } from 'src/app/services/usuarioservice/usuario.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class FolderContentPage implements OnInit {
   selectedFile: string | null = null; // Archivo seleccionado para mostrar en el modal
   username: string | null = '';  // Variable para almacenar el nombre de usuario
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController, private usuarioService: UsuarioService, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private navCtrl: NavController, private usuarioService: UsuarioService, private authService: AuthService, private reloadService: ReloadService, private cdr: ChangeDetectorRef) {
     this.username = this.authService.getUsername();
   }
 
@@ -106,6 +107,13 @@ export class FolderContentPage implements OnInit {
     const fileName = `${new Date().getTime()}.jpeg`;
     return new File([blob], fileName, {
       type: blob.type,
+    });
+  }
+
+  handleRefresh(event: any) {
+    this.reloadService.handleRefresh(event).then(() => {
+      this.cdr.detectChanges();
+      this.loadContenidoCarpeta();
     });
   }
 }
