@@ -1,7 +1,7 @@
 package cl.hortiscan.hortiscan_demo.configuration;
 
-import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
-import cl.hortiscan.hortiscan_demo.utils.JwtRequestFilter;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.List;
+import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
+import cl.hortiscan.hortiscan_demo.utils.JwtRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +43,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilitar CORS
             .authorizeRequests(authorize -> authorize
-                    .requestMatchers("/api/auth/login", "/api/auth/register").permitAll()
+                    .requestMatchers("/api/auth/login", "/api/auth/register", "sync-carpetas-imagenes").permitAll()
                     .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

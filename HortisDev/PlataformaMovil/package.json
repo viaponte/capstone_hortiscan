@@ -9,7 +9,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "update-ip": "bash src/environments/update-ip.sh",
+    "build-ip": "npm run update-ip && ionic build",
+    "build-android": "npm run update-ip && ionic cordova build android",
+    "build-prod": "npm run update-ip && ionic build --prod"
   },
   "private": true,
   "dependencies": {
