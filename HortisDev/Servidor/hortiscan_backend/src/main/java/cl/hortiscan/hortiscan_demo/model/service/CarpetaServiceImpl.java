@@ -1,6 +1,7 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -69,30 +70,30 @@ public class CarpetaServiceImpl implements CarpetaService {
 
   @Override
   public List<String> getContenidoCarpeta(Integer idUsuario, String nombreCarpeta) {
+    Carpeta carpeta = this.getCarpetaIdByNombreAndUsuario(nombreCarpeta, idUsuario);
     final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
-    // Ruta en el sistema de archivos donde deberían existir las carpetas
-    String carpetaRuta = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario + File.separator + nombreCarpeta;
-
-    System.out.println(carpetaRuta);
-
-    File carpeta = new File(carpetaRuta);
-
-    // Verifica si la carpeta existe y es un directorio
-    if (!carpeta.exists() || !carpeta.isDirectory()) {
-      throw new RuntimeException("La carpeta no existe o no es un directorio válido.");
+    // Se verifica si la carpeta existe
+    if (carpeta == null) {
+      throw new RuntimeException("Carpeta no encontrada");
     }
 
-    // Obtener la lista de archivos en la carpeta
-    String[] archivos = carpeta.list();
+    String carpetaPath = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario + File.separator + nombreCarpeta;
+    File carpetaLocal = new File(carpetaPath);
 
-    if (archivos == null) {
-      throw new RuntimeException("No se pudo leer el contenido de la carpeta.");
+    // Se verifica si la carpeta en el sistema local no existe o está vacía
+    if (!carpetaLocal.exists() || carpetaLocal.listFiles() == null || carpetaLocal.listFiles().length == 0) {
+      return new ArrayList<>(); // Retorna una lista vacía si no hay archivos
     }
 
-    System.out.println(carpetaRuta + File.separator + archivos[0]);
+    // Se obtienen el nombre de los archivos si existen
+    File[] archivos = carpetaLocal.listFiles();
+    List<String> nombresArchivos = new ArrayList<>();
+    for (File archivo : archivos) {
+      nombresArchivos.add(archivo.getName());
+    }
 
-    return Arrays.asList(archivos);
+    return nombresArchivos;
   }
 
   @Override
@@ -136,8 +137,8 @@ public class CarpetaServiceImpl implements CarpetaService {
 
   }
 
-    @Override
-    public Carpeta getCarpetaById(Integer idCarpeta) {
-      return carpetaDAO.findById(idCarpeta).orElse(null);
-    }
+  @Override
+  public Carpeta getCarpetaById(Integer idCarpeta) {
+    return carpetaDAO.findById(idCarpeta).orElse(null);
+  }
 }

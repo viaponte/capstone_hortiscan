@@ -39,8 +39,9 @@ public class ImagenServiceImpl implements ImagenService {
     }
 
     @Override
-    public Imagen findByRutaAlmacenamiento(String rutaAchivo) {
-      return imagenDAO.findByRutaAlmacenamiento(rutaAchivo).orElse(null);
+    public Imagen findByRutaAlmacenamiento(String rutaArchivo) {
+      System.out.println(rutaArchivo);
+      return imagenDAO.findByRutaAlmacenamiento(rutaArchivo).orElse(null);
     }
 
 }

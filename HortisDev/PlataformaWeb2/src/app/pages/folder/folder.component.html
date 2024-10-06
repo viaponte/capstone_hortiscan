@@ -11,6 +11,7 @@
             <img class="folder-icon" [src]="getImagePath(file)" alt="{{ file }}" (click)="openModal(file)"
               data-bs-toggle="modal" data-bs-target="#imageModal" />
             <p>{{ file }}</p>
+            <button (click)="deleteImagen(file)" class="btn btn-danger">Eliminar</button>
           </div>
         </a>
       </div>

@@ -74,4 +74,17 @@ export class FolderComponent implements OnInit {
   getImagePath(fileName: string) {
     return this.imagenesMap[fileName]; // Retorna la imagen pre-cargada
   }
+
+  // Método para eliminar una imagen
+  deleteImagen(fileName: string) {
+    this.usuarioService.deleteImagen(this.nombreCarpeta, fileName).subscribe(
+      (response) => {
+        console.log('Imagen eliminada: ', response);
+        this.loadContenidoCarpeta();
+      },
+      (error) => {
+        console.error('Error al eliminar la imagen: ', error);
+      }
+    );
+  }
 }
