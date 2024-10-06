@@ -84,4 +84,17 @@ export class MainComponent implements OnInit {
       }
     );
   }
+
+  // Método para eliminar carpeta y su contenido
+  deleteCarpeta(nombreCarpeta: string) {
+    this.usuarioService.deleteCarpeta(nombreCarpeta).subscribe(
+      (response) => {
+        this.loadCarpetas();
+        console.log('Carpeta eliminada con exito', response);
+      },
+      (error) => {
+        console.error('Error al eliminar la carpeta', error);
+      }
+    );
+  }
 }

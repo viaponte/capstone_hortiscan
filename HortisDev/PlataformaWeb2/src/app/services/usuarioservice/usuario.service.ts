@@ -24,7 +24,7 @@ export class UsuarioService {
     const body = { folderName: folderName };
   
     return this.http.post(url, body);
-  }  
+  }
 
   // Método para obtener las carpetas del usuario
   getCarpetas(username: string): Observable<CarpetaDTO[]> {
@@ -44,5 +44,19 @@ export class UsuarioService {
         return URL.createObjectURL(blob);
       })
     );
-  }  
+  }
+
+  // Método para eliminar carpeta y su contenido
+  deleteCarpeta(nombreCarpeta: string): Observable<any> {
+    const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}`;
+
+    return this.http.delete(request);
+  }
+
+  // Método para eliminar imagen
+  deleteImagen(nombreCarpeta: string, fileName: string): Observable<any> {
+    const request = `${apiUrl}/api/imagen/${this.username}/carpeta/${nombreCarpeta}/imagen/${fileName}`;
+
+    return this.http.delete(request);
+  }
 }
