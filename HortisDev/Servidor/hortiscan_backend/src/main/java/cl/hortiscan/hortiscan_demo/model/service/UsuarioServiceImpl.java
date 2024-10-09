@@ -1,5 +1,20 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import cl.hortiscan.hortiscan_demo.model.dao.ImagenDAO;
 import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
 import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
@@ -9,21 +24,6 @@ import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
 import cl.hortiscan.hortiscan_demo.model.entity.Imagen;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
 import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -189,9 +189,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     return filePath;  // Retorna la ruta donde se guardó la imagen
   }
+  
   @Override
   public String saveWordDocument(Integer idUsuario, MultipartFile file, String folderName) throws IOException {
-    String userFolderPath = ROOT_DIRECTORY + File.separator + "usuario" + idUsuario + File.separator + folderName;
+    String userFolderPath = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario + File.separator + folderName;
     File folder = new File(userFolderPath);
     if (!folder.exists()) {
       folder.mkdirs();
@@ -202,6 +203,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     return filePath; // Retorna la ruta donde se guardó el archivo
   }
+
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
