@@ -4,7 +4,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
+
   <div class="container-folder">
     <ion-text class="app-title">IMÁGENES</ion-text>
 
@@ -12,10 +12,21 @@
       <ion-text>NO SE ENCONTRARON IMÁGENES</ion-text>
     </div>
 
-    <div class="images-container">
-      <div class="image-card" *ngFor="let file of contenidoCarpeta" (click)="openModal(file)">
-        <img [src]="getImagePath(file)" alt="Imagen en carpeta" class="image-icon" />
-        <p>{{ file }}</p>
+    <div class="images-container" >
+      <div *ngFor="let file of contenidoCarpeta" class="image-card" >
+        <div (click)="openModal(file)">
+          <!-- <img [src]="getImagePath(file)" alt="Imagen en carpeta" class="image-icon" /> -->
+          <img *ngIf="file.endsWith('.jpg') || file.endsWith('.png') || file.endsWith('.jpeg') || file.endsWith('.gif')"
+            [src]="getImagePath(file)" alt="Imagen en carpeta" class="image-icon" />
+
+          <!-- Mostrar un ícono si es un archivo de Word -->
+          <ion-icon *ngIf="file.endsWith('.docx') || file.endsWith('.doc')" name="document-outline"
+            style="font-size: 50px; color: #007bff;"></ion-icon>
+          <p>{{ file }}</p>
+        </div>
+        <div>
+          <ion-button (click)="deleteImagen(file)" class="">Eliminar</ion-button>
+        </div>
       </div>
     </div>
   </div>
@@ -25,21 +36,21 @@
 <ion-modal *ngFor="let file of contenidoCarpeta" [isOpen]="selectedFile !== null" (didDismiss)="selectedFile = null">
   <ng-template>
 
-      <ion-header>
-        <ion-toolbar class="content-background">
-          <ion-title>{{ file }}</ion-title>
-          <ion-buttons slot="end">
-            <ion-button class="logout-button"  (click)="selectedFile = null">Cerrar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      
-      <ion-content>
-        <div class="image-modal-container">
-          <img [src]="selectedFile" class="img-fluid" alt="Imagen" *ngIf="selectedFile" />
-        </div>
-      </ion-content>
-      
+    <ion-header>
+      <ion-toolbar class="content-background">
+        <ion-title>{{ file }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button class="logout-button" (click)="selectedFile = null">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <div class="image-modal-container">
+        <img [src]="selectedFile" class="img-fluid" alt="Imagen" *ngIf="selectedFile" />
+      </div>
+    </ion-content>
+
   </ng-template>
 </ion-modal>
 
