@@ -9,11 +9,16 @@ main {
   height: 100vh;
 }
 
+.scrollspy-example {
+  position: relative;
+  height: 300px;
+  overflow: auto;
+}
 .caja {
   margin-bottom: 30px;
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
+  // margin-top: 30px;
+  // display: flex;
+  // flex-wrap: wrap;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -24,43 +29,27 @@ main {
 }
 
 .container-folder {
-  margin-bottom: 30px;
   margin-top: 30px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc00;
   border-radius: 10px;
-  background-color: #f9f9f9;
-  width: 1200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-
-.scrollspy-example {
-  position: relative;
-  height: 300px;
-  overflow: auto;
-}
-
-
-.folders-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
+  background-color: #ffffff00;
+  width: 1150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
 }
 
 .folders {
-  display: flex;
-  flex-wrap: wrap; /* Esto permite que los elementos pasen a la siguiente fila */
-  justify-content: flex-start; /* Alinea los elementos al inicio horizontalmente */
-  gap: 20px; /* Añade un espacio entre los elementos */
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 .folder {
   display: flex;
   flex-direction: column;
@@ -73,17 +62,7 @@ main {
   width: 80px;
   height: 80px;
 }
-
-
-.button-position {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-/*Diseño de boton crear carpeta*/
 .create-folder-button {
-  margin: 30px auto 0;
   background-color: #007bff;
   color: white;
   border: none;
@@ -107,52 +86,6 @@ main {
   background-color: #004085;
   transform: translateY(2px);
   box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4);
-}
-
-/*---------------*/
-.close-button {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.create-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #dcdcdc;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.create-button:hover {
-  background-color: #ccc;
-}
-
-.close-button {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 /*byron*/

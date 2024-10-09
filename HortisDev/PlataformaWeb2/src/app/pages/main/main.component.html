@@ -1,27 +1,31 @@
 <app-header></app-header>
 <main>
   <div class="caja">
-    <div class=" d-flex ">
-      <div class=" ">
+    <div class=" d-flex justify-content-between">
+      <div>
+        <h2>CARPETAS</h2>
+      </div>
+      <div>
         <button id="openModalButton" type="button" class="create-folder-button" data-bs-toggle="modal"
           data-bs-target="#staticBackdrop">Crear Carpeta</button>
       </div>
-      <!-- <div class=" ">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </div> -->
     </div>
+    <hr>
     <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
-      data-bs-smooth-scroll="true" class="container-folder scrollspy-example bg-body-tertiary p-3 rounded-2"
+      data-bs-smooth-scroll="true"
+      class="container-folder d-flex justify-content-start grid gap-3 container text-center scrollspy-example bg-body-tertiary p-3 rounded-2"
       tabindex="0">
-      <div *ngFor="let carpeta of carpetas" class="folders">
-        <a [routerLink]="['/carpeta', carpeta.nombreCarpeta]" class="folder-link">
-          <div class="folder">
-            <img class="folder-icon" src="../../../assets/logo_carpeta.png" alt="Carpeta" />
-            <p>{{ carpeta.nombreCarpeta }}</p>
-          </div>
-        </a>
-        <button (click)="deleteCarpeta(carpeta.nombreCarpeta)" class="btn btn-danger">Eliminar</button>
+      <div *ngFor="let carpeta of carpetas" class="folders ">
+        <div class="col">
+          <a [routerLink]="['/carpeta', carpeta.nombreCarpeta]" class="folder-link">
+            <div class="">
+              <img class="folder-icon" src="../../../assets/logo_carpeta.png" alt="Carpeta" />
+              <p>{{ carpeta.nombreCarpeta }}</p>
+            </div>
+          </a>
+          <hr>
+          <button (click)="deleteCarpeta(carpeta.nombreCarpeta)" class="btn btn-danger">Eliminar</button>
+        </div>
       </div>
     </div>
   </div>
