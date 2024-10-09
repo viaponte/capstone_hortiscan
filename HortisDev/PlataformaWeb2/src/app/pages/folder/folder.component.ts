@@ -125,4 +125,8 @@ export class FolderComponent implements OnInit {
       }
     );
   }
+
+  goBack(): void {
+    window.history.back();
+  }
 }

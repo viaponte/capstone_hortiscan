@@ -20,24 +20,12 @@ main {
     width: auto;
 }
 
-.logo-min {
-    height: 70px;
-    width: auto;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
 
 // Body
 .content-background,
-.logout-button,
 .title-form {
     --background: #131212;
     font-family: "Staatliches", sans-serif;
-}
-
-.logout-button {
-    font-size: 18px;
 }
 
 // Titulo de la pagina
