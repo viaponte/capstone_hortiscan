@@ -1,6 +1,7 @@
 package cl.hortiscan.hortiscan_demo.controller;
 
 import java.io.File;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,11 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +34,9 @@ import cl.hortiscan.hortiscan_demo.model.entity.Imagen;
 import cl.hortiscan.hortiscan_demo.model.service.CarpetaService;
 import cl.hortiscan.hortiscan_demo.model.service.ImagenService;
 import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
+import cl.hortiscan.hortiscan_demo.negocio.DeleteDirectoryRecursively;
+// import cl.hortiscan.hortiscan_demo.negocio.WordToPdf;
+import cl.hortiscan.hortiscan_demo.negocio.WordToPdf2;
 
 @RestController
 @CrossOrigin(origins = { "http://localhost:4200", "http://localhost:8100" })
@@ -42,6 +49,15 @@ public class UsuarioController {
 
   @Autowired
   private ImagenService imagenService;
+
+  @Autowired
+  private DeleteDirectoryRecursively deleteDirectoryService;
+
+  // @Autowired
+  // private WordToPdf wordToPdfService;
+
+  @Autowired
+  private WordToPdf2 wordToPdfService;
 
   private final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
@@ -144,7 +160,8 @@ public class UsuarioController {
   }
 
   @DeleteMapping("/{username}/carpeta/{nombreCarpeta}")
-  public ResponseEntity<Map<String, String>> deleteCarpeta(@PathVariable String username, @PathVariable String nombreCarpeta) {
+  public ResponseEntity<Map<String, String>> deleteCarpeta(@PathVariable String username,
+      @PathVariable String nombreCarpeta) {
     try {
       // Se obtiene el ID del usuario
       Integer idUsuario = usuarioService.findIdByUsername(username);
@@ -160,7 +177,8 @@ public class UsuarioController {
       File carpetaLocal = new File(carpetaPath);
 
       if (carpetaLocal.exists() && carpetaLocal.isDirectory()) {
-        deleteDirectoryRecursively(carpetaLocal); // Elimina todo el contenido de la carpeta local
+        deleteDirectoryService.deleteDirectoryRecursively(carpetaLocal); // Elimina todo el contenido de la carpeta
+                                                                         // local
       }
 
       // Se eliminan los registros de las imagenes en BD
@@ -192,18 +210,31 @@ public class UsuarioController {
     }
   }
 
-  // Método recursivo para eliminar directorios y archivos
-  private void deleteDirectoryRecursively(File file) {
-    File[] contents = file.listFiles();
-    if (contents != null) {
-      for (File f : contents) {
-        if (f.isDirectory()) {
-          deleteDirectoryRecursively(f);
-        } else {
-          f.delete(); // Eliminar archivo
-        }
+  @GetMapping("/{username}/carpeta/{nombreCarpeta}/archivo/{fileName}/pdf")
+  public ResponseEntity<byte[]> getWordAsPdf(
+      @PathVariable String username,
+      @PathVariable String nombreCarpeta,
+      @PathVariable String fileName) {
+    try {
+      Integer idUsuario = this.usuarioService.findIdByUsername(username);
+      String filePath = ROOT_DIRECTORY + "\\usuario_" + idUsuario + "\\" + nombreCarpeta + "\\" + fileName;
+      Path wordFilePath = Paths.get(filePath);
+
+      ByteArrayOutputStream pdfOutputStream = new ByteArrayOutputStream();
+      try (InputStream wordInputStream = Files.newInputStream(wordFilePath)) {
+        wordToPdfService.convertWordToPdf(wordInputStream, pdfOutputStream);
       }
+
+      byte[] pdfBytes = pdfOutputStream.toByteArray();
+      HttpHeaders headers = new HttpHeaders();
+      headers.setContentType(MediaType.APPLICATION_PDF);
+      headers.setContentDisposition(ContentDisposition.inline().filename(fileName.replace(".docx", ".pdf")).build());
+
+      return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    file.delete(); // Finalmente, eliminar el directorio
   }
+
 }
