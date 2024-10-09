@@ -1,6 +1,7 @@
 package cl.hortiscan.hortiscan_demo.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,74 @@ public class ImagenController {
   public ImagenController(UsuarioService usuarioService) {
     this.usuarioService = usuarioService;
   }
+  // Subir un archivo Word a la carpeta de un usuario
+  @PostMapping("/uploadWord/{username}")
+  public ResponseEntity<?> uploadWord(
+          @PathVariable String username,
+          @RequestParam("file") MultipartFile file,
+          @RequestParam String folderName) {
+
+    System.out.println("Recibiendo solicitud de subida de documento Word");
+    try {
+      // Obtén el ID del usuario
+      Integer idUsuario = usuarioService.findIdByUsername(username);
+
+      // Guarda el archivo y obtén la ruta
+      String filePath = usuarioService.saveWordDocument(idUsuario, file, folderName);
+
+      // Crea una nueva entidad Imagen y guarda la información en la base de datos
+      Imagen imagen = new Imagen();
+      imagen.setRutaAlmacenamiento(filePath);
+      imagen.setFechaCreacionImagen(new Date());
+
+      Carpeta carpeta = carpetaService.getCarpetaIdByNombreAndUsuario(folderName, idUsuario);
+      imagen.setIdCarpeta(carpeta);
+
+      //imagenService.save(imagen);  // Guarda la entidad en la base de datos
+
+      // Prepara la respuesta JSON
+      Map<String, String> response = new HashMap<>();
+      response.put("message", "Documento Word subido y guardado con éxito");
+      response.put("filePath", filePath);
+
+      return ResponseEntity.ok(response);
+    } catch (Exception e) {
+      return ResponseEntity.status(500).body("Error al guardar documento Word: " + e.getMessage());
+    }
+  }
+/*  public String saveWordDocument(Integer idUsuario, MultipartFile file, String nameFolder) {
+    String userFolder = ROOT_DIRECTORY + File.separator + "usuario" + idUsuario + File.separator + nameFolder;
+
+    // Verifica si la carpeta existe, si no, la crea
+    File folder = new File(userFolder);
+    if (!folder.exists()) {
+      folder.mkdirs();
+    }
+
+    // Guardar el archivo Word en la ruta del sistema de archivos
+    String filePath = userFolder + File.separator + file.getOriginalFilename();
+    File destiny = new File(filePath);
+    try {
+      file.transferTo(destiny);
+    } catch (IOException e) {
+      throw new RuntimeException("Error al guardar el archivo Word: " + e.getMessage());
+    }
+
+    // Obtén la entidad Carpeta usando el servicio (similar a la imagen)
+    Carpeta carpeta = this.carpetaServiceImpl.getCarpetaIdByNombreAndUsuario(nameFolder, idUsuario);
+
+    // Crear una entidad Documento (o usa una entidad Imagen si es genérica para archivos)
+    Imagen documento = new Imagen();  // Puedes crear una entidad específica si es necesario
+    documento.setIdFormulario(null);  // Si no tienes un formulario asignado aún
+    documento.setIdCarpeta(carpeta);  // Usa la carpeta ya obtenida del servicio
+    documento.setRutaAlmacenamiento(filePath);  // Almacena la ruta del archivo
+    documento.setFechaCreacionImagen(new Date());  // Fecha actual
+
+    // Guarda el documento (o imagen) en la base de datos
+    imagenDAO.save(documento);
+
+    return filePath;  // Retorna la ruta donde se guardó el documento
+  }*/
 
   // Subir una imagen a la carpeta de un usuario
   @PostMapping("/subir/{username}")
