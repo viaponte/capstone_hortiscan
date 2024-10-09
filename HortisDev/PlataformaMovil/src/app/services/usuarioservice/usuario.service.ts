@@ -27,7 +27,7 @@ export class UsuarioService {
     formData.append('folderName', folderName); // Agregar el nombre de la carpeta
 
     // Corrige la sintaxis de la cadena de plantilla para la URL
-    const request = `${this.apiUrl}/api/imagen/uploadWord/${this.username}`;
+    const request = `${this.apiUrl}/api/imagen/upload/word/${this.username}`;
     console.log('URL de subida del documento Word:', request);  // Verifica que la URL sea correcta
 
     return this.http.post(request, formData);
@@ -81,6 +81,4 @@ export class UsuarioService {
     console.log('URL de subida:', request);  // Verifica que la URL sea correcta
     return this.http.post(request, formData);
   }
-
 }
-
