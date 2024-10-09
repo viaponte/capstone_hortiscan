@@ -235,6 +235,17 @@ export class FolderContentPage implements OnInit {
         console.error('Error al procesar la imagen con la API de OCR:', error);
       }
     );
+
+    // Enviar el archivo al backend
+    this.usuarioService.uploadImage(file, this.folderName).subscribe(
+      (response) => {
+        console.log('Imagen subida correctamente: ', response);
+        this.loadContenidoCarpeta();
+      },
+      (error) => {
+        console.error('Error al subir imagen: ', error);
+      }
+    );
   }
 
   handleRefresh(event: any) {
@@ -247,5 +258,19 @@ export class FolderContentPage implements OnInit {
   // Método que retorna la ruta de la imagen
   getImagePath(fileName: string) {
     return this.imagenesMap[fileName]; // Retorna la URL pre-cargada de la imagen si existe
+  }
+
+  // Método para eliminar una imagen
+  // Método para eliminar una imagen
+  deleteImagen(fileName: string) {
+    this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
+      (response) => {
+        console.log('Imagen eliminada: ', response);
+        this.loadContenidoCarpeta();
+      },
+      (error) => {
+        console.error('Error al eliminar la imagen: ', error);
+      }
+    );
   }
 }

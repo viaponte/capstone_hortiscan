@@ -38,6 +38,18 @@ export class FoldersPage implements OnInit {
     }
   }
 
+  deleteCarpeta(nombreCarpeta: string) {
+    this.usuarioService.deleteCarpeta(nombreCarpeta).subscribe(
+      (response) => {
+        this.loadCarpetas();
+        console.log('Carpeta eliminada con exito', response);
+      },
+      (error) => {
+        console.error('Error al eliminar la carpeta', error);
+      }
+    );
+  }
+
   // Método para cargar las carpetas del usuario desde el backend
   loadCarpetas() {
     this.usuarioService.getCarpetas(this.username!).subscribe(

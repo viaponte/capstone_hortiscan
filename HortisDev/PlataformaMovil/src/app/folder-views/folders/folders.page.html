@@ -12,9 +12,14 @@
       <ion-text>NO SE ENCONTRARON CARPETAS</ion-text>
     </div>
     <div class="folders-container">
-      <div class="folder" *ngFor="let carpeta of carpetas" (click)="openFolder(carpeta.nombreCarpeta)">
-        <img src="assets/folder_icon.png" alt="Carpeta" class="folder-icon" />
-        <p>{{ carpeta.nombreCarpeta }}</p>
+      <div class="folder" *ngFor="let carpeta of carpetas">
+        <div (click)="openFolder(carpeta.nombreCarpeta)">
+          <img src="assets/folder_icon.png" alt="Carpeta" class="folder-icon" />
+          <p>{{ carpeta.nombreCarpeta }}</p>
+        </div>
+        <div>
+          <ion-button (click)="deleteCarpeta(carpeta.nombreCarpeta)"  class="btn btn-danger">Eliminar</ion-button>
+        </div>
       </div>
     </div>
   </div>

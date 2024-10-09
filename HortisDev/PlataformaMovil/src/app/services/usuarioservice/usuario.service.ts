@@ -12,11 +12,11 @@ import { AuthService } from '../authservice/authservice.service'; // Asegúrate 
 
 export class UsuarioService {
 
-  
+
   apiUrl = environment.apiUrl;
-  
+
   username: string | null = null;
-  
+
   constructor(private http: HttpClient, private authService: AuthService) {
     this.username = this.authService.getUsername();
   }
@@ -25,21 +25,33 @@ export class UsuarioService {
     const formData: FormData = new FormData();
     formData.append('file', file); // Agregar el archivo Word
     formData.append('folderName', folderName); // Agregar el nombre de la carpeta
-  
+
     // Corrige la sintaxis de la cadena de plantilla para la URL
     const request = `${this.apiUrl}/api/imagen/uploadWord/${this.username}`;
     console.log('URL de subida del documento Word:', request);  // Verifica que la URL sea correcta
-  
+
     return this.http.post(request, formData);
   }
 
+  deleteCarpeta(nombreCarpeta: string): Observable<any> {
+    const request = `${this.apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}`;
+
+    return this.http.delete(request);
+  }
+
+  // Método para eliminar imagen
+  deleteImagen(nombreCarpeta: string, fileName: string): Observable<any> {
+    const request = `${this.apiUrl}/api/imagen/${this.username}/carpeta/${nombreCarpeta}/imagen/${fileName}`;
+
+    return this.http.delete(request);
+  }
 
   // Método para crear la carpeta
   crearCarpeta(username: string, folderName: string): Observable<any> {
     const url = `${this.apiUrl}/api/usuario/${username}/crear-carpeta`;
     const body = { folderName: folderName };
     return this.http.post(url, body);
-  }  
+  }
 
   // Método para obtener las carpetas del usuario
   getCarpetas(username: string): Observable<CarpetaDTO[]> {
@@ -58,17 +70,17 @@ export class UsuarioService {
     return this.http.get(request, { responseType: 'blob' }).pipe(
       map(blob => URL.createObjectURL(blob))
     );
-  }  
+  }
 
   uploadImage(file: File, folderName: string): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file);
     formData.append('folderName', folderName);
-  
+
     const request = `${this.apiUrl}/api/imagen/subir/${this.username}`;
     console.log('URL de subida:', request);  // Verifica que la URL sea correcta
     return this.http.post(request, formData);
   }
-  
+
 }
 
