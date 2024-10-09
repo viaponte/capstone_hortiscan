@@ -236,16 +236,7 @@ export class FolderContentPage implements OnInit {
       }
     );
 
-    // Enviar el archivo al backend
-    this.usuarioService.uploadImage(file, this.folderName).subscribe(
-      (response) => {
-        console.log('Imagen subida correctamente: ', response);
-        this.loadContenidoCarpeta();
-      },
-      (error) => {
-        console.error('Error al subir imagen: ', error);
-      }
-    );
+
   }
 
   handleRefresh(event: any) {
