@@ -8,15 +8,31 @@ import { AuthService } from '../authservice/authservice.service'; // Asegúrate 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class UsuarioService {
 
+  
   apiUrl = environment.apiUrl;
-
+  
   username: string | null = null;
-
+  
   constructor(private http: HttpClient, private authService: AuthService) {
     this.username = this.authService.getUsername();
   }
+  // Método para subir el archivo Word
+  uploadWord(file: File, folderName: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file); // Agregar el archivo Word
+    formData.append('folderName', folderName); // Agregar el nombre de la carpeta
+  
+    // Corrige la sintaxis de la cadena de plantilla para la URL
+    const request = `${this.apiUrl}/api/imagen/uploadWord/${this.username}`;
+    console.log('URL de subida del documento Word:', request);  // Verifica que la URL sea correcta
+  
+    return this.http.post(request, formData);
+  }
+
 
   // Método para crear la carpeta
   crearCarpeta(username: string, folderName: string): Observable<any> {
@@ -53,4 +69,6 @@ export class UsuarioService {
     console.log('URL de subida:', request);  // Verifica que la URL sea correcta
     return this.http.post(request, formData);
   }
+  
 }
+
