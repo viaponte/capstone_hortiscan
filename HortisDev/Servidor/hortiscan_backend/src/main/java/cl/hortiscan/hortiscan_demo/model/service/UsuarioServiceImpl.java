@@ -189,7 +189,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     return filePath;  // Retorna la ruta donde se guardó la imagen
   }
+  @Override
+  public String saveWordDocument(Integer idUsuario, MultipartFile file, String folderName) throws IOException {
+    String userFolderPath = ROOT_DIRECTORY + File.separator + "usuario" + idUsuario + File.separator + folderName;
+    File folder = new File(userFolderPath);
+    if (!folder.exists()) {
+      folder.mkdirs();
+    }
 
+    String filePath = userFolderPath + File.separator + file.getOriginalFilename();
+    file.transferTo(new File(filePath)); // Guarda el archivo en la ruta especificada
+
+    return filePath; // Retorna la ruta donde se guardó el archivo
+  }
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
