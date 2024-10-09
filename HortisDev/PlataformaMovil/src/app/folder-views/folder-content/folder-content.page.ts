@@ -11,6 +11,9 @@ import * as Docxtemplater from 'docxtemplater';
 import { OcrService } from '../../services/ocrservice/ocr.service';
 import { HttpClient } from '@angular/common/http';
 import * as JSZip from 'jszip';
+import { DocumentScanner } from 'capacitor-document-scanner';
+import { Capacitor } from '@capacitor/core';
+
 
 @Component({
   selector: 'app-folder-content',
@@ -52,6 +55,44 @@ export class FolderContentPage implements OnInit {
     });
   }
 
+  // async scanDocument() {
+  //   try {
+  //     // Asegúrate de que el plugin esté correctamente invocado para escanear el documento
+  //     const { scannedImages } = await DocumentScanner.scanDocument();
+
+  //     if (scannedImages && scannedImages.length > 0) {
+  //       const scannedImageUrl = Capacitor.convertFileSrc(scannedImages[0]);
+
+  //       // Mostrar la imagen escaneada en la UI (opcional)
+  //       const scannedImage = document.getElementById('scannedImage') as HTMLImageElement;
+  //       scannedImage.src = scannedImageUrl;
+
+  //       // Descargar la imagen escaneada y convertirla en un objeto Blob
+  //       const response = await fetch(scannedImageUrl);
+  //       const blob = await response.blob();
+
+  //       // Crear un objeto File con el Blob descargado
+  //       const file = await this.photoToFile(blob);
+  //       console.log('Archivo creado: ', file);
+
+  //       // Subir la imagen escaneada al backend usando el servicio de usuario
+  //       this.usuarioService.uploadImage(file, this.folderName).subscribe(
+  //         (response) => {
+  //           console.log('Imagen escaneada subida correctamente:', response);
+  //           this.loadContenidoCarpeta(); // Recargar el contenido de la carpeta
+  //         },
+  //         (error) => {
+  //           console.error('Error al subir la imagen escaneada:', error);
+  //         }
+  //       );
+  //     } else {
+  //       console.log('No se escanearon imágenes');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error al escanear documento:', error);
+  //   }
+  // }
+
   // Método para cargar el contenido de la carpeta desde el backend
   loadContenidoCarpeta() {
     this.usuarioService.getCarpetaContenido(this.username!, this.folderName).subscribe(
@@ -91,6 +132,13 @@ export class FolderContentPage implements OnInit {
     const blob = await response.blob();
     return new File([blob], `${new Date().getTime()}.jpeg`, { type: blob.type });
   }
+  
+  // Método que convierte una imagen a un archivo (similar a openCamera)
+  // async photoToFile(imageBlob: Blob): Promise<File> {
+  //   const fileName = `${new Date().getTime()}.jpeg`;  // Puedes ajustar el nombre y la extensión según tus necesidades
+  //   const file = new File([imageBlob], fileName, { type: imageBlob.type });
+  //   return file;
+  // }
 
   // Método para crear el archivo Word
   async createWordFile(text: string): Promise<File> {
@@ -182,6 +230,7 @@ export class FolderContentPage implements OnInit {
     } catch (error) {
       console.error('Error al crear o subir el archivo Word:', error);
     }
+
   }
   async openCamera() {
     const image = await Camera.getPhoto({
@@ -190,6 +239,7 @@ export class FolderContentPage implements OnInit {
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera
     });
+
 
     const file = await this.photoToFile(image);
     console.log('Archivo creado: ', file);
@@ -235,7 +285,16 @@ export class FolderContentPage implements OnInit {
         console.error('Error al procesar la imagen con la API de OCR:', error);
       }
     );
-
+    // Enviar el archivo al backend
+    this.usuarioService.uploadImage(file, this.folderName).subscribe(
+      (response) => {
+        console.log('Imagen subida correctamente: ', response);
+        this.loadContenidoCarpeta();
+      },
+      (error) => {
+        console.error('Error al subir imagen: ', error);
+      }
+    );
 
   }
 
