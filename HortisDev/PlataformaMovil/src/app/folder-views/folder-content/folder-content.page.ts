@@ -11,7 +11,7 @@ import * as Docxtemplater from 'docxtemplater';
 import { OcrService } from '../../services/ocrservice/ocr.service';
 import { HttpClient } from '@angular/common/http';
 import * as JSZip from 'jszip';
-import { DocumentScanner } from 'capacitor-document-scanner';
+import { DocumentScanner, ScanDocumentResponseStatus } from 'capacitor-document-scanner';
 import { Capacitor } from '@capacitor/core';
 
 
@@ -55,45 +55,6 @@ export class FolderContentPage implements OnInit {
     });
   }
 
-  // async scanDocument() {
-  //   try {
-  //     // Asegúrate de que el plugin esté correctamente invocado para escanear el documento
-  //     const { scannedImages } = await DocumentScanner.scanDocument();
-
-  //     if (scannedImages && scannedImages.length > 0) {
-  //       const scannedImageUrl = Capacitor.convertFileSrc(scannedImages[0]);
-
-  //       // Mostrar la imagen escaneada en la UI (opcional)
-  //       const scannedImage = document.getElementById('scannedImage') as HTMLImageElement;
-  //       scannedImage.src = scannedImageUrl;
-
-  //       // Descargar la imagen escaneada y convertirla en un objeto Blob
-  //       const response = await fetch(scannedImageUrl);
-  //       const blob = await response.blob();
-
-  //       // Crear un objeto File con el Blob descargado
-  //       const file = await this.photoToFile(blob);
-  //       console.log('Archivo creado: ', file);
-
-  //       // Subir la imagen escaneada al backend usando el servicio de usuario
-  //       this.usuarioService.uploadImage(file, this.folderName).subscribe(
-  //         (response) => {
-  //           console.log('Imagen escaneada subida correctamente:', response);
-  //           this.loadContenidoCarpeta(); // Recargar el contenido de la carpeta
-  //         },
-  //         (error) => {
-  //           console.error('Error al subir la imagen escaneada:', error);
-  //         }
-  //       );
-  //     } else {
-  //       console.log('No se escanearon imágenes');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error al escanear documento:', error);
-  //   }
-  // }
-
-  // Método para cargar el contenido de la carpeta desde el backend
   loadContenidoCarpeta() {
     this.usuarioService.getCarpetaContenido(this.username!, this.folderName).subscribe(
       (response) => {
@@ -126,19 +87,7 @@ export class FolderContentPage implements OnInit {
     this.selectedFile = this.imagenesMap[file];
   }
 
-  // Convierte la imagen capturada en un objeto File
-  async photoToFile(photo: Photo): Promise<File> {
-    const response = await fetch(photo.webPath!);
-    const blob = await response.blob();
-    return new File([blob], `${new Date().getTime()}.jpeg`, { type: blob.type });
-  }
-  
-  // Método que convierte una imagen a un archivo (similar a openCamera)
-  // async photoToFile(imageBlob: Blob): Promise<File> {
-  //   const fileName = `${new Date().getTime()}.jpeg`;  // Puedes ajustar el nombre y la extensión según tus necesidades
-  //   const file = new File([imageBlob], fileName, { type: imageBlob.type });
-  //   return file;
-  // }
+
 
   // Método para crear el archivo Word
   async createWordFile(text: string): Promise<File> {
@@ -216,6 +165,7 @@ export class FolderContentPage implements OnInit {
       type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     });
   }
+
   async sendWordFileToServer(extractedText: string) {
     try {
       const wordFile = await this.createWordFile(extractedText);
@@ -232,6 +182,49 @@ export class FolderContentPage implements OnInit {
     }
 
   }
+
+  // async openCamera() {
+  //   const image = await Camera.getPhoto({
+  //     quality: 90,
+  //     allowEditing: false,
+  //     resultType: CameraResultType.Uri,
+  //     source: CameraSource.Camera
+  //   });
+
+
+  //   const file = await this.photoToFile(image);
+  //   console.log('Archivo creado: ', file);
+
+  //   // Llama al servicio para procesar la imagen en la API de OCR
+  //   this.ocrService.processImage(file).subscribe(
+  //     async (response) => {
+  //       const extractedText = response.text;
+  //       console.log('Texto extraído:', extractedText);
+
+  //       try {
+  //         const wordFile = await this.createWordFile(extractedText);
+  //         // Aquí puedes cargar el archivo o hacer otras operaciones con él
+  //         console.log("Archivo Word creado:", wordFile);
+  //       } catch (error) {
+  //         console.error("Error al crear el archivo Word:", error);
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error('Error al procesar la imagen con la API de OCR:', error);
+  //     }
+  //   );
+  //   // Enviar el archivo al backend
+  //   this.usuarioService.uploadImage(file, this.folderName).subscribe(
+  //     (response) => {
+  //       console.log('Imagen subida correctamente: ', response);
+  //       this.loadContenidoCarpeta();
+  //     },
+  //     (error) => {
+  //       console.error('Error al subir imagen: ', error);
+  //     }
+  //   );
+
+  // }
   async openCamera() {
     const image = await Camera.getPhoto({
       quality: 90,
@@ -240,63 +233,82 @@ export class FolderContentPage implements OnInit {
       source: CameraSource.Camera
     });
 
-
     const file = await this.photoToFile(image);
     console.log('Archivo creado: ', file);
 
-    // Llama al servicio para procesar la imagen en la API de OCR
-    // this.ocrService.processImage(file).subscribe(
-    //   (response) => {
-    //     const extractedText = response.text;
-    //     console.log('Texto extraído:', extractedText);
-
-    //     // Crear el archivo Word con el texto extraído
-    //     this.createWordFile(extractedText).then((wordFile) => {
-    //       this.usuarioService.uploadWord(wordFile, this.folderName).subscribe(
-    //         (response) => {
-    //           console.log('Documento Word subido correctamente:', response);
-    //           this.loadContenidoCarpeta();
-    //         },
-    //         (error) => {
-    //           console.error('Error al subir documento Word:', error);
-    //         }
-    //       );
-    //     });
-    //   },
-    //   (error) => {
-    //     console.error('Error al procesar la imagen con la API de OCR:', error);
-    //   }
-    // );
-    // Llama al servicio para procesar la imagen en la API de OCR
-    this.ocrService.processImage(file).subscribe(
-      async (response) => {
-        const extractedText = response.text;
-        console.log('Texto extraído:', extractedText);
-
-        try {
-          const wordFile = await this.createWordFile(extractedText);
-          // Aquí puedes cargar el archivo o hacer otras operaciones con él
-          console.log("Archivo Word creado:", wordFile);
-        } catch (error) {
-          console.error("Error al crear el archivo Word:", error);
-        }
-      },
-      (error) => {
-        console.error('Error al procesar la imagen con la API de OCR:', error);
-      }
-    );
-    // Enviar el archivo al backend
-    this.usuarioService.uploadImage(file, this.folderName).subscribe(
+    // Enviar la imagen al backend para procesar OCR
+    this.ocrService.uploadImage(file).subscribe(
       (response) => {
-        console.log('Imagen subida correctamente: ', response);
-        this.loadContenidoCarpeta();
+        console.log('Texto extraído y archivo Word creado:', response);
+        this.loadContenidoCarpeta();  // Recargar el contenido si es necesario
       },
       (error) => {
-        console.error('Error al subir imagen: ', error);
+        console.error('Error al procesar la imagen con el backend:', error);
       }
     );
-
   }
+
+
+  async scanDocument() {
+    try {
+
+      // Obtener la imagen escaneada
+      const scannedImage = document.getElementById('scannedImage') as HTMLImageElement;
+      // Escanea el documento usando el plugin con una imagen máxima
+      const { scannedImages, status } = await DocumentScanner.scanDocument({
+        maxNumDocuments: 2
+      })
+
+      if (status === ScanDocumentResponseStatus.Success && scannedImages?.length) {
+        // Comprobar si el elemento existe antes de establecer la propiedad src
+        if (scannedImage) {
+          const scannedImageUrl = Capacitor.convertFileSrc(scannedImages[0]);
+          scannedImage.src = scannedImageUrl;
+          scannedImage.style.display = 'block';
+
+          // Descargar la imagen y convertirla en un objeto Blob
+          const response = await fetch(scannedImageUrl);
+          const blob = await response.blob();
+
+          // Crear un objeto File con el Blob descargado
+          const file = new File([blob], `${new Date().getTime()}.jpeg`, { type: blob.type });
+          console.log('Archivo creado a partir del documento escaneado: ', file);
+
+          // Subir la imagen escaneada al backend
+          this.usuarioService.uploadImage(file, this.folderName).subscribe(
+            (response) => {
+              console.log('Imagen escaneada subida correctamente:', response);
+              this.loadContenidoCarpeta(); // Recargar el contenido de la carpeta
+            },
+            (error) => {
+              console.error('Error al subir la imagen escaneada:', error);
+            }
+          );
+        } else {
+          console.error('Elemento con id "scannedImage" no encontrado en el DOM.');
+        }
+      } else if (status === ScanDocumentResponseStatus.Cancel) {
+        // El usuario salió de la cámara
+        alert('El usuario canceló el escaneo del documento');
+      }
+    } catch (error) {
+      // Ocurrió un error durante el escaneo del documento
+      alert('Error al escanear documento: ' + error);
+    }
+  }
+
+
+
+  // Método para cargar el contenido de la carpeta desde el backend
+
+  // Convierte la imagen capturada en un objeto File
+  async photoToFile(photo: Photo): Promise<File> {
+    const response = await fetch(photo.webPath!);  // Accede a la URI de la imagen
+    const blob = await response.blob();            // Convierte la URI en un Blob
+    return new File([blob], `${new Date().getTime()}.jpeg`, { type: blob.type });  // Convierte el Blob a File
+  }
+
+
 
   handleRefresh(event: any) {
     this.reloadService.handleRefresh(event).then(() => {

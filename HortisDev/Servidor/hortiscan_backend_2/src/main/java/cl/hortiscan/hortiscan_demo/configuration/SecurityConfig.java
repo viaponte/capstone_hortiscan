@@ -39,22 +39,23 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-            .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilitar CORS
-            .authorizeRequests(authorize -> authorize
-                    .requestMatchers("/api/auth/login", "/api/auth/register", "sync-carpetas-imagenes").permitAll()
-                    .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            );
-    http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-    return http.build();
+      http
+          .csrf(csrf -> csrf.disable())
+          .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilitar CORS
+          .authorizeRequests(authorize -> authorize
+              .requestMatchers("/api/auth/login", "/api/auth/register", "/api/imagen/process-ocr").permitAll() // Permitir acceso sin autenticación
+              .anyRequest().authenticated()
+          )
+          .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+  
+      http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+  
+      return http.build();
   }
 
   @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+      throws Exception {
     return authenticationConfiguration.getAuthenticationManager();
   }
 
@@ -64,20 +65,47 @@ public class SecurityConfig {
   }
 
   // Configuración de CORS
+  // @Bean
+  // public CorsConfigurationSource corsConfigurationSource() {
+  // CorsConfiguration configuration = new CorsConfiguration();
+  // configuration.setAllowedOrigins(List.of("*")); // Permitir solicitudes desde
+  // el frontend de Angular
+  // configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE",
+  // "OPTIONS")); // Métodos permitidos
+  // configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); //
+  // Encabezados permitidos
+  // configuration.setAllowCredentials(false); // Permitir credenciales (si es
+  // necesario)
+
+  // UrlBasedCorsConfigurationSource source = new
+  // UrlBasedCorsConfigurationSource();
+  // source.registerCorsConfiguration("/**", configuration); // Aplicar CORS a
+  // todos los endpoints
+  // return source;
+  // }
+
+  // // Añadir el CorsFilter para garantizar que los encabezados CORS se añaden a
+  // las respuestas
+  // @Bean
+  // @Order(Ordered.HIGHEST_PRECEDENCE)
+  // public CorsFilter corsFilter() {
+  // return new CorsFilter(corsConfigurationSource());
+  // }
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(List.of("*")); // Permitir solicitudes desde el frontend de Angular
+    configuration.setAllowedOrigins(List.of("http://192.168.74.91:8100")); // Cambia * por la URL del frontend
     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
     configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Encabezados permitidos
-    configuration.setAllowCredentials(false); // Permitir credenciales (si es necesario)
+    configuration.setAllowCredentials(true); // Permitir credenciales (si es necesario)
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration); // Aplicar CORS a todos los endpoints
     return source;
   }
 
-  // Añadir el CorsFilter para garantizar que los encabezados CORS se añaden a las respuestas
+  // Añadir el CorsFilter para garantizar que los encabezados CORS se añaden a las
+  // respuestas
   @Bean
   @Order(Ordered.HIGHEST_PRECEDENCE)
   public CorsFilter corsFilter() {
