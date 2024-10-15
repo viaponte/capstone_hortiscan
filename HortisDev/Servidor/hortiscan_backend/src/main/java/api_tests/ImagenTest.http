@@ -1,0 +1,6 @@
+### Subir imagen a carpeta de usuario
+POST http://localhost:8080/api/imagen/subir/3
+Content-Type: multipart/form-data
+
+file=@/ruta/a/la/imagen.jpg
+folderName=Rancagua
