@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from "../../shared/common/header/header.component";
 import { UsuarioService } from '../../services/usuarioservice/usuario.service';
@@ -23,8 +23,9 @@ export class FolderComponent implements OnInit {
   nombreCarpeta: string = '';  // Variable para almacenar el nombre de la carpeta
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   selectedFile: SafeResourceUrl | null = null;  // Archivo seleccionado para mostrar en el modal
+  showEdit: boolean = false;
 
-  constructor(private route: ActivatedRoute, private usuarioService: UsuarioService,
+  constructor(private route: ActivatedRoute, private router: Router, private usuarioService: UsuarioService,
     private authService: AuthService, private syncService: SyncService,
     private sanitizer: DomSanitizer) {
     this.username = this.authService.getUsername();
@@ -73,13 +74,16 @@ export class FolderComponent implements OnInit {
   }
 
 
-  selectedFileExtension: string | null = null;  
+  selectedFileExtension: string | null = null;
+  selectedFileName: string | null = null;  // Para almacenar el nombre del archivo seleccionado
 
   // Método para abrir modal
   openModal(file: string): void {
+    this.selectedFileName = file;  // Guardamos el nombre del archivo seleccionado
+
     const fileExtension = file.split('.').pop()?.toLowerCase();
     this.selectedFileExtension = fileExtension ?? null;  // Guardamos la extensión del archivo o null si no existe
-  
+
     // Si es una imagen
     if (fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
       this.usuarioService.getImagePath(this.nombreCarpeta, file).subscribe(
@@ -98,6 +102,7 @@ export class FolderComponent implements OnInit {
         (pdfBlob) => {
           const fileURL = URL.createObjectURL(pdfBlob);  // Crear URL desde Blob
           this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Sanitizamos la URL
+          this.showEdit = true;
         },
         (error) => {
           console.error('Error al cargar el PDF:', error);
@@ -107,6 +112,7 @@ export class FolderComponent implements OnInit {
       console.error('Formato de archivo no soportado:', fileExtension);
     }
   }
+
 
   // Método que retorna la ruta de la imagen
   getImagePath(fileName: string) {
@@ -125,6 +131,24 @@ export class FolderComponent implements OnInit {
       }
     );
   }
+
+  editDocument(file: any) {
+    // Cerrar el modal manualmente seleccionando el modal abierto
+    const modals = document.querySelectorAll('.modal.show');
+    modals.forEach(modal => {
+      (modal as any).classList.remove('show');  // Removemos la clase 'show' para cerrar el modal
+      (modal as any).setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');  // Remover la clase modal-open del body
+      const backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) {
+        backdrop.remove();  // Eliminamos el backdrop del DOM
+      }
+    });
+
+    // Navegar al componente onlyoffice-editor
+    this.router.navigate(['/editor'], { queryParams: { folderName: this.nombreCarpeta, fileName: file } });
+  }
+
 
   goBack(): void {
     window.history.back();

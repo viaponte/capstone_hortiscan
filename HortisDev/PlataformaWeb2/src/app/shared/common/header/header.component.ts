@@ -34,4 +34,8 @@ export class HeaderComponent {
   goBack(): void {
     window.history.back();
   }
+
+  goEditor() {
+    this.router.navigate(['/editor']);
+  }
 }
