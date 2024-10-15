@@ -3,6 +3,9 @@ package cl.hortiscan.hortiscan_demo.controller;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+import java.io.IOException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +28,8 @@ import cl.hortiscan.hortiscan_demo.model.service.ImagenService;
 import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:8100" })
+// @CrossOrigin(origins = { "http://localhost:4200", "http://localhost:8100" })
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/imagen")
 public class ImagenController {
   private final UsuarioService usuarioService;
@@ -43,6 +47,39 @@ public class ImagenController {
 
   public ImagenController(UsuarioService usuarioService) {
     this.usuarioService = usuarioService;
+  }
+
+  // Método para subir y procesar la imagen con OCR
+  @CrossOrigin(origins = "*")
+  @PostMapping("/process-ocr")
+  public ResponseEntity<String> processImage(@RequestParam("image") MultipartFile image) {
+    try {
+      // 1. Guardar la imagen temporalmente
+      String tempImagePath = System.getProperty("java.io.tmpdir") + "/" + UUID.randomUUID() + "_"
+          + image.getOriginalFilename();
+      File tempImageFile = new File(tempImagePath);
+      image.transferTo(tempImageFile);
+
+      // 2. Ruta de salida del archivo Word
+      String outputWordPath = System.getProperty("java.io.tmpdir") + "/" + UUID.randomUUID() + "_texto_extraido.docx";
+
+      // 3. Ejecutar el script Python con ProcessBuilder
+      String pythonScriptPath = "src/scripts/ocr_script.py"; // Cambia esta ruta según la ubicación de tu script Python
+      ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, tempImagePath, outputWordPath);
+
+      Process process = processBuilder.start();
+      int exitCode = process.waitFor();
+
+      if (exitCode == 0) {
+        return ResponseEntity.ok("Archivo Word creado en: " + outputWordPath);
+      } else {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al procesar la imagen.");
+      }
+
+    } catch (IOException | InterruptedException e) {
+      e.printStackTrace();
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al procesar la imagen.");
+    }
   }
 
   @PostMapping("/upload/word/{username}")
