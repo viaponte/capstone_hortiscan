@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "log4j.logger.org.docx4j",
+    "type": "java.lang.String",
+    "description": "A description for 'log4j.logger.org.docx4j'"
+  },
+  {
+    "name": "log4j.logger.org.apache.xmlgraphics",
+    "type": "java.lang.String",
+    "description": "A description for 'log4j.logger.org.apache.xmlgraphics'"
+  },
+  {
+    "name": "onlyoffice.jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'onlyoffice.jwt.secret'"
+  },
+  {
+    "name": "onlyoffice.url",
+    "type": "java.lang.String",
+    "description": "A description for 'onlyoffice.url'"
+  },
+  {
+    "name": "onlyoffice.document.urlBase",
+    "type": "java.lang.String",
+    "description": "A description for 'onlyoffice.document.urlBase'"
+  }
+]}
