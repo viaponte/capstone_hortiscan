@@ -14,14 +14,16 @@ import { filter } from 'rxjs/operators';
 })
 export class HeaderComponent {
   showBackButton: boolean = true;
+  isInMenu: boolean = false; // Variable para controlar si estás en el menú
 
   constructor(private loginService: AuthService, private router: Router, private location: Location) {
-    // Escuchar los cambios de ruta y actualizar showBackButton
+    // Escuchar los cambios de ruta y actualizar showBackButton e isInMenu
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: Event) => {
         if (event instanceof NavigationEnd) {
           this.showBackButton = event.url !== '/menu';
+          this.isInMenu = event.url === '/menu'; // Actualizar el estado de isInMenu
         }
       });
   }
@@ -30,9 +32,11 @@ export class HeaderComponent {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
-
+  
   goBack(): void {
-    window.history.back();
+    if (!this.isInMenu) { // Solo va atrás si no estás en el menú
+      window.history.back();
+    }
   }
 
   goEditor() {
