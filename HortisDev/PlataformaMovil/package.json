@@ -25,7 +25,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
-    "@capacitor/android": "5.7.8",
+    "@capacitor/android": "^5.7.8",
     "@capacitor/app": "^5.0.8",
     "@capacitor/camera": "^5.0.10",
     "@capacitor/cli": "^5.7.8",
