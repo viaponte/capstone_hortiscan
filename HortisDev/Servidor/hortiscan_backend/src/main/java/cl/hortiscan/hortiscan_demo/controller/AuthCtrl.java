@@ -4,14 +4,19 @@ import cl.hortiscan.hortiscan_demo.model.auth.AuthRequest;
 import cl.hortiscan.hortiscan_demo.model.auth.AuthResponse;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
+import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
 import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
 import cl.hortiscan.hortiscan_demo.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RestController
@@ -36,8 +41,11 @@ public class AuthCtrl {
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) throws Exception {
     try {
+      Integer idUsuario = usuarioService.findIdByUsername(authRequest.getUsername());
+
       // Autenticar al usuario usando los detalles proporcionados
       authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+      usuarioService.validateOrCreateFolder(idUsuario);
       System.out.println("Conexión valida");
     } catch (Exception e) {
       throw new Exception("Invalid username or password", e);
@@ -47,7 +55,10 @@ public class AuthCtrl {
     final UserDetails userDetails = usuarioService.loadUserByUsername(authRequest.getUsername());
     final String jwt = jwtUtil.generateToken(userDetails);
 
-    return ResponseEntity.ok(new AuthResponse(jwt));
+    Map<String, String> response = new HashMap<>();
+    response.put("jwt", jwt);
+    return ResponseEntity.ok(response);
+
   }
 
   /*
@@ -57,8 +68,13 @@ public class AuthCtrl {
   */
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody UsuarioRegistroDTO usuarioRegistroDTO) throws Exception {
-    System.out.println(usuarioRegistroDTO);
-    UsuarioDTO savedUser = usuarioService.saveUser(usuarioRegistroDTO);
-    return ResponseEntity.ok(savedUser);
+    try {
+      UsuarioDTO savedUser = usuarioService.saveUser(usuarioRegistroDTO);
+      return ResponseEntity.ok(savedUser);
+    } catch (UsernameExists ex) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    }
   }
 }

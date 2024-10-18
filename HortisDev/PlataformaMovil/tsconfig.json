@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -19,7 +21,7 @@
     "target": "es2022",
     "module": "es2020",
     "lib": [
-      "es2018", 
+      "ES2022", 
       "dom"
     ],
     "useDefineForClassFields": false

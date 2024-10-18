@@ -1,0 +1,29 @@
+<header>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <div class="logo-container" >
+          <img (click)="goBack()" src="../../../../assets/logo_ciren.png"   alt="Logo CIREN" class="img-fluid" style="max-height: 60px;">
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="title-container" >
+          <h1 (click)="goBack()">H O R T I S C A N</h1>
+          <p (click)="goBack()">Recuerda que las fotos se suben desde la app</p>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-end align-items-center">
+        <nav class="navbar navbar-white bg-white">
+          <button class=" dropdown navbar-toggler" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span
+              class="navbar-toggler-icon"></span></button>
+          <ul class="dropdown-menu">
+            <li><i class=" dropdown-item bi bi-caret-left-fill" *ngIf="showBackButton" (click)="goBack()"> Atrás</i>
+            </li>
+            <li><i class=" dropdown-item bi bi-gear-fill"> Configuración</i></li>
+            <li><i class=" dropdown-item bi bi-caret-left-fill" (click)="logout()"> Cerrar Sesión</i></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
