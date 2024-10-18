@@ -1,6 +1,9 @@
 package cl.hortiscan.hortiscan_demo.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,8 +56,9 @@ public class ImagenController {
 
     try {
       // Validamos o creamos la carpeta del usuario donde se guardará el archivo
-      Integer idUsuario = usuarioService.findIdByUsername(username);
+      Integer idUsuario = this.usuarioService.findIdByUsername(username);
       String userFolder = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario + File.separator + folderName;
+      String fileName = file.getOriginalFilename();
 
       File folder = new File(userFolder);
       if (!folder.exists()) {
@@ -62,23 +66,57 @@ public class ImagenController {
       }
 
       // Guardamos el archivo en el sistema de archivos local
-      String filePath = userFolder + File.separator + file.getOriginalFilename();
+      String filePath = userFolder + File.separator + fileName;
       File destinationFile = new File(filePath);
       file.transferTo(destinationFile);
 
       // Guardamos el nombre del archivo en la base de datos asociado al formulario
       FormularioDTO formularioDTO = new FormularioDTO();
-      formularioDTO.setNombreFormulario(file.getOriginalFilename());
+      formularioDTO.setNombreFormulario(fileName);
       formularioDTO.setEstadoFormulario("Subido");
       formularioDTO.setIdUsuario(idUsuario); // Asegúrate de asociar el usuario
       formularioService.saveFormulario(formularioDTO); // Guardamos el formulario
 
+      // Aquí añadimos el procesamiento OCR después de guardar el archivo
+      String outputWordPath = userFolder + File.separator + fileName + ".docx";
+
+      String pythonScriptPath = "src/scripts/ocr_script.py"; // Cambia esta ruta según la ubicación de tu script Python
+      ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, filePath, outputWordPath);
+
+      Process process = processBuilder.start();
+
+      // Leer la salida estándar del proceso
+      BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      StringBuilder output = new StringBuilder();
+      String line;
+      while ((line = reader.readLine()) != null) {
+        output.append(line).append("\n");
+      }
+
+      // Leer la salida de error del proceso
+      BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+      StringBuilder errorOutput = new StringBuilder();
+      while ((line = errorReader.readLine()) != null) {
+        errorOutput.append(line).append("\n");
+      }
+
+      int exitCode = process.waitFor();
+
+      if (exitCode != 0) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body("Error al procesar word. Código de salida: " + exitCode + "\nError: " + errorOutput);
+      }
+
+      // Respuesta de éxito después del OCR
       Map<String, String> response = new HashMap<>();
-      response.put("message", "Documento Word subido y guardado con éxito");
+      response.put("message", "Documento Word subido, guardado y procesado con éxito");
+      response.put("ocrOutputPath", outputWordPath);
+      response.put("ocrOutput", output.toString());
+
       return ResponseEntity.ok(response);
 
-    } catch (Exception e) {
-      return ResponseEntity.status(500).body("Error al guardar documento Word: " + e.getMessage());
+    } catch (IOException | InterruptedException e) {
+      return ResponseEntity.status(500).body("Error al guardar o procesar documento Word: " + e.getMessage());
     }
   }
 

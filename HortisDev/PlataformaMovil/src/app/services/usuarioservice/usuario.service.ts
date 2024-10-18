@@ -77,7 +77,7 @@ export class UsuarioService {
     formData.append('file', file);
     formData.append('folderName', folderName);
 
-    const request = `${this.apiUrl}/api/imagen/subir/${this.username}`;
+    const request = `${this.apiUrl}/api/imagen/upload/word/${this.username}`;
     console.log('URL de subida:', request);  // Verifica que la URL sea correcta
     return this.http.post(request, formData);
   }
