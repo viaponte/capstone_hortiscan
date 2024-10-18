@@ -1,21 +1,24 @@
 package cl.hortiscan.hortiscan_demo.utils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 @Component
 public class JwtUtil {
 
   // Clave secreta utilizada para firmar el token JWT
-  private String secret = "secret_key";  // Debes cambiar esto por una clave segura en producción
+  @Value("${onlyoffice.jwt.secret}")
+    private String secret;
 
   /**
    * Extrae el nombre de usuario del token JWT.

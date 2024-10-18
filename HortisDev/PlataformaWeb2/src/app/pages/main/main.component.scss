@@ -1,0 +1,138 @@
+main {
+    background-color: #DAFFDA;
+    font-family: "Staatliches", sans-serif;
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    // En caso de poner otro container folder comentar el height
+    height: 100vh;
+}
+
+.caja {
+    margin-bottom: 30px;
+    // margin-top: 30px;
+    // display: flex;
+    // flex-wrap: wrap;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.container-folder {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    border: 1px solid #cccccc00;
+    border-radius: 10px;
+    background-color: #ffffff00;
+    width: 1150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+}
+
+.folders {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.scrollspy-example {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+}
+
+
+.folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+
+.folder-icon {
+    width: 80px;
+    height: 80px;
+}
+
+
+/*Diseño de boton crear carpeta*/
+.create-folder-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4);
+    margin-right: 100px;
+}
+
+.create-folder-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.6);
+}
+
+.create-folder-button:active {
+    background-color: #004085;
+    transform: translateY(2px);
+    box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4);
+}
+
+/*---------------*/
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.create-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #dcdcdc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-button:hover {
+    background-color: #ccc;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*byron*/

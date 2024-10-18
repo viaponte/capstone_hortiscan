@@ -1,0 +1,81 @@
+<ion-content class="content-background">
+  <div class="container-form">
+    <ion-text class="app-title">REGISTRO</ion-text>
+
+    <form class="card-form" [formGroup]="newUserForm" (ngSubmit)="createUser()">
+      <!-- Campo de Nombre de Usuario -->
+      <div class="title-input">
+        <ion-text>Nombre de Usuario</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input class="input-font" type="text" id="username" name="username" formControlName="username" required
+          [ngClass]="{
+            'is-invalid': newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched
+          }"></ion-input>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger" *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched">El
+          nombre de usuario es requerido</ion-text>
+      </div>
+
+      <!-- <div class="title-input"><ion-text>Correo Electrico</ion-text></div>
+      <div class="input-form">
+        <ion-input type="email" formControlName="email" required [ngClass]="{
+              'is-invalid': newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched
+            }">
+        </ion-input>
+      </div>
+      <div class="text-danger" *ngIf="newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched">
+        <ion-text *ngIf="newUserForm.get('email')?.errors?.['required']" class="error-text">El correo electrónico es
+          requerido</ion-text>
+        <ion-text *ngIf="newUserForm.get('email')?.errors?.['email']" class="error-text">El formato del correo no es
+          válido</ion-text>
+      </div> -->
+
+      <!-- Campo de Contraseña -->
+      <div class="title-input">
+        <ion-text>Contraseña</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input class="input-font" type="password" id="password" name="password" formControlName="password" required
+          [ngClass]="{
+            'is-invalid': newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched
+          }"></ion-input>
+      </div>
+
+      <!-- Campo de Confirmar Contraseña -->
+      <div class="title-input">
+        <ion-text>Confirmar contraseña</ion-text>
+      </div>
+      <div class="input-form">
+        <ion-input class="input-font" type="password" formControlName="confirmPassword" [ngClass]="{
+              'is-invalid': newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched
+            }"></ion-input>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger"
+          *ngIf="newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched">Las
+          contraseñas no coinciden</ion-text>
+      </div>
+      <div>
+        <p class="error-text"></p>
+      </div>
+
+      <!-- Botón de registro deshabilitado si el formulario no es válido -->
+      <ion-button class="design-button" expand="block" type="submit"
+        [disabled]="newUserForm.invalid">Registrarse</ion-button>
+      <ion-button class="design-button" expand="block" color="medium" (click)="clearInputs()">Limpiar</ion-button>
+      <div class="forgetpass">
+        <a routerLink="/login">¿Ya estás registrado? Inicia sesión aquí</a>
+      </div>
+    </form>
+
+    <div class="logo-container">
+      <ion-img src="assets/ciren-logo.png" alt="Ciren Logo" class="logo"></ion-img>
+      <ion-img src="assets/minagri_logo.png" alt="Minagri Logo" class="logo"></ion-img>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
+    </div>
+  </div>
+</ion-content>

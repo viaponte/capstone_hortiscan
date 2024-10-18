@@ -1,9 +1,12 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
-import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
-import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
-import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
-import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,17 +15,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import cl.hortiscan.hortiscan_demo.model.dao.ImagenDAO;
+import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
+import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
+import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
+import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
+import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
+import cl.hortiscan.hortiscan_demo.model.entity.Imagen;
+import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
+import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
   @Autowired
   private UsuarioDAO usuarioDAO;
+
+  @Autowired
+  private ImagenDAO imagenDAO;
+
+  @Autowired
+  private CarpetaServiceImpl carpetaServiceImpl;
 
   @Autowired
   private PasswordEncoder passwordEncoder;
@@ -31,14 +43,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Override
   public UsuarioDTO saveUser(UsuarioRegistroDTO usuarioRegistro) {
+    // Almacena en las variables el username y password
     String username = usuarioRegistro.getUsername();
     String password = usuarioRegistro.getPassword();
 
+    // Valida si el username está registrado mediante su ID
+    if (findIdByUsername(usuarioRegistro.getUsername()) > 0) {
+      throw new UsernameExists("Usuario existente");
+    }
+
+    // Se crea objeto tipo usuario con username y contraseña encriptada
     Usuario usuario = new Usuario();
     usuario.setUsername(username);
     usuario.setPassword(passwordEncoder.encode(password));
 
+    // Se crea objeto que registra el usuario
     Usuario usuarioGuardado = usuarioDAO.save(usuario);
+
+    // Valida o crea carpeta por id del usuario
+    validateOrCreateFolder(usuarioGuardado.getIdUsuario());
 
     return new UsuarioDTO(usuarioGuardado.getIdUsuario(), usuarioGuardado.getUsername(), null);
   }
@@ -51,9 +74,18 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   @Override
+  public Usuario findUsuarioById(Integer idUsuario) {
+    return usuarioDAO.findById(idUsuario).orElse(null);
+  }
+
+  @Override
   public Integer findIdByUsername(String username) {
-    Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-    return usuario.getIdUsuario();
+    try {
+      Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+      return usuario.getIdUsuario();
+    } catch (RuntimeException e) {
+      return 0;
+    }
   }
 
   @Override
@@ -94,19 +126,32 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   @Override
-  public void createFolderUser(Integer idUsuario, String nameFolder) {
-    String userFolder = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario;
-    String newFolderPath = userFolder + File.separator + nameFolder;
+  public void createFolderUser(CarpetaDTO carpetaDTO) {
 
+    // Crea la ruta de la carpeta del usuario basada en el ID
+    String userFolder = ROOT_DIRECTORY + File.separator + "usuario_" + carpetaDTO.getIdUsuario();
+    String newFolderPath = userFolder + File.separator + carpetaDTO.getNombreCarpeta();
+
+    // Crea un nuevo objeto File basado en la ruta de la nueva carpeta
     File newFolder = new File(newFolderPath);
-    if(!newFolder.exists()) {
+
+    if (!newFolder.exists()) {
       boolean folderCreated = newFolder.mkdir();
 
-      if(!folderCreated) {
+      if (!folderCreated) {
         throw new RuntimeException("Error al crear la nueva carpeta: " + newFolderPath);
       }
+
+      // Si la carpeta se creó, guarda la información de la carpeta en el DTO
+      carpetaDTO.setRutaCarpeta(newFolderPath);
+      carpetaDTO.setFechaCreacionCarpeta(new Date());
+
+      // Guarda datos de carpetaDTO en BD
+      carpetaServiceImpl.saveCarpeta(carpetaDTO);
+
+      System.out.println("Carpeta creada exitosamente: " + newFolderPath);
     } else {
-      System.out.println("Carpeta ya existe para el usuario con ID: " + idUsuario);
+      System.out.println("Carpeta ya existe para el usuario con ID: " + carpetaDTO.getIdUsuario());
     }
   }
 
@@ -116,11 +161,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     // Se asegura si la carpeta existe
     File folder = new File(userFolder);
-    if(!folder.exists()) {
+    if (!folder.exists()) {
       folder.mkdirs();
     }
 
-    // Guardar imagen
+    // Guardar imagen en la ruta del sistema de archivos
     String filePath = userFolder + File.separator + file.getOriginalFilename();
     File destiny = new File(filePath);
     try {
@@ -129,7 +174,34 @@ public class UsuarioServiceImpl implements UsuarioService {
       throw new RuntimeException(e);
     }
 
-    return filePath;
+    // Ahora obtenemos la entidad Carpeta usando el método del servicio
+    Carpeta carpeta = this.carpetaServiceImpl.getCarpetaIdByNombreAndUsuario(nameFolder, idUsuario);
+
+    // Creación de la entidad Imagen y guardado en la base de datos
+    Imagen imagen = new Imagen();
+    imagen.setIdFormulario(null);  // Si no tienes un formulario asignado aún
+    imagen.setIdCarpeta(carpeta);  // Usa la carpeta ya obtenida del servicio
+    imagen.setRutaAlmacenamiento(filePath);  // Almacena la ruta del archivo
+    imagen.setFechaCreacionImagen(new Date());  // Fecha actual
+
+    // Guardar la imagen en la base de datos
+    imagenDAO.save(imagen);
+
+    return filePath;  // Retorna la ruta donde se guardó la imagen
+  }
+  
+  @Override
+  public String saveWordDocument(Integer idUsuario, MultipartFile file, String folderName) throws IOException {
+    String userFolderPath = ROOT_DIRECTORY + File.separator + "usuario_" + idUsuario + File.separator + folderName;
+    File folder = new File(userFolderPath);
+    if (!folder.exists()) {
+      folder.mkdirs();
+    }
+
+    String filePath = userFolderPath + File.separator + file.getOriginalFilename();
+    file.transferTo(new File(filePath)); // Guarda el archivo en la ruta especificada
+
+    return filePath; // Retorna la ruta donde se guardó el archivo
   }
 
   @Override
