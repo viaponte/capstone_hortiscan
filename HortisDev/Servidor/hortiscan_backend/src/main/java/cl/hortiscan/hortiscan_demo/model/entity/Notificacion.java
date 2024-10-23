@@ -35,4 +35,3 @@ public class Notificacion implements Serializable {
   @Column(name = "fecha_notificacion")
   private Date fechaNotificacion;
 }
-
