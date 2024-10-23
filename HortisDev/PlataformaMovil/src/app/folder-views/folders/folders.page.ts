@@ -5,6 +5,7 @@ import { AuthService } from '../../services/authservice/authservice.service';
 import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { NavController } from '@ionic/angular';
 import { ReloadService } from 'src/app/services/reloadservice/reload.service';
+import { NotificationService } from 'src/app/services/notificationservice/notification.service';
 
 @Component({
   selector: 'app-folders',
@@ -25,7 +26,8 @@ export class FoldersPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private reloadService: ReloadService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private notificationService: NotificationService
   ) {
     this.username = this.authService.getUsername();
   }
@@ -96,6 +98,19 @@ export class FoldersPage implements OnInit {
         this.folderName = '';  // Limpia el input después de crear la carpeta
         this.closeModal();  // Cierra el modal después de crear la carpeta
         this.loadCarpetas(); // Recarga las carpetas para que la nueva aparezca
+        
+        // Guarda la notificación
+        this.notificationService.saveNotification(`Carpeta '${carpetaDTO.nombreCarpeta}' creada con éxito.`).subscribe(
+          (notificationResponse) => {
+            console.log('Notificación guardada:', notificationResponse);
+            alert('Holaaaa');
+          },
+          (error) => {
+            console.error('Error al guardar la notificación:', error);
+            alert('Holaaaa errorrrrr');
+          }
+        );
+        
       },
       error => {
         console.error('Error al crear la carpeta:', error);

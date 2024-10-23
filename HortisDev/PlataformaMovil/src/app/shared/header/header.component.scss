@@ -1,1 +1,30 @@
-
+ion-modal {
+    ion-header {
+      background-color: #f8f8f8;
+    }
+    ion-title {
+      color: #333;
+      font-size: 1.2rem;
+    }
+    ion-button {
+      --color: #007bff;  // Asegura que el botón "Cerrar" tenga un color visible
+    }
+    ion-content {
+      ion-list {
+        padding: 16px;
+        ion-item {
+          ion-label {
+            h2 {
+              font-size: 1rem;
+              color: #333;
+            }
+            p {
+              font-size: 0.9rem;
+              color: #666;
+            }
+          }
+        }
+      }
+    }
+  }
+  
