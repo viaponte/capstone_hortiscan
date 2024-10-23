@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from "../../shared/common/header/header.component";
 import { UsuarioService } from '../../services/usuarioservice/usuario.service';
 import { AuthService } from '../../services/authservice/authservice.service';
 import { CommonModule } from '@angular/common';
-import { forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { SyncService } from '../../services/syncservice/sync.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
@@ -17,7 +17,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
   templateUrl: './folder.component.html',
   styleUrl: './folder.component.scss'
 })
-export class FolderComponent implements OnInit {
+export class FolderComponent implements OnInit, OnDestroy {
   contenidoCarpeta: string[] = []; // Variable para almacenar el contenido de la carpeta
   imagenesMap: { [key: string]: string } = {}; // Mapa para almacenar las URL de las imágenes
   nombreCarpeta: string = '';  // Variable para almacenar el nombre de la carpeta
@@ -25,9 +25,16 @@ export class FolderComponent implements OnInit {
   selectedFile: SafeResourceUrl | null = null;  // Archivo seleccionado para mostrar en el modal
   showEdit: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private usuarioService: UsuarioService,
-    private authService: AuthService, private syncService: SyncService,
-    private sanitizer: DomSanitizer) {
+  currentObjectUrl: string | null = null; // Nueva propiedad para almacenar el Object URL original
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private syncService: SyncService,
+    private sanitizer: DomSanitizer
+  ) {
     this.username = this.authService.getUsername();
   }
 
@@ -38,6 +45,14 @@ export class FolderComponent implements OnInit {
         this.loadContenidoCarpeta();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    // Revocar el Object URL si existe al destruir el componente
+    if (this.currentObjectUrl) {
+      URL.revokeObjectURL(this.currentObjectUrl);
+      this.currentObjectUrl = null;
+    }
   }
 
   // Método para cargar el contenido de la carpeta desde el backend
@@ -62,6 +77,10 @@ export class FolderComponent implements OnInit {
           // Convertir el Blob en una URL antes de almacenarlo
           const imageUrl = URL.createObjectURL(imageBlob);
           return { fileName: file, imageUrl };
+        }),
+        catchError(error => {
+          console.error(`Error al cargar la imagen ${file}:`, error);
+          return throwError(() => error);
         })
       )
     );
@@ -70,9 +89,10 @@ export class FolderComponent implements OnInit {
       images.forEach(img => {
         this.imagenesMap[img.fileName] = img.imageUrl; // Guardamos la URL en lugar del Blob
       });
+    }, error => {
+      console.error('Error al cargar las imágenes:', error);
     });
   }
-
 
   selectedFileExtension: string | null = null;
   selectedFileName: string | null = null;  // Para almacenar el nombre del archivo seleccionado
@@ -84,11 +104,18 @@ export class FolderComponent implements OnInit {
     const fileExtension = file.split('.').pop()?.toLowerCase();
     this.selectedFileExtension = fileExtension ?? null;  // Guardamos la extensión del archivo o null si no existe
 
+    // Antes de crear un nuevo URL, revoca el anterior si existe
+    if (this.currentObjectUrl) {
+      URL.revokeObjectURL(this.currentObjectUrl);
+      this.currentObjectUrl = null;
+    }
+
     // Si es una imagen
     if (fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
       this.usuarioService.getImagePath(this.nombreCarpeta, file).subscribe(
         (imageBlob) => {
           const fileURL = URL.createObjectURL(imageBlob);  // Crear URL desde Blob
+          this.currentObjectUrl = fileURL; // Almacenar el Object URL original
           this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Sanitizamos la URL
         },
         (error) => {
@@ -101,6 +128,7 @@ export class FolderComponent implements OnInit {
       this.usuarioService.getPdfPath(this.nombreCarpeta, file).subscribe(
         (pdfBlob) => {
           const fileURL = URL.createObjectURL(pdfBlob);  // Crear URL desde Blob
+          this.currentObjectUrl = fileURL; // Almacenar el Object URL original
           this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Sanitizamos la URL
           this.showEdit = true;
         },
@@ -112,7 +140,6 @@ export class FolderComponent implements OnInit {
       console.error('Formato de archivo no soportado:', fileExtension);
     }
   }
-
 
   // Método que retorna la ruta de la imagen
   getImagePath(fileName: string) {
@@ -148,7 +175,6 @@ export class FolderComponent implements OnInit {
     // Navegar al componente onlyoffice-editor
     this.router.navigate(['/editor'], { queryParams: { folderName: this.nombreCarpeta, fileName: file } });
   }
-
 
   goBack(): void {
     window.history.back();
