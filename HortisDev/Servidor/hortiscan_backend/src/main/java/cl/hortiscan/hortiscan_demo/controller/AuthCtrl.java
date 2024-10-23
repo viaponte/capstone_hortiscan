@@ -1,22 +1,26 @@
 package cl.hortiscan.hortiscan_demo.controller;
 
-import cl.hortiscan.hortiscan_demo.model.auth.AuthRequest;
-import cl.hortiscan.hortiscan_demo.model.auth.AuthResponse;
-import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
-import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
-import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
-import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
-import cl.hortiscan.hortiscan_demo.utils.JwtUtil;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+import cl.hortiscan.hortiscan_demo.model.auth.AuthRequest;
+import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
+import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
+import cl.hortiscan.hortiscan_demo.model.exception.UsernameExists;
+import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
+import cl.hortiscan.hortiscan_demo.utils.JwtUtil;
 
 
 @RestController

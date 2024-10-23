@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { apiUrl } from '../../enviroment/enviroment';
 import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { AuthService } from '../authservice/authservice.service';
@@ -38,7 +38,7 @@ export class UsuarioService {
 
   getImagePath(nombreCarpeta: string, fileName: string): Observable<Blob> {
     const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
-  
+
     return this.http.get(request, { responseType: 'blob' }); // Cambiamos a 'blob'
   }
 
@@ -58,9 +58,14 @@ export class UsuarioService {
 
   // Método para obtener el PDF de un archivo Word
   getPdfPath(nombreCarpeta: string, fileName: string): Observable<Blob> {
-    const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/pdf`;
-
-    return this.http.get(request, { responseType: 'blob' });
+    const request = `${apiUrl}/api/convert/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/libreoffice`;
+    return this.http.get(request, { responseType: 'blob' }).pipe(
+      catchError(error => {
+        console.error('Error al obtener el PDF:', error);
+        return throwError(() => new Error('Error al obtener el PDF.'));
+      })
+    );
   }
+
 
 }
