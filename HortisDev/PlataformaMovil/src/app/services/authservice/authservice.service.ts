@@ -23,7 +23,7 @@ export class AuthService {
       })
     );
   }
-
+  
   signup(username: string, password: string): Observable<any> {
     const signupData = { username, password };
     return this.http.post(`${this.apiUrl}/api/auth/register`, signupData);
