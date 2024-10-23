@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import cl.hortiscan.hortiscan_demo.model.dao.ImagenDAO;
 import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
 import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
+import cl.hortiscan.hortiscan_demo.model.dto.NotificacionDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
@@ -38,6 +39,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Autowired
   private PasswordEncoder passwordEncoder;
+
+  @Autowired
+  private NotificacionService notificacionService;
 
   private final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
@@ -62,6 +66,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     // Valida o crea carpeta por id del usuario
     validateOrCreateFolder(usuarioGuardado.getIdUsuario());
+
+    // Crea la notificación después de registrar al usuario
+    NotificacionDTO notificacionDTO = new NotificacionDTO();
+    notificacionDTO.setIdUsuario(usuarioGuardado.getIdUsuario());
+    notificacionDTO.setMensajeNotificacion("Bienvenido, " + username + "! Su cuenta ha sido creada.");
+    notificacionService.saveNotificacion(notificacionDTO); // Guarda la notificación
 
     return new UsuarioDTO(usuarioGuardado.getIdUsuario(), usuarioGuardado.getUsername(), null);
   }
