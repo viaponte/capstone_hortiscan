@@ -45,12 +45,8 @@ public class SecurityConfig {
             .authorizeRequests(authorize -> authorize
                     .requestMatchers("/api/auth/login", 
                     "/api/auth/register", "sync-carpetas-imagenes", 
-<<<<<<< HEAD
-                    "/api/document/download/**", "/api/document/callback","/api/notificaciones/**").permitAll()
-=======
                     "/api/document/download/**", "/api/document/callback", 
-                    "/api/convert/**").permitAll()
->>>>>>> ac98626d996d8577121e5062e2dda8ed05d36347
+                    "/api/convert/**, /api/notificaciones/**").permitAll()
                     .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
