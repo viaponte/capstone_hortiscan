@@ -81,7 +81,12 @@ public class ImagenController {
       String outputWordPath = userFolder + File.separator + fileName + ".docx";
 
       String pythonScriptPath = "src/scripts/ocr_script.py"; // Cambia esta ruta según la ubicación de tu script Python
-      ProcessBuilder processBuilder = new ProcessBuilder("python", pythonScriptPath, filePath, outputWordPath);
+      ProcessBuilder processBuilder = new ProcessBuilder(
+          "python",
+          pythonScriptPath,
+          "-i", filePath, // Argumento de entrada
+          "-o", outputWordPath // Argumento de salida
+      );
 
       Process process = processBuilder.start();
 
