@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
 import cl.hortiscan.hortiscan_demo.model.entity.Formulario;
 import cl.hortiscan.hortiscan_demo.model.entity.Imagen;
