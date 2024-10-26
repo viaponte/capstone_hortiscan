@@ -24,6 +24,7 @@ export class FolderComponent implements OnInit, OnDestroy {
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   selectedFile: SafeResourceUrl | null = null;  // Archivo seleccionado para mostrar en el modal
   showEdit: boolean = false;
+  isLoading: boolean = false; // Controlar el spinner de carga
 
   currentObjectUrl: string | null = null; // Nueva propiedad para almacenar el Object URL original
 
@@ -100,6 +101,7 @@ export class FolderComponent implements OnInit, OnDestroy {
   // Método para abrir modal
   openModal(file: string): void {
     this.selectedFileName = file;  // Guardamos el nombre del archivo seleccionado
+    this.isLoading = true; // Mostrar el spinner de carga
 
     const fileExtension = file.split('.').pop()?.toLowerCase();
     this.selectedFileExtension = fileExtension ?? null;  // Guardamos la extensión del archivo o null si no existe
@@ -117,27 +119,37 @@ export class FolderComponent implements OnInit, OnDestroy {
           const fileURL = URL.createObjectURL(imageBlob);  // Crear URL desde Blob
           this.currentObjectUrl = fileURL; // Almacenar el Object URL original
           this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Sanitizamos la URL
+          this.isLoading = false; // Ocultar el spinner
         },
         (error) => {
           console.error('Error al cargar la imagen:', error);
+          this.isLoading = false; // Ocultar el spinner
         }
       );
     }
     // Si es un archivo Word
     else if (fileExtension === 'docx' || fileExtension === 'doc') {
-      this.usuarioService.getPdfPath(this.nombreCarpeta, file).subscribe(
+      // Antes de asignar selectedFile, asignar null
+      this.selectedFile = null;
+
+      // Obtener la fecha actual como marca de tiempo
+      const timestamp = new Date().getTime();
+
+      this.usuarioService.getPdfPath(this.nombreCarpeta, file, timestamp).subscribe(
         (pdfBlob) => {
-          const fileURL = URL.createObjectURL(pdfBlob);  // Crear URL desde Blob
-          this.currentObjectUrl = fileURL; // Almacenar el Object URL original
-          this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Sanitizamos la URL
-          this.showEdit = true;
+          const fileURL = URL.createObjectURL(pdfBlob);
+          this.currentObjectUrl = fileURL;
+          setTimeout(() => {
+            this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);
+            this.showEdit = true;
+            this.isLoading = false; // Ocultar el spinner
+          }, 0);
         },
         (error) => {
           console.error('Error al cargar el PDF:', error);
+          this.isLoading = false; // Ocultar el spinner
         }
       );
-    } else {
-      console.error('Formato de archivo no soportado:', fileExtension);
     }
   }
 
