@@ -8,6 +8,7 @@ import os
 # Ruta de tesseract en windows
 pytesseract.pytesseract.tesseract_cmd = 'C:/Tesseract-OCR/tesseract.exe'
 os.environ['TESSDATA_PREFIX'] = 'C:/Tesseract-OCR/tessdata'
+
 # Función para preprocesar la imagen
 def preprocess_image(image_path):
     image = cv2.imread(image_path)
@@ -30,8 +31,8 @@ def extract_text(image_path):
 
     # Extraer texto utilizando Tesseract con algunas opciones configuradas
     options = '-l spa --oem 3 --psm 6'
-    text = pytesseract.image_to_string(processed_image, config=options)
-
+    text = pytesseract.image_to_string(processed_image, config=options, lang='spa')
+    
     return text
 
 # Función para guardar el texto en un archivo Word
