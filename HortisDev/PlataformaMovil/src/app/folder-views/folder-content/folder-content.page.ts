@@ -13,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
 import * as JSZip from 'jszip';
 import { DocumentScanner, ScanDocumentResponseStatus } from 'capacitor-document-scanner';
 import { Capacitor } from '@capacitor/core';
+import { NotificacionService } from 'src/app/services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
+import { NotificacionDTO } from '../../models/NotificacionDTO';
 
 
 @Component({
@@ -22,7 +24,6 @@ import { Capacitor } from '@capacitor/core';
 })
 export class FolderContentPage implements OnInit {
   extractedText: string | null = null;
-
   folderName: string = '';
   contenidoCarpeta: string[] = []; // Variable para almacenar el contenido de la carpeta
   imagenesMap: { [key: string]: string } = {}; // Mapa para almacenar las URL de las imágenes
@@ -37,7 +38,8 @@ export class FolderContentPage implements OnInit {
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private reloadService: ReloadService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private notificacionService: NotificacionService // Inyección del servicio de notificaciones
   ) {
     this.username = this.authService.getUsername();
   }
@@ -130,6 +132,23 @@ export class FolderContentPage implements OnInit {
 
           // Subir cada imagen al backend
           await this.uploadImageToBackend(file);
+
+          // Crear y enviar la notificación después de guardar la imagen
+          const mensajeNotificacion = `Imagen escaneada guardada en la carpeta "${this.folderName}" exitosamente.`;
+          const notificacionDTO: NotificacionDTO = {
+            idNotificacion: 0,
+            mensajeNotificacion: mensajeNotificacion,
+            fechaNotificacion: new Date().toISOString(),
+          };
+
+          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+            (notificacionResponse) => {
+              console.log('Notificación creada:', notificacionResponse);
+            },
+            (error) => {
+              console.error('Error al crear la notificación:', error);
+            }
+          );
         }
       } else if (status === ScanDocumentResponseStatus.Cancel) {
         alert('El usuario canceló el escaneo del documento');
@@ -165,15 +184,34 @@ export class FolderContentPage implements OnInit {
   }
 
   // Método para eliminar una imagen
-  deleteImagen(fileName: string) {
-    this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
-      (response) => {
-        console.log('Imagen eliminada: ', response);
-        this.loadContenidoCarpeta();
-      },
-      (error) => {
-        console.error('Error al eliminar la imagen: ', error);
-      }
-    );
-  }
+// Método para eliminar una imagen y enviar notificación
+deleteImagen(fileName: string) {
+  this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
+    (response) => {
+      console.log('Imagen eliminada: ', response);
+      this.loadContenidoCarpeta();
+
+      // Crear y enviar la notificación después de eliminar la imagen
+      const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.folderName}" exitosamente.`;
+      const notificacionDTO: NotificacionDTO = {
+        idNotificacion: 0,
+        mensajeNotificacion: mensajeNotificacion,
+        fechaNotificacion: new Date().toISOString(),
+      };
+
+      this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+        (notificacionResponse) => {
+          console.log('Notificación de eliminación creada:', notificacionResponse);
+        },
+        (error) => {
+          console.error('Error al crear la notificación de eliminación:', error);
+        }
+      );
+    },
+    (error) => {
+      console.error('Error al eliminar la imagen: ', error);
+    }
+  );
+}
+
 }

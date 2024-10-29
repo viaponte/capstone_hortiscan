@@ -7,7 +7,7 @@
       <ion-button expand="block-fro" class="notifications-button" (click)="openModal()">
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
-      <ion-button expand="block" class="logout-button" (click)="logout()">Sign out</ion-button>
+      <ion-button expand="block" class="logout-button" (click)="logout()" href="#">Sign out</ion-button>
       <!-- <ion-button  (click)="openModal()">Notificaciones</ion-button> -->
     </ion-buttons>
   </ion-toolbar>
@@ -27,11 +27,12 @@
 
     <ion-content class="content-background">
       <ion-list>
-        <ion-item *ngFor="let notification of notifications">
+        <ion-item *ngFor="let notificacion of notificaciones">
           <ion-label>
-            <h2>{{ notification.message }}</h2>
-            <p>{{ notification.date | date:'short' }}</p>
+            {{ notificacion.mensajeNotificacion }} <br>
+            <small>{{ notificacion.fechaNotificacion | date:'dd, MMMM yyyy, HH:mm' }}</small>
           </ion-label>
+          <ion-button (click)="eliminarNotificacion(notificacion.idNotificacion)">Eliminar</ion-button>
         </ion-item>
       </ion-list>
     </ion-content>
