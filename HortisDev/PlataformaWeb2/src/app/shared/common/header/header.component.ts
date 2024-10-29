@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NavigationEnd, Router, Event } from '@angular/router';
 import { AuthService } from '../../../services/authservice/authservice.service';
 import { FooterComponent } from '../footer/footer.component';
 import { Location, CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { SyncService } from '../../../services/syncservice/sync.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FooterComponent, CommonModule],
+  imports: [HeaderComponent, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  @Input() folderName?: string;
+  @Output() backClicked = new EventEmitter<void>();
+
   showBackButton: boolean = true;
   isInMenu: boolean = false; // Variable para controlar si estás en el menú
 
@@ -32,10 +36,12 @@ export class HeaderComponent {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
-  
+
   goBack(): void {
-    if (!this.isInMenu) { // Solo va atrás si no estás en el menú
-      window.history.back();
+    if (this.folderName) {
+      this.backClicked.emit();
+    } else {
+      this.router.navigate(['/menu']);
     }
   }
 
