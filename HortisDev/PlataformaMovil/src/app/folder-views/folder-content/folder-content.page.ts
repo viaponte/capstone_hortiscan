@@ -184,34 +184,34 @@ export class FolderContentPage implements OnInit {
   }
 
   // Método para eliminar una imagen
-// Método para eliminar una imagen y enviar notificación
-deleteImagen(fileName: string) {
-  this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
-    (response) => {
-      console.log('Imagen eliminada: ', response);
-      this.loadContenidoCarpeta();
+  // Método para eliminar una imagen y enviar notificación
+  deleteImagen(fileName: string) {
+    this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
+      (response) => {
+        console.log('Imagen eliminada: ', response);
+        this.loadContenidoCarpeta();
 
-      // Crear y enviar la notificación después de eliminar la imagen
-      const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.folderName}" exitosamente.`;
-      const notificacionDTO: NotificacionDTO = {
-        idNotificacion: 0,
-        mensajeNotificacion: mensajeNotificacion,
-        fechaNotificacion: new Date().toISOString(),
-      };
+        // Crear y enviar la notificación después de eliminar la imagen
+        const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.folderName}" exitosamente.`;
+        const notificacionDTO: NotificacionDTO = {
+          idNotificacion: 0,
+          mensajeNotificacion: mensajeNotificacion,
+          fechaNotificacion: new Date().toISOString(),
+        };
 
-      this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-        (notificacionResponse) => {
-          console.log('Notificación de eliminación creada:', notificacionResponse);
-        },
-        (error) => {
-          console.error('Error al crear la notificación de eliminación:', error);
-        }
-      );
-    },
-    (error) => {
-      console.error('Error al eliminar la imagen: ', error);
-    }
-  );
-}
+        this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+          (notificacionResponse) => {
+            console.log('Notificación de eliminación creada:', notificacionResponse);
+          },
+          (error) => {
+            console.error('Error al crear la notificación de eliminación:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Error al eliminar la imagen: ', error);
+      }
+    );
+  }
 
 }
