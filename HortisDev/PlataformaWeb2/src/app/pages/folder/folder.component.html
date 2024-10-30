@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
   <div class="caja">
-    <div class=" d-flex justify-content-between">
+    <div class="d-flex justify-content-between">
       <div>
         <h2>IMAGENES Y DOCUMENTOS</h2>
       </div>
@@ -10,26 +10,40 @@
       </div>
     </div>
     <hr>
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+    <div
+      data-bs-spy="scroll"
+      data-bs-target="#navbar-example2"
+      data-bs-root-margin="0px 0px -40%"
       data-bs-smooth-scroll="true"
       class="container-folder d-flex justify-content-start grid gap-3 container text-center scrollspy-example bg-body-tertiary p-3 rounded-2"
-      tabindex="0">
+      tabindex="0"
+    >
       <div class="folders" *ngFor="let file of contenidoCarpeta">
         <div class="col">
-          <a class="folder-link ">
+          <a class="folder-link">
             <!-- Mostrar una miniatura si es una imagen -->
             <img
               *ngIf="file.endsWith('.jpg') || file.endsWith('.png') || file.endsWith('.jpeg') || file.endsWith('.gif')"
-              class="folder-icon" [src]="getImagePath(file)" alt="{{ file }}" (click)="openModal(file)"
-              data-bs-toggle="modal" data-bs-target="#imageModal" />
+              class="folder-icon"
+              [src]="getImagePath(file)"
+              alt="{{ file }}"
+              (click)="openModal(file)"
+              data-bs-toggle="modal"
+              data-bs-target="#imageModal"
+            />
 
             <!-- Mostrar un ícono si es un archivo de Word -->
-            <i *ngIf="file.endsWith('.docx') || file.endsWith('.doc')" class="bi bi-file-earmark-word"
-              style="font-size: 50px; color: #007bff;" (click)="openModal(file)" data-bs-toggle="modal"
-              data-bs-target="#imageModal"></i>
+            <i
+              *ngIf="file.endsWith('.docx') || file.endsWith('.doc')"
+              class="bi bi-file-earmark-word"
+              style="font-size: 50px; color: #007bff;"
+              (click)="openModal(file)"
+              data-bs-toggle="modal"
+              data-bs-target="#imageModal"
+            ></i>
 
             <p>{{ file }}</p>
-            <hr>
+            <hr />
             <button (click)="deleteImagen(file)" class="btn btn-danger">Eliminar</button>
           </a>
         </div>
@@ -38,8 +52,7 @@
   </div>
 
   <!-- Modal para visualizar imágenes o archivos PDF -->
-  <div class="modal fade" *ngFor="let file of contenidoCarpeta" id="imageModal" tabindex="-1"
-    aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -48,18 +61,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!-- Mostrar el spinner mientras se está cargando el archivo -->
+          <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 400px;">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
           <!-- Mostrar la imagen si es un archivo de imagen -->
-          <img *ngIf="selectedFileExtension === 'jpg' || selectedFileExtension === 'png' 
-                || selectedFileExtension === 'jpeg' || selectedFileExtension === 'gif'" [src]="selectedFile"
-            class="img-fluid" alt="Imagen" />
+          <img
+            *ngIf="!isLoading && (selectedFileExtension === 'jpg' || selectedFileExtension === 'png' || selectedFileExtension === 'jpeg' || selectedFileExtension === 'gif')"
+            [src]="selectedFile"
+            class="img-fluid"
+            alt="Imagen"
+          />
 
           <!-- Mostrar el PDF si es un archivo Word -->
-          <iframe *ngIf="selectedFileExtension === 'docx' || selectedFileExtension === 'doc'" [src]="selectedFile"
-            width="100%" height="600px"></iframe>
+          <iframe
+            *ngIf="!isLoading && (selectedFileExtension === 'docx' || selectedFileExtension === 'doc')"
+            [src]="selectedFile"
+            width="100%"
+            height="600px"
+          ></iframe>
         </div>
       </div>
     </div>
   </div>
-
-
 </main>

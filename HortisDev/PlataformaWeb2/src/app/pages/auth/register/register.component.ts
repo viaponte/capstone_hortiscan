@@ -45,7 +45,6 @@ export class RegisterComponent {
         )
         .subscribe(response => {
           if(response) {
-            alert('Usuario registrado con exito');
             this.router.navigate(['/login']);
             // this.login(username, password); 
           }
@@ -59,7 +58,6 @@ export class RegisterComponent {
       .pipe(
         catchError(error => {
           console.error('Login error', error);
-          alert('Logeo fallido. Checkea tus credenciales.');
           return of(null);
         })
       )
