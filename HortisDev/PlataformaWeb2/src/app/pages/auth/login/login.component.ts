@@ -27,7 +27,6 @@ export class LoginComponent {
         .pipe(
           catchError(error => {
             console.error('Login error', error);
-            alert('Logeo fallido. Checkea tus credenciales.');
             return of(null);
           })
         )
@@ -37,7 +36,7 @@ export class LoginComponent {
             this.syncService.initSyncCarpetas();
             this.router.navigate(['/menu']);
           } else {
-            alert('No se pudo recibir el token. Login fallido.');
+            alert('Error al iniciar sesión');
           }
         });
     }
