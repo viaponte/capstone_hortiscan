@@ -9,6 +9,8 @@ import { forkJoin, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { SyncService } from '../../services/syncservice/sync.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { NotificacionService } from '../../services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
+import { NotificacionDTO } from '../../models/NotificacionDTO';
 
 @Component({
   selector: 'app-folder',
@@ -34,7 +36,8 @@ export class FolderComponent implements OnInit, OnDestroy {
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private syncService: SyncService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private notificacionService: NotificacionService // Inyección del servicio de notificaciones
   ) {
     this.username = this.authService.getUsername();
   }
@@ -164,6 +167,24 @@ export class FolderComponent implements OnInit, OnDestroy {
       (response) => {
         console.log('Imagen eliminada: ', response);
         this.loadContenidoCarpeta();
+
+        // Crear y enviar la notificación después de eliminar la imagen
+        const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+        const notificacionDTO: NotificacionDTO = {
+          idNotificacion: 0,
+          mensajeNotificacion: mensajeNotificacion,
+          fechaNotificacion: new Date().toISOString(),
+        };
+
+        this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+          (notificacionResponse) => {
+            console.log('Notificación de eliminación creada:', notificacionResponse);
+          },
+          (error) => {
+            console.error('Error al crear la notificación de eliminación:', error);
+          }
+        );
+
       },
       (error) => {
         console.error('Error al eliminar la imagen: ', error);
