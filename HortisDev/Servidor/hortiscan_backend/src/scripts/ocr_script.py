@@ -89,7 +89,7 @@ def save_to_word(lines, output_path):
         if indent_x > 70:
             paragraph_format.left_indent = Pt((indent_x - 70) / 10)
 
-        if text.startswith('-') or text.startswith('*') or (text[0].isdigit() and text[1] == '.'):
+        if text.startswith('-') or text.startswith('*') or (len(text) > 1 and text[0].isdigit() and text[1] == '.'):
             p = paragraph._element
             pPr = p.get_or_add_pPr()
             numPr = OxmlElement('w:numPr')
