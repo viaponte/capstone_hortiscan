@@ -6,7 +6,7 @@ import { ipLocal } from "./ip-config";
 
 export const environment = {
   production: false,
-  apiUrl: `http://${ ipLocal }:8080`
+  apiUrl: `https://son-brave-hayes-workstation.trycloudflare.com`
 };
 
 /*

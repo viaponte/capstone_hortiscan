@@ -37,20 +37,20 @@ public class SecurityConfig {
     this.usuarioService = usuarioService;
   }
 
+  @SuppressWarnings("deprecation")
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-            .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilitar CORS
-            .authorizeRequests(authorize -> authorize
-                    .requestMatchers("/api/auth/login", 
-                    "/api/auth/register", "sync-carpetas-imagenes", 
-                    "/api/document/download/**", "/api/document/callback","/api/notificacion/**",
-                    "/api/convert/**").permitAll()
-                    .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            );
+      .csrf(csrf -> csrf.disable())
+      .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilitar CORS
+      .authorizeRequests(authorize -> authorize
+        .requestMatchers("/api/auth/login",
+        "/api/auth/register", "sync-carpetas-imagenes",
+        "/api/document/download/**", "/api/document/callback","/api/notificacion/**",
+        "/api/convert/**").permitAll()
+        .anyRequest().authenticated()
+      )
+      .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
     http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();

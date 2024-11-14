@@ -39,7 +39,7 @@ export class UsuarioService {
   getImagePath(nombreCarpeta: string, fileName: string): Observable<Blob> {
     const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
 
-    return this.http.get(request, { responseType: 'blob' }); // Cambiamos a 'blob'
+    return this.http.get(request, { responseType: 'blob' });
   }
 
   // Método para eliminar carpeta y su contenido
@@ -52,6 +52,13 @@ export class UsuarioService {
   // Método para eliminar imagen
   deleteImagen(nombreCarpeta: string, fileName: string): Observable<any> {
     const request = `${apiUrl}/api/imagen/${this.username}/carpeta/${nombreCarpeta}/imagen/${fileName}`;
+
+    return this.http.delete(request);
+  }
+
+  // Método para eliminar formulario
+  deleteFormulario(nombreCarpeta: String, formularioName: string): Observable<any> {
+    const request = `${apiUrl}/api/formulario/${this.username}/delete/${nombreCarpeta}/${formularioName}`;
 
     return this.http.delete(request);
   }

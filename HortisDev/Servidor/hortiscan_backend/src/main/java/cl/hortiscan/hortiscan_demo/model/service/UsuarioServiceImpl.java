@@ -67,12 +67,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     // Valida o crea carpeta por id del usuario
     validateOrCreateFolder(usuarioGuardado.getIdUsuario());
 
-
-
-
-
-
-
     return new UsuarioDTO(usuarioGuardado.getIdUsuario(), usuarioGuardado.getUsername(), null);
   }
 

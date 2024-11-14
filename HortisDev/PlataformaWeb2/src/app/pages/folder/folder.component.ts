@@ -163,33 +163,87 @@ export class FolderComponent implements OnInit, OnDestroy {
 
   // Método para eliminar una imagen
   deleteImagen(fileName: string) {
-    this.usuarioService.deleteImagen(this.nombreCarpeta, fileName).subscribe(
-      (response) => {
-        console.log('Imagen eliminada: ', response);
-        this.loadContenidoCarpeta();
+    const fileExtension = fileName.split('.').pop()?.toLowerCase();
 
-        // Crear y enviar la notificación después de eliminar la imagen
-        const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.nombreCarpeta}" exitosamente.`;
-        const notificacionDTO: NotificacionDTO = {
-          idNotificacion: 0,
-          mensajeNotificacion: mensajeNotificacion,
-          fechaNotificacion: new Date().toISOString(),
-        };
+    if(fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
+      this.usuarioService.deleteImagen(this.nombreCarpeta, fileName).subscribe(
+        (response) => {
+          console.log('Imagen eliminada: ', response);
+          this.loadContenidoCarpeta();
+          this.syncService.initSyncCarpetas();
+  
+          // Crear y enviar la notificación después de eliminar la imagen
+          const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+          const notificacionDTO: NotificacionDTO = {
+            idNotificacion: 0,
+            mensajeNotificacion: mensajeNotificacion,
+            fechaNotificacion: new Date().toISOString(),
+          };
+  
+          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+            (notificacionResponse) => {
+              console.log('Notificación de eliminación creada:', notificacionResponse);
+            },
+            (error) => {
+              console.error('Error al crear la notificación de eliminación:', error);
+            }
+          );
+  
+        },
+        (error) => {
+          console.error('Error al eliminar la imagen: ', error);
+        }
+      );
+    } else if (fileExtension === 'docx' || fileExtension === 'doc') {
+      const formularioNombre = fileName;
 
-        this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-          (notificacionResponse) => {
-            console.log('Notificación de eliminación creada:', notificacionResponse);
-          },
-          (error) => {
-            console.error('Error al crear la notificación de eliminación:', error);
-          }
-        );
-
-      },
-      (error) => {
-        console.error('Error al eliminar la imagen: ', error);
-      }
-    );
+      this.usuarioService.deleteFormulario(this.nombreCarpeta, formularioNombre).subscribe(
+        (response) => {
+          this.loadContenidoCarpeta();
+          this.syncService.initSyncCarpetas();
+  
+          // Crear y enviar la notificación después de eliminar la imagen
+          const mensajeNotificacion = `Formulario "${fileName}" eliminado de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+          const notificacionDTO: NotificacionDTO = {
+            idNotificacion: 0,
+            mensajeNotificacion: mensajeNotificacion,
+            fechaNotificacion: new Date().toISOString(),
+          };
+  
+          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+            (notificacionResponse) => {
+              console.log('Notificación de eliminación creada:', notificacionResponse);
+            },
+            (error) => {
+              console.error('Error al crear la notificación de eliminación:', error);
+            }
+          );
+          
+        },
+        (error) => {
+          console.error('Error al eliminar el formulario: ', error);
+          this.loadContenidoCarpeta();
+          this.syncService.initSyncCarpetas();
+  
+          // Crear y enviar la notificación después de eliminar la imagen
+          const mensajeNotificacion = `Formulario "${fileName}" eliminado de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+          const notificacionDTO: NotificacionDTO = {
+            idNotificacion: 0,
+            mensajeNotificacion: mensajeNotificacion,
+            fechaNotificacion: new Date().toISOString(),
+          };
+  
+          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+            (notificacionResponse) => {
+              console.log('Notificación de eliminación creada:', notificacionResponse);
+            },
+            (error) => {
+              console.error('Error al crear la notificación de eliminación:', error);
+            }
+          );
+        }
+      );
+    }
   }
 
   editDocument(file: any) {

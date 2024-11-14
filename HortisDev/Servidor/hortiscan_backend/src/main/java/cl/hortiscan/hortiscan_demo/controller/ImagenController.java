@@ -2,7 +2,6 @@ package cl.hortiscan.hortiscan_demo.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +9,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +26,6 @@ import cl.hortiscan.hortiscan_demo.model.service.ImagenService;
 import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:8100" })
 @RequestMapping("/api/imagen")
 public class ImagenController {
   private final UsuarioService usuarioService;
@@ -65,14 +62,16 @@ public class ImagenController {
         folder.mkdirs();
       }
 
+      usuarioService.saveImage(idUsuario, file, folderName);
+
       // Guardamos el archivo en el sistema de archivos local
       String filePath = userFolder + File.separator + fileName;
-      File destinationFile = new File(filePath);
-      file.transferTo(destinationFile);
+      // File destinationFile = new File(filePath);
+      // file.transferTo(destinationFile);
 
       // Guardamos el nombre del archivo en la base de datos asociado al formulario
       FormularioDTO formularioDTO = new FormularioDTO();
-      formularioDTO.setNombreFormulario(fileName);
+      formularioDTO.setNombreFormulario(fileName + ".docx");
       formularioDTO.setEstadoFormulario("Subido");
       formularioDTO.setIdUsuario(idUsuario); // Asegúrate de asociar el usuario
       formularioService.saveFormulario(formularioDTO); // Guardamos el formulario
@@ -120,7 +119,7 @@ public class ImagenController {
 
       return ResponseEntity.ok(response);
 
-    } catch (IOException | InterruptedException e) {
+    } catch (Exception e) {
       return ResponseEntity.status(500).body("Error al guardar o procesar documento Word: " + e.getMessage());
     }
   }

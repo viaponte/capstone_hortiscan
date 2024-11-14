@@ -9,4 +9,6 @@ public interface FormularioService {
   FormularioDTO saveFormulario(FormularioDTO formularioDTO);
   void deleteFormulario(Integer idFormulario);
   List<Formulario> getAllFormularios();
+
+  Formulario getFormularioIdByNameAndUsuario(String nombreFormulario, Integer idUsuario);
 }
