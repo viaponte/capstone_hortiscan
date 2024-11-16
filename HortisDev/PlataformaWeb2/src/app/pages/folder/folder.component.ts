@@ -11,6 +11,7 @@ import { SyncService } from '../../services/syncservice/sync.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { NotificacionService } from '../../services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
 import { NotificacionDTO } from '../../models/NotificacionDTO';
+import { NotificacionhelperService } from '../../services/notificacionHelperService/notificacionhelper.service';
 
 @Component({
   selector: 'app-folder',
@@ -37,7 +38,7 @@ export class FolderComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private syncService: SyncService,
     private sanitizer: DomSanitizer,
-    private notificacionService: NotificacionService // Inyección del servicio de notificaciones
+    private notificacionHelperService: NotificacionhelperService
   ) {
     this.username = this.authService.getUsername();
   }
@@ -174,21 +175,7 @@ export class FolderComponent implements OnInit, OnDestroy {
   
           // Crear y enviar la notificación después de eliminar la imagen
           const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.nombreCarpeta}" exitosamente.`;
-          const notificacionDTO: NotificacionDTO = {
-            idNotificacion: 0,
-            mensajeNotificacion: mensajeNotificacion,
-            fechaNotificacion: new Date().toISOString(),
-          };
-  
-          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-            (notificacionResponse) => {
-              console.log('Notificación de eliminación creada:', notificacionResponse);
-            },
-            (error) => {
-              console.error('Error al crear la notificación de eliminación:', error);
-            }
-          );
-  
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
         },
         (error) => {
           console.error('Error al eliminar la imagen: ', error);
@@ -204,20 +191,7 @@ export class FolderComponent implements OnInit, OnDestroy {
   
           // Crear y enviar la notificación después de eliminar la imagen
           const mensajeNotificacion = `Formulario "${fileName}" eliminado de la carpeta "${this.nombreCarpeta}" exitosamente.`;
-          const notificacionDTO: NotificacionDTO = {
-            idNotificacion: 0,
-            mensajeNotificacion: mensajeNotificacion,
-            fechaNotificacion: new Date().toISOString(),
-          };
-  
-          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-            (notificacionResponse) => {
-              console.log('Notificación de eliminación creada:', notificacionResponse);
-            },
-            (error) => {
-              console.error('Error al crear la notificación de eliminación:', error);
-            }
-          );
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
           
         },
         (error) => {
@@ -227,20 +201,7 @@ export class FolderComponent implements OnInit, OnDestroy {
   
           // Crear y enviar la notificación después de eliminar la imagen
           const mensajeNotificacion = `Formulario "${fileName}" eliminado de la carpeta "${this.nombreCarpeta}" exitosamente.`;
-          const notificacionDTO: NotificacionDTO = {
-            idNotificacion: 0,
-            mensajeNotificacion: mensajeNotificacion,
-            fechaNotificacion: new Date().toISOString(),
-          };
-  
-          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-            (notificacionResponse) => {
-              console.log('Notificación de eliminación creada:', notificacionResponse);
-            },
-            (error) => {
-              console.error('Error al crear la notificación de eliminación:', error);
-            }
-          );
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
         }
       );
     }

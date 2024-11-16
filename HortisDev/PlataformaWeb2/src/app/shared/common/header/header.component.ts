@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectorRef } from '@angular/core';
 import { NavigationEnd, Router, Event } from '@angular/router';
 import { AuthService } from '../../../services/authservice/authservice.service';
-import { FooterComponent } from '../footer/footer.component';
 import { Location, CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
-import { SyncService } from '../../../services/syncservice/sync.service';
 import { NotificacionDTO } from '../../../models/NotificacionDTO';
 import { NotificacionService } from '../../../services/notificacionservice/notificacion.service';
 

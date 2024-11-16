@@ -9,6 +9,7 @@ import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { SyncService } from '../../services/syncservice/sync.service';
 import { NotificacionService } from '../../services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
 import { NotificacionDTO } from '../../models/NotificacionDTO'; // Asegúrate de que esta ruta sea correcta
+import { NotificacionhelperService } from '../../services/notificacionHelperService/notificacionhelper.service';
 
 
 @Component({
@@ -28,7 +29,12 @@ export class MainComponent implements OnInit {
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   carpetaSeleccionada: CarpetaDTO | null = null; // Almacenar la carpeta seleccionada
 
-  constructor(private usuarioService: UsuarioService, private authService: AuthService, private syncService: SyncService, private notificacionService: NotificacionService) {
+  constructor(
+    private usuarioService: UsuarioService, 
+    private authService: AuthService, 
+    private syncService: SyncService, 
+    private notificacionHelperService: NotificacionhelperService
+  ) {
     // Almacena el nombre de usuario al inicializar el componente
     this.username = this.authService.getUsername();
   }
@@ -66,21 +72,7 @@ export class MainComponent implements OnInit {
     this.usuarioService.crearCarpeta(this.username, carpetaDTO.nombreCarpeta).subscribe(
       (response) => {
         const mensajeNotificacion = `Carpeta "${this.folderName}" creada exitosamente.`;
-        const notificacionDTO: NotificacionDTO = {
-          idNotificacion: 0, // Se generará automáticamente en el backend
-          mensajeNotificacion: mensajeNotificacion,
-          fechaNotificacion: new Date().toISOString(), // O un formato de fecha que prefieras
-        };
-
-        this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-          (notificacionResponse) => {
-            console.log('Notificación creada:', notificacionResponse);
-          },
-          (error) => {
-            console.error('Error al crear la notificación:', error);
-          }
-        );
-
+        this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
 
         this.loadCarpetas();
         this.folderName = '';  // Limpia el input después de crear la carpeta
@@ -114,21 +106,7 @@ export class MainComponent implements OnInit {
 
         // Crear un mensaje de notificación para la eliminación
         const mensajeNotificacion = `Carpeta "${nombreCarpeta}" eliminada exitosamente.`;
-        const notificacionDTO: NotificacionDTO = {
-          idNotificacion: 0, // El backend lo generará automáticamente
-          mensajeNotificacion: mensajeNotificacion,
-          fechaNotificacion: new Date().toISOString(), // Fecha actual en formato ISO
-        };
-
-        // Llamar a NotificacionService para crear la notificación
-        this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
-          (notificacionResponse) => {
-            console.log('Notificación de eliminación creada:', notificacionResponse);
-          },
-          (error) => {
-            console.error('Error al crear la notificación de eliminación:', error);
-          }
-        );
+        this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
 
       },
       (error) => {
