@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../../shared/common/header/header.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ import { CarouselComponent } from '../../shared/common/carousel/carousel.compone
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ HeaderComponent, RouterModule, FormsModule, CommonModule, CarouselComponent],
+  imports: [HeaderComponent, RouterModule, FormsModule, CommonModule, CarouselComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
   providers: []
@@ -24,7 +24,7 @@ import { CarouselComponent } from '../../shared/common/carousel/carousel.compone
 export class MainComponent implements OnInit {
   @ViewChild('deleteConfirmationModal') deleteConfirmationModal: any;
 
-  
+
   carpetas: CarpetaDTO[] = []; // Variable para almacenar las carpetas
   archivos: string[] = []; // Variable para almacenar los archivos dentro de la carpeta
   folderName: string = '';  // Variable para almacenar el nombre de la carpeta
@@ -32,9 +32,9 @@ export class MainComponent implements OnInit {
   carpetaSeleccionada: CarpetaDTO | null = null; // Almacenar la carpeta seleccionada
 
   constructor(
-    private usuarioService: UsuarioService, 
-    private authService: AuthService, 
-    private syncService: SyncService, 
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private syncService: SyncService,
     private notificacionHelperService: NotificacionhelperService,
     private notificacionService: NotificacionService
   ) {
@@ -55,7 +55,7 @@ export class MainComponent implements OnInit {
       alert('El nombre de la carpeta no puede estar vacío');
       return;
     }
-  
+
     if (!this.username) {
       alert('El usuario no está autenticado');
       return;
@@ -66,9 +66,9 @@ export class MainComponent implements OnInit {
       nombreCarpeta: this.folderName,
       rutaCarpeta: '',
       fechaCreacionCarpeta: null,
-      imagenes: [] 
+      imagenes: []
     };
-  
+
     this.usuarioService.crearCarpeta(this.username, carpetaDTO.nombreCarpeta).subscribe(
       (response) => {
         const mensajeNotificacion = `Carpeta "${this.folderName}" creada exitosamente.`;
@@ -84,6 +84,13 @@ export class MainComponent implements OnInit {
     );
   }
 
+  confirmDelete(nombreCarpeta: string) {
+    this.carpetaSeleccionada = this.carpetas.find(carpeta => carpeta.nombreCarpeta === nombreCarpeta) || null;
+    if (!this.carpetaSeleccionada) {
+      alert("Carpeta no encontrada.");
+    }
+  }
+
   // Método para cargar las carpetas del usuario
   loadCarpetas() {
     this.usuarioService.getCarpetas(this.username!).subscribe(
@@ -97,21 +104,22 @@ export class MainComponent implements OnInit {
     );
   }
 
-  // Método para eliminar carpeta y su contenido
-  deleteCarpeta(nombreCarpeta: string) {
-    this.usuarioService.deleteCarpeta(nombreCarpeta).subscribe(
-      (response) => {
-        this.loadCarpetas();
-        console.log('Carpeta eliminada con exito', response);
-
-        // Crear un mensaje de notificación para la eliminación
-        const mensajeNotificacion = `Carpeta "${nombreCarpeta}" eliminada exitosamente.`;
-        this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
-
-      },
-      (error) => {
-        console.error('Error al eliminar la carpeta', error);
-      }
-    );
+  
+  deleteCarpeta(modal: any) {
+    if (this.carpetaSeleccionada) {
+      this.usuarioService.deleteCarpeta(this.carpetaSeleccionada.nombreCarpeta).subscribe(
+        (response) => {
+          console.log('Carpeta eliminada con éxito', response);
+          this.loadCarpetas(); // Recargar las carpetas
+          modal.hide(); // Cerrar el modal
+          const mensajeNotificacion = `Carpeta "${this.carpetaSeleccionada!.nombreCarpeta}" eliminada exitosamente.`;
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
+        },
+        (error) => {
+          console.error('Error al eliminar la carpeta', error);
+          alert('Hubo un error al eliminar la carpeta.');
+        }
+      );
+    }
   }
 }
