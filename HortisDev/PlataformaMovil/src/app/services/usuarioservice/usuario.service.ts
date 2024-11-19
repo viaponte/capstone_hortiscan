@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment'; // Asegúrate de que esta ruta sea correcta para el móvil
 import { CarpetaDTO } from '../../models/CarpetaDTO';
 import { AuthService } from '../authservice/authservice.service'; // Asegúrate de que este servicio también esté disponible en el móvil
@@ -64,13 +64,11 @@ export class UsuarioService {
   }
 
   // Método para obtener la ruta de la imagen
-  getImagePath(nombreCarpeta: string, fileName: string): Observable<string> {
+  getImagePath(nombreCarpeta: string, fileName: string): Observable<Blob> {
     const request = `${this.apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
-    console.log(request);
-    return this.http.get(request, { responseType: 'blob' }).pipe(
-      map(blob => URL.createObjectURL(blob))
-    );
+    return this.http.get(request, { responseType: 'blob' });
   }
+  
 
   uploadImage(file: File, folderName: string): Observable<any> {
     const formData: FormData = new FormData();
@@ -81,4 +79,23 @@ export class UsuarioService {
     console.log('URL de subida:', request);  // Verifica que la URL sea correcta
     return this.http.post(request, formData);
   }
+
+  // Método para eliminar formulario
+  deleteFormulario(nombreCarpeta: string, formularioName: string): Observable<any> {
+    const request = `${this.apiUrl}/api/formulario/${this.username}/delete/${nombreCarpeta}/${formularioName}`;
+    return this.http.delete(request);
+  }
+
+  // Método para obtener la URL del PDF desde el backend
+  getPdfPath(nombreCarpeta: string, fileName: string, timestamp: number): Observable<Blob> {
+    const request = `${this.apiUrl}/api/convert/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/libreoffice?ts=${timestamp}`;
+    return this.http.get(request, { responseType: 'blob' }).pipe(
+      catchError(error => {
+        console.error('Error al obtener el PDF:', error);
+        return throwError(() => new Error('Error al obtener el PDF.'));
+      })
+    );
+  }
+
+
 }

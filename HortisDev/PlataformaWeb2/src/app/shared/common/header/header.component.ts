@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectorRef, HostListener } from '@angular/core';
 import { NavigationEnd, Router, Event } from '@angular/router';
 import { AuthService } from '../../../services/authservice/authservice.service';
 import { Location, CommonModule } from '@angular/common';
@@ -16,6 +16,7 @@ import { NotificacionService } from '../../../services/notificacionservice/notif
 export class HeaderComponent {
   @Input() folderName?: string;
   @Output() backClicked = new EventEmitter<void>();
+  isDropdownOpen = false; // Estado para controlar si el panel está abierto
 
   showBackButton: boolean = true;
   isInMenu: boolean = false; // Variable para controlar si estás en el menú
@@ -65,7 +66,9 @@ export class HeaderComponent {
     );
   }
 
-  eliminarNotificacion(idNotificacion: number): void {
+  eliminarNotificacion(idNotificacion: number, event: MouseEvent): void {
+    event.stopPropagation(); // Esto previene que el evento cierre el dropdown
+
     this.notificacionService.eliminarNotificacion(idNotificacion).subscribe(
       () => {
         this.notificaciones = this.notificaciones.filter(n => n.idNotificacion !== idNotificacion);
@@ -74,6 +77,11 @@ export class HeaderComponent {
         console.error('Error al eliminar la notificación', error);
       }
     );
+  }
+
+  toggleDropdown(event: MouseEvent): void {
+    event.stopPropagation(); // Evita propagación
+    this.isDropdownOpen = !this.isDropdownOpen; // Alterna la visibilidad
   }
 
   logout() {

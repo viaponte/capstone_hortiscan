@@ -1,50 +1,83 @@
 <app-header></app-header>
-<main>
-  <div class="caja">
-    <div class=" d-flex justify-content-between">
-      <div>
-        <h2>CARPETAS</h2>
-      </div>
-      <div>
-        <button id="openModalButton" type="button" class="create-folder-button" data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop">Crear Carpeta</button>
-      </div>
+<app-carousel></app-carousel> <!-- Componente del carrusel -->
+<div>
+  <!-- Contenedor centralizado -->
+  <div class="centered-box">
+    <div class="header-section d-flex justify-content-between align-items-center">
+      <h2>CARPETAS</h2>
+      <button id="openModalButton" type="button" class="create-folder-button" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+        Crear Carpeta
+      </button>
     </div>
-    <hr>
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+    <hr />
+    <!-- Contenedor de carpetas con scroll -->
+    <div class="folder-scroll">
+      <div
+      class="container-folder d-flex flex-wrap gap-3 justify-content-center text-center p-3 rounded-2"
+      data-bs-spy="scroll"
+      data-bs-target="#navbar-example2"
+      data-bs-root-margin="0px 0px -40%"
       data-bs-smooth-scroll="true"
-      class="container-folder d-flex justify-content-start grid gap-3 container text-center scrollspy-example bg-body-tertiary p-3 rounded-2"
-      tabindex="0">
-      <div *ngFor="let carpeta of carpetas" class="folders ">
-        <div class="col">
-          <a [routerLink]="['/carpeta', carpeta.nombreCarpeta]" class="folder-link">
-            <div class="">
-              <img class="folder-icon" src="../../../assets/logo_carpeta.png" alt="Carpeta" />
-              <p>{{ carpeta.nombreCarpeta }}</p>
-            </div>
-          </a>
-          <hr>
-          <button (click)="deleteCarpeta(carpeta.nombreCarpeta)" class="btn btn-danger">Eliminar</button>
-        </div>
+      tabindex="0"
+    >
+      <!-- Mensaje si no hay carpetas -->
+      <div *ngIf="carpetas.length === 0" class="no-folders-message">
+        NO SE ENCONTRARON CARPETAS
+      </div>
+      
+      <!-- Mostrar carpetas si hay alguna -->
+      <div *ngFor="let carpeta of carpetas" class="folder-card">
+        <a [routerLink]="['/carpeta', carpeta.nombreCarpeta]" class="folder-link">
+          <img class="folder-icon" src="../../../assets/logo_carpeta.png" alt="Carpeta" />
+          <p class="folder-name">{{ carpeta.nombreCarpeta }}</p>
+        </a>
+        <hr />
+        <button (click)="confirmDelete(carpeta.nombreCarpeta)" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+          Eliminar
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para crear carpeta -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Creación de Carpeta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" [(ngModel)]="folderName" placeholder="Nombre de Carpeta" class="form-control" />
+      </div>
+      <div class="modal-footer">
+        <button class="create-button" (click)="crearCarpeta()">Crear</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Creación de Carpeta</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="text" [(ngModel)]="folderName" placeholder="Nombre de Carpeta">
-        </div>
-        <div class="modal-footer">
-          <button class="create-button" (click)="crearCarpeta()">Crear</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+</div>
+
+<!-- Modal de confirmación de eliminación -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true" #deleteConfirmationModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmación de eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro de que desea eliminar esta carpeta?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <!-- Suponiendo que tienes un objeto carpetaSeleccionada -->
+        <button type="button" class="btn btn-danger" (click)="deleteCarpeta(carpetaSeleccionada)" data-bs-dismiss="modal">Eliminar</button>
       </div>
     </div>
   </div>
-</main>
+</div>

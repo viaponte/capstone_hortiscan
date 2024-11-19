@@ -18,8 +18,9 @@ import { IonicModule } from '@ionic/angular';
 export class LoginPage {
   username: string = 'lucas';
   password: string = 'lucas';
+  isPasswordVisible: boolean = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   onLogin(form: NgForm) {
     if (form.valid) {
@@ -39,6 +40,33 @@ export class LoginPage {
             alert('No se pudo recibir el token. Login fallido.');
           }
         });
+    }
+  }
+
+  togglePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  normalizeUsername(event: Event) {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.toLowerCase().replace(/[^a-z]/g, ''); // Solo caracteres a-z
+    this.username = input.value;
+  }
+
+  validatePasswordInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const invalidChars = /[\[\]{\}()=\s]/g; // Caracteres no permitidos, incluyendo espacios
+    if (invalidChars.test(input.value)) {
+      input.value = input.value.replace(invalidChars, ''); // Elimina caracteres no válidos
+      this.password = input.value; // Sincroniza con el modelo
+    }
+  }
+  
+  preventInvalidPaste(event: ClipboardEvent) {
+    const clipboardData = event.clipboardData?.getData('text') || '';
+    const invalidChars = /[\[\]{\}()=\s]/g; // Caracteres no permitidos, incluyendo espacios
+    if (invalidChars.test(clipboardData)) {
+      event.preventDefault(); // Bloquea el contenido pegado si contiene caracteres inválidos
     }
   }
 }

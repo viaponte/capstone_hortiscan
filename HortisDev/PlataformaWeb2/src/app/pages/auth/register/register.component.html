@@ -1,81 +1,91 @@
-<main>
-  <div class="content-background">
-    <div class="container-form">
-      <h2 class="app-title">HORTISCAN</h2>
-      <form class="card-form" [formGroup]="newUserForm" (ngSubmit)="createUser()">
-        <h3 class="title-form">Registro</h3>
+<div class="login-page">
+  <app-carousel></app-carousel> <!-- Componente del carrusel -->
+  <div class="login-box">
+    <h1 class="title">HORTISCAN</h1>
+
+    <form [formGroup]="newUserForm" (ngSubmit)="createUser()">
+      <div class="login-form">
+        <h2>Registro</h2>
+
         <!-- Campo de Nombre de Usuario -->
         <div>
-          <div class="title-input">
-            <label for="username">Nombre de Usuario</label>
-          </div>
-          <input class="input-form " type="text" id="username" name="username" formControlName="username" required
+          <label for="username">Nombre de Usuario</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            formControlName="username"
+            (input)="normalizeUsername($event)"
+            required
             [ngClass]="{
               'is-invalid': newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched
-            }" />
+            }"
+          />
           <div class="text-danger" *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched">
             <strong>El nombre de usuario es requerido</strong>
           </div>
         </div>
 
-        <!-- Campo de Correo Electrónico -->
-        <!-- <div class="form-group">
-          <label for="email">Correo electrónico</label>
-          <input type="email"
-            id="email"
-            name="email"
-            formControlName="email"
+        <!-- Campo de Contraseña -->
+        <div class="password-container">
+          <label for="password">Contraseña</label>
+          <input
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            id="password"
+            name="password"
+            formControlName="password"
+            (keydown)="validatePassword($event)"
+            (paste)="preventInvalidPaste($event)"
             required
             [ngClass]="{
-              'is-invalid': newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched
+              'is-invalid': newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched
             }"
           />
-          <div *ngIf="newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched">
-            <p *ngIf="newUserForm.get('email')?.errors?.['required']" class="error-text">El correo electrónico es requerido</p>
-            <p *ngIf="newUserForm.get('email')?.errors?.['email']" class="error-text">El formato del correo no es válido</p>
-          </div>
-        </div> -->
+          <!-- Ícono del ojo dentro del input -->
+          <i class="fa" 
+             [class.fa-eye]="!isPasswordVisible" 
+             [class.fa-eye-slash]="isPasswordVisible" 
+             (click)="togglePasswordVisibility()"></i>
+        </div>
 
-        <!-- Campo de Contraseña -->
-        <div>
-          <div class="title-input">
-            <label for="password">Contraseña</label>
-          </div>
-          <input class="input-form" type="password" id="password" name="password" formControlName="password" required
+        <!-- Campo de Confirmar Contraseña -->
+        <div class="password-container">
+          <label for="confirmPassword">Confirmar Contraseña</label>
+          <input
+            [type]="isConfirmPasswordVisible ? 'text' : 'password'"
+            id="confirmPassword"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            (keydown)="validatePassword($event)"
+            (paste)="preventInvalidPaste($event)"
+            required
             [ngClass]="{
-              'is-invalid': newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched
-            }" />
-        </div>
-        <div>
-          <div class="title-input">
-            <label for="confirmPassword">Confirmar contraseña</label>
-          </div>
-          <input class="input-form" type="password" id="confirmPassword" name="confirmPassword"
-            formControlName="confirmPassword" required [ngClass]="{
               'is-invalid': newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched
-            }" />
-          <div class="text-danger"
-            *ngIf="newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched">
-            <strong>Las contraseñas no coinciden</strong>
-          </div>
-          <div class="text-danger"
-            *ngIf="userExist">
-            <strong>Usuario y/o contraña inválida</strong>
-          </div>
+            }"
+          />
+          <!-- Ícono del ojo dentro del input -->
+          <i class="fa" 
+             [class.fa-eye]="!isConfirmPasswordVisible" 
+             [class.fa-eye-slash]="isConfirmPasswordVisible" 
+             (click)="toggleConfirmPasswordVisibility()"></i>
+        </div>
+        <div class="text-danger" *ngIf="newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched">
+          <strong>Las contraseñas no coinciden</strong>
+        </div>
+        <div class="text-danger" *ngIf="userExist">
+          <strong>Usuario y/o contraseña inválida</strong>
         </div>
 
+        <!-- Botones -->
+        <button type="submit" [disabled]="newUserForm.invalid">Registrarse</button>
+        <button type="button" (click)="clearInputs()">Limpiar</button>
+        <a routerLink="/login">¿Ya estás registrado? Inicia sesión aquí</a>
+      </div>
+    </form>
 
-        <!-- Botón de registro deshabilitado si el formulario no es válido -->
-        <button type="submit" class="design-button" [disabled]="newUserForm.invalid">Registrarse</button>
-        <button class="design-button" (click)="clearInputs()">Limpiar</button>
-        <a routerLink="/login" class="forgetpass">¿Ya estás registrado? Inicia sesión aquí</a>
-      </form>
-      <div class="logo-container">
-        <img src="assets/ciren-logo.png" alt="CIREN Logo" class="logo" />
-      </div>
-      <div class="copyright">
-        <p>&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
-      </div>
+    <div class="logo">
+      <img src="assets/ciren-logo.png" alt="CIREN Logo" />
     </div>
+    <p class="footer-text">&copy; 2024 CIREN - Centro de Información de Recursos Naturales</p>
   </div>
-</main>
+</div>

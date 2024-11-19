@@ -13,34 +13,28 @@
         </div>
       </div>
       <div class="col d-flex justify-content-end align-items-center">
-        <nav class="navbar navbar-white bg-white">
+        <nav class="navbar">
           <div class="btn-group dropstart">
-            <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-bell-fill"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               <li *ngFor="let notificacion of notificaciones">
-                <div class="dropdown-item">
-                  {{ notificacion.mensajeNotificacion }}
-                  <br>
-                  <small>{{ notificacion.fechaNotificacion | date:'dd MMMM yyyy, HH:mm' }}</small>
-                  <button class="btn btn-sm btn-danger" (click)="eliminarNotificacion(notificacion.idNotificacion)">Eliminar</button>
+                <div class="dropdown-item" (click)="$event.stopPropagation()">
+                  <span class="delete-icon" (click)="eliminarNotificacion(notificacion.idNotificacion, $event)">
+                    <i class="fas fa-times"></i>
+                  </span>
+                  <div class="message">{{ notificacion.mensajeNotificacion }}</div>
+                  <div class="date">{{ notificacion.fechaNotificacion | date:'dd MMMM yyyy, HH:mm' }}</div>
                 </div>
               </li>
               <li *ngIf="notificaciones.length === 0" class="dropdown-item">No hay notificaciones</li>
             </ul>
           </div>
-          <div class="">
-            <nav class="navbar navbar-white bg-white">
-              <button class="dropdown navbar-toggler" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><i class="dropdown-item bi bi-caret-left-fill" *ngIf="showBackButton" (click)="goBack()"> Atrás</i></li>
-                <li><i class="dropdown-item bi bi-caret-left-fill" (click)="logout()"> Cerrar Sesión</i></li>
-              </ul>
-            </nav>
-          </div>
+          <!-- Botón de cerrar sesión -->
+          <button class="btn btn-outline-danger ms-3" (click)="logout()">
+            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+          </button>
         </nav>
       </div>
     </div>

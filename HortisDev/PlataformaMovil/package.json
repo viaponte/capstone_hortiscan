@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "update-ip": "bash src/environments/update-ip.sh",
     "build-ip": "npm run update-ip && ionic build",
-    "build-android": "npm run update-ip && ionic cordova build android",
+    "build-android": "npm run update-ip && ionic capacitor build android",
     "build-prod": "npm run update-ip && ionic build --prod"
   },
   "private": true,
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@capacitor-community/file-opener": "^1.0.5",
     "@capacitor/android": "^5.7.8",
     "@capacitor/app": "^5.0.8",
     "@capacitor/camera": "^5.0.10",
@@ -58,7 +59,6 @@
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/jszip": "^3.4.0",
-    "@types/node": "^22.7.5",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.57.0",
@@ -73,6 +73,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.0"
-  },
-  "description": "An Ionic project"
+  }
 }

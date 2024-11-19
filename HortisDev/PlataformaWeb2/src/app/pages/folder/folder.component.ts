@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,EventEmitter, Input, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from "../../shared/common/header/header.component";
@@ -12,15 +12,19 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { NotificacionService } from '../../services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
 import { NotificacionDTO } from '../../models/NotificacionDTO';
 import { NotificacionhelperService } from '../../services/notificacionHelperService/notificacionhelper.service';
+import { CarouselComponent } from '../../shared/common/carousel/carousel.component';
 
 @Component({
   selector: 'app-folder',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, CommonModule],
+  imports: [RouterModule, HeaderComponent, CommonModule, CarouselComponent],
   templateUrl: './folder.component.html',
   styleUrl: './folder.component.scss'
 })
 export class FolderComponent implements OnInit, OnDestroy {
+  @Input() folderName?: string;
+  @Output() backClicked = new EventEmitter<void>();
+
   contenidoCarpeta: string[] = []; // Variable para almacenar el contenido de la carpeta
   imagenesMap: { [key: string]: string } = {}; // Mapa para almacenar las URL de las imágenes
   nombreCarpeta: string = '';  // Variable para almacenar el nombre de la carpeta
@@ -225,6 +229,10 @@ export class FolderComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    window.history.back();
+    if (this.folderName) {
+      this.backClicked.emit();
+    } else {
+      this.router.navigate(['/menu']);
+    }
   }
 }
