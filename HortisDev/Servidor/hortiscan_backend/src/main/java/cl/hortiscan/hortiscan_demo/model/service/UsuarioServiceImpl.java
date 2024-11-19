@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import cl.hortiscan.hortiscan_demo.model.dao.ImagenDAO;
 import cl.hortiscan.hortiscan_demo.model.dao.UsuarioDAO;
 import cl.hortiscan.hortiscan_demo.model.dto.CarpetaDTO;
-
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioDTO;
 import cl.hortiscan.hortiscan_demo.model.dto.UsuarioRegistroDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Carpeta;
@@ -39,9 +38,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
   @Autowired
   private PasswordEncoder passwordEncoder;
-
-
-
 
   private final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
@@ -213,5 +209,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     Usuario usuario = usuarioDAO.findByUsername(username).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
     return new User(usuario.getUsername(), usuario.getPassword(), new ArrayList<>());
+  }
+
+  @Override
+  public List<Usuario> getAllUsuarios() {
+    return usuarioDAO.findAll();
   }
 }

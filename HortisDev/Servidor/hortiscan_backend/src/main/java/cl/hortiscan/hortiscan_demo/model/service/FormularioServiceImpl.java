@@ -1,6 +1,8 @@
 package cl.hortiscan.hortiscan_demo.model.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,6 +85,29 @@ public class FormularioServiceImpl implements FormularioService {
     }
 
     return this.formularioDAO.findByNombreFormularioAndIdUsuario(nombreFormulario, usuario)
+        .orElse(null);
+  }
+
+  @Override
+  public List<Formulario> findFormulariosByUsuario(Integer idUsuario) {
+    Usuario usuario = usuarioDAO.findById(idUsuario)
+        .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + idUsuario));
+
+    return formularioDAO.findAll()
+        .stream()
+        .filter(formulario -> formulario.getIdUsuario().getIdUsuario().equals(usuario.getIdUsuario()))
+        .collect(Collectors.toList());
+  }
+
+  private final String ROOT_DIRECTORY = "C:\\folderToUsers";
+  
+  @Override
+  public Formulario findFormularioByPath(String path) {
+    return formularioDAO.findAll()
+        .stream()
+        .filter(formulario -> (ROOT_DIRECTORY + File.separator + "usuario_" + formulario.getIdUsuario().getIdUsuario()
+            + File.separator + formulario.getNombreFormulario()).equals(path))
+        .findFirst()
         .orElse(null);
   }
 

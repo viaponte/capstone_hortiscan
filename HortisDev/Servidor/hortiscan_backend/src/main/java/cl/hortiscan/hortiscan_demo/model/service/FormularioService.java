@@ -11,4 +11,7 @@ public interface FormularioService {
   List<Formulario> getAllFormularios();
 
   Formulario getFormularioIdByNameAndUsuario(String nombreFormulario, Integer idUsuario);
+  List<Formulario> findFormulariosByUsuario(Integer idUsuario);
+  Formulario findFormularioByPath(String path);
+
 }
