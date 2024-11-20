@@ -1,175 +1,126 @@
-
-main {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #DAFFDA;
-    /* Color de fondo consistente */
-    font-family:"Staatliches", sans-serif;
-}
-
-
-.logo-container {
-    display: flex;
-    justify-content: space-evenly;
-
-}
-
-.logo {
-    height: 20px;
-    width: auto;
-}
-
-.logo-min {
-    height: 70px;
-    width: auto;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
-
-// Body
-.content-background,
-.logout-button,
-.title-form {
-    --background: #131212;
+.login-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     font-family: "Staatliches", sans-serif;
-}
-
-.logout-button {
-    font-size: 18px;
-}
-
-// Titulo de la pagina
-.app-title {
-    font-size: 3rem;
-    color: rgb(0, 0, 0);
-    margin-bottom: 20px;
-    font-weight: lighter;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-}
 
-/* Login - Register  */
-// Body form auth
-.container-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 70px;
-}
+    .login-box {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+        box-sizing: border-box;
 
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-.card-form {
-    width: 100%;
-    max-width: 400px;
-    background: #DAFFDA;
-    border-radius: 10px;
-    padding: 40px 40px 10px 40px;
-    font-family:Arial, Helvetica, sans-serif;
-}
-.title-form{
-    text-align: center;
-}
-// Titulo del input
-.title-input {
-    color: #646464;
-    margin-bottom: 5px;
-}
+        .login-form {
+            h2 {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
 
-// Entrada de texto de Formulario
-.input-form {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
+            label {
+                font-size: 14px;
+                display: block;
+                margin-bottom: 5px;
+                text-align: left;
+            }
 
-// links
-.forgetpass {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 16px;
-    padding-top: 12px;
-}
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                box-sizing: border-box;
+                font-family: Arial, Helvetica, sans-serif;
+            }
 
+            button {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
 
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
 
-// Texto de advertencia en Formulario
-.text-danger {
-    padding-bottom: 5px;
-}
+            a {
+                display: block;
+                margin-top: 10px;
+                font-size: 14px;
+                color: #007bff;
+                text-decoration: none;
 
-// Diseño de Boton en Formulario
-.design-button {
-    margin-top: 10px;
-    width: 100%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background: #ccc;
-    color: rgb(8, 7, 7);
-    font-weight: normal;
-    font-size: 1.5rem;
-    transition: letter-spacing 0.3s ease;
-    font-family:"Staatliches", sans-serif ;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
 
-    &:hover {
-        letter-spacing: 5px;
+            .text-danger {
+                color: red;
+                font-size: 12px;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+        }
+
+        .logo {
+            margin-top: 20px;
+
+            img {
+                max-width: 100px;
+                height: auto;
+            }
+        }
+
+        .footer-text {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .password-container {
+            position: relative;
+            width: 100%; /* El contenedor ocupa todo el ancho del input */
+          
+            input {
+              width: 100%; /* El input ocupa todo el ancho disponible */
+              padding-right: 40px; /* Espacio reservado para el ícono */
+              box-sizing: border-box; /* Incluye el padding dentro del ancho total */
+            }
+          
+            i {
+              position: absolute;
+              top: 50%; /* Centra verticalmente el ícono */
+              right: 10px; /* Posición horizontal del ícono */
+              transform: translateY(-50%); /* Ajusta el centro vertical */
+              cursor: pointer;
+              font-size: 20px; /* Tamaño del ícono */
+              color: #007bff; /* Color del ícono */
+            }
+          }
+          
+          
+          
+          
     }
-}
 
-// Footer Formulario
-.copyright {
-    margin-top: 20px;
-    text-align: center;
-    color: #000000;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
-}
-
-.logo {
-    height: 60px;
-    width: auto;
-}
-
-/* Folder-views*/
-
-// No presenta contenido
-.no-content-message {
-    color: #ffffff5d;
-    padding-top: 3em;
-    font-size: 3rem;
-    text-align: center;
-}
-
-// Folder name 
-.folder p {
-    margin-top: 5px;
-    font-size: 1rem;
-    color: white;
-    text-align: center;
-}
-
-// Footer Folders
-.footer-button {
-    padding: 20px 0 20px 0;
-    display: flex;
-    justify-content: center;
-    --background: #DAFFDA;
 }

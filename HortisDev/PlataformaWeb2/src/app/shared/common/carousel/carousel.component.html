@@ -1,0 +1,4 @@
+<div class="carousel">
+    <img *ngFor="let image of images; let i = index" [src]="image" [class.active]="i === currentImageIndex"
+        alt="Imagen {{ i + 1 }}" />
+</div>

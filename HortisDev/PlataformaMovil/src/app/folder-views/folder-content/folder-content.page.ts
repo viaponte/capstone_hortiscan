@@ -1,18 +1,19 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';
-import { map, forkJoin } from 'rxjs';
+import { forkJoin, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/authservice/authservice.service';
 import { ReloadService } from 'src/app/services/reloadservice/reload.service';
 import { UsuarioService } from 'src/app/services/usuarioservice/usuario.service';
-import * as PizZip from 'pizzip';
-import * as Docxtemplater from 'docxtemplater';
-import { OcrService } from '../../services/ocrservice/ocr.service';
 import { HttpClient } from '@angular/common/http';
-import * as JSZip from 'jszip';
 import { DocumentScanner, ScanDocumentResponseStatus } from 'capacitor-document-scanner';
 import { Capacitor } from '@capacitor/core';
+<<<<<<< HEAD
+=======
+import { NotificacionService } from 'src/app/services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
+import { NotificacionDTO } from '../../models/NotificacionDTO';
+>>>>>>> develop
 
 
 @Component({
@@ -22,22 +23,30 @@ import { Capacitor } from '@capacitor/core';
 })
 export class FolderContentPage implements OnInit {
   extractedText: string | null = null;
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
   folderName: string = '';
   contenidoCarpeta: string[] = []; // Variable para almacenar el contenido de la carpeta
   imagenesMap: { [key: string]: string } = {}; // Mapa para almacenar las URL de las imágenes
   selectedFile: string | null = null; // Archivo seleccionado para mostrar en el modal
   username: string | null = '';  // Variable para almacenar el nombre de usuario
+  selectedDocxContent: string | null = null; // Variable para almacenar el contenido del archivo .docx
 
   constructor(
     private http: HttpClient,
-    private ocrService: OcrService,
     private route: ActivatedRoute,
     private navCtrl: NavController,
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private reloadService: ReloadService,
+<<<<<<< HEAD
     private cdr: ChangeDetectorRef
+=======
+    private cdr: ChangeDetectorRef,
+    private notificacionService: NotificacionService // Inyección del servicio de notificaciones
+>>>>>>> develop
   ) {
     this.username = this.authService.getUsername();
   }
@@ -53,18 +62,6 @@ export class FolderContentPage implements OnInit {
         this.loadContenidoCarpeta();
       }
     });
-  }
-
-  loadContenidoCarpeta() {
-    this.usuarioService.getCarpetaContenido(this.username!, this.folderName).subscribe(
-      (response) => {
-        this.contenidoCarpeta = response;
-        this.loadImages();
-      },
-      (error) => {
-        console.error('Error al cargar el contenido de la carpeta:', error);
-      }
-    );
   }
 
   // Método para cargar las imágenes en miniatura
@@ -86,7 +83,6 @@ export class FolderContentPage implements OnInit {
   openModal(file: string): void {
     this.selectedFile = this.imagenesMap[file];
   }
-
 
   async scanDocument() {
     try {
@@ -130,6 +126,26 @@ export class FolderContentPage implements OnInit {
 
           // Subir cada imagen al backend
           await this.uploadImageToBackend(file);
+<<<<<<< HEAD
+=======
+
+          // Crear y enviar la notificación después de guardar la imagen
+          const mensajeNotificacion = `Imagen escaneada guardada en la carpeta "${this.folderName}" exitosamente.`;
+          const notificacionDTO: NotificacionDTO = {
+            idNotificacion: 0,
+            mensajeNotificacion: mensajeNotificacion,
+            fechaNotificacion: new Date().toISOString(),
+          };
+
+          this.notificacionService.crearNotificacion(notificacionDTO).subscribe(
+            (notificacionResponse) => {
+              console.log('Notificación creada:', notificacionResponse);
+            },
+            (error) => {
+              console.error('Error al crear la notificación:', error);
+            }
+          );
+>>>>>>> develop
         }
       } else if (status === ScanDocumentResponseStatus.Cancel) {
         alert('El usuario canceló el escaneo del documento');
@@ -139,7 +155,7 @@ export class FolderContentPage implements OnInit {
       alert('Error al escanear documento: ' + error);
     }
   }
-
+  
   // Método para subir la imagen al backend
   private async uploadImageToBackend(file: File) {
     try {
@@ -164,16 +180,86 @@ export class FolderContentPage implements OnInit {
     return this.imagenesMap[fileName]; // Retorna la URL pre-cargada de la imagen si existe
   }
 
+<<<<<<< HEAD
   // Método para eliminar una imagen
+=======
+  loadContenidoCarpeta() {
+    const username = this.authService.getUsername();
+    if (username) {
+      this.usuarioService.getCarpetaContenido(username, this.folderName).subscribe(
+        (response) => {
+          this.contenidoCarpeta = response;
+          this.loadImages();
+        },
+        (error) => {
+          console.error('Error al cargar el contenido de la carpeta:', error);
+        }
+      );
+    } else {
+      console.error('No se ha encontrado el nombre de usuario.');
+    }
+  }
+
+  // Método para eliminar una imagen o un documento
+>>>>>>> develop
   deleteImagen(fileName: string) {
-    this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
+    const fileExtension = fileName.split('.').pop()?.toLowerCase();
+
+    // Para imágenes
+    if (fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
+      this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
+        (response) => {
+          console.log('Imagen eliminada: ', response);
+          // Actualizar el estado de contenidoCarpeta directamente, eliminando la imagen
+          this.contenidoCarpeta = this.contenidoCarpeta.filter(file => file !== fileName);
+          this.showNotification(`Imagen "${fileName}" eliminada de la carpeta "${this.folderName}" exitosamente.`);
+        },
+        (error) => {
+          console.error('Error al eliminar la imagen: ', error);
+        }
+      );
+    } else if (fileExtension === 'docx' || fileExtension === 'doc') {
+      // Para formularios
+      this.usuarioService.deleteFormulario(this.folderName, fileName).subscribe(
+        (response) => {
+          console.log('Formulario eliminado: ', response);
+          // Actualizar el estado de contenidoCarpeta directamente, eliminando el formulario
+          this.contenidoCarpeta = this.contenidoCarpeta.filter(file => file !== fileName);
+          this.showNotification(`Formulario "${fileName}" eliminado de la carpeta "${this.folderName}" exitosamente.`);
+        },
+        (error) => {
+          console.error('Error al eliminar el formulario: ', error);
+        }
+      );
+    }
+  }
+
+
+  // Método para mostrar notificación
+  showNotification(message: string) {
+    const notificationDTO: NotificacionDTO = {
+      idNotificacion: 0,
+      mensajeNotificacion: message,
+      fechaNotificacion: new Date().toISOString(),
+    };
+
+    this.notificacionService.crearNotificacion(notificationDTO).subscribe(
       (response) => {
+<<<<<<< HEAD
         console.log('Imagen eliminada: ', response);
         this.loadContenidoCarpeta();
+=======
+        console.log('Notificación de eliminación creada:', response);
+>>>>>>> develop
       },
       (error) => {
-        console.error('Error al eliminar la imagen: ', error);
+        console.error('Error al crear la notificación de eliminación:', error);
       }
     );
   }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> develop
 }

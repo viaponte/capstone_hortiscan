@@ -1,138 +1,122 @@
-main {
-    background-color: #DAFFDA;
-    font-family: "Staatliches", sans-serif;
-    display: flex;
-    justify-content: center;
-    /* Centra horizontalmente */
-    align-items: center;
-    // En caso de poner otro container folder comentar el height
-    height: 100vh;
-}
-
-.caja {
-    margin-bottom: 30px;
-    // margin-top: 30px;
-    // display: flex;
-    // flex-wrap: wrap;
+.centered-box {
+    width: 80%; /* Ancho limitado */
+    max-width: 800px;
+    max-height: 600px; /* Altura máxima para evitar ocupar toda la pantalla */
+    background: rgba(255, 255, 255, 0.9); /* Blanco con opacidad */
+    border-radius: 10px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    width: 1200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-}
-
-.container-folder {
-    margin-top: 30px;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    border: 1px solid #cccccc00;
-    border-radius: 10px;
-    background-color: #ffffff00;
-    width: 1150px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-}
-
-.folders {
-    margin-bottom: 30px;
-    margin-top: 30px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-.scrollspy-example {
-    position: relative;
-    height: 300px;
-    overflow: auto;
-}
-
-
-.folder {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Evitar que contenido exceda el recuadro */
     display: flex;
     flex-direction: column;
+    margin: 30px auto 0; /* Centrado horizontal y separación del header */
+  }
+  
+  .header-section {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin: 15px;
-}
-
-.folder-icon {
-    width: 80px;
-    height: 80px;
-}
-
-
-/*Diseño de boton crear carpeta*/
-.create-folder-button {
-    background-color: #007bff;
+    margin-bottom: 20px; /* Espacio entre el header y el contenido */
+  }
+  
+  h2 {
+    font-family: "Staatliches", sans-serif;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .create-folder-button {
+    background-color: #00a676;
+    border: none;
     color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 15px 30px;
-    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
     font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4);
-    margin-right: 100px;
-}
-
-.create-folder-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.6);
-}
-
-.create-folder-button:active {
-    background-color: #004085;
-    transform: translateY(2px);
-    box-shadow: 0 3px 5px rgba(0, 123, 255, 0.4);
-}
-
-/*---------------*/
-
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-folder-button:hover {
+    background-color: #00865b;
+  }
+  
+  .folder-scroll {
+    overflow-y: auto; /* Scroll vertical */
+    flex-grow: 1; /* Permitir que este contenedor crezca */
+    padding-right: 10px;
     margin-top: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.create-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #dcdcdc;
+  }
+  
+  .container-folder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .folder-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Evitar desbordamiento del contenido */
+  }
+  
+  .folder-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .folder-link {
+    text-decoration: none;
+    color: #333;
+    display: block; /* Para asegurar que el texto ocupe todo el ancho */
+  }
+  
+  .folder-icon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .folder-name {
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta el texto que sobrepasa el contenedor */
+    text-overflow: ellipsis; /* Muestra '...' si el texto es demasiado largo */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible dentro de la carpeta */
+    text-align: center; /* Centra el texto */
+  }
+  
+  hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+  }
+  
+  .btn-danger {
+    background-color: #ff4b4b;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.create-button:hover {
-    background-color: #ccc;
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/*byron*/
+    padding: 5px 10px;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .btn-danger:hover {
+    background-color: #cc0000;
+  }
+  
+  .no-folders-message {
+    font-size: 50px;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

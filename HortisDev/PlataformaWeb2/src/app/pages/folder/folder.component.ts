@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,EventEmitter, Input, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from "../../shared/common/header/header.component";
@@ -9,21 +9,35 @@ import { forkJoin, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { SyncService } from '../../services/syncservice/sync.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+<<<<<<< HEAD
+=======
+import { NotificacionService } from '../../services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
+import { NotificacionDTO } from '../../models/NotificacionDTO';
+import { NotificacionhelperService } from '../../services/notificacionHelperService/notificacionhelper.service';
+import { CarouselComponent } from '../../shared/common/carousel/carousel.component';
+>>>>>>> develop
 
 @Component({
   selector: 'app-folder',
   standalone: true,
-  imports: [RouterModule, HeaderComponent, CommonModule],
+  imports: [RouterModule, HeaderComponent, CommonModule, CarouselComponent],
   templateUrl: './folder.component.html',
   styleUrl: './folder.component.scss'
 })
 export class FolderComponent implements OnInit, OnDestroy {
+  @Input() folderName?: string;
+  @Output() backClicked = new EventEmitter<void>();
+
   contenidoCarpeta: string[] = []; // Variable para almacenar el contenido de la carpeta
   imagenesMap: { [key: string]: string } = {}; // Mapa para almacenar las URL de las imágenes
   nombreCarpeta: string = '';  // Variable para almacenar el nombre de la carpeta
   username: string | null = '';  // Variable para almacenar el nombre de usuario
   selectedFile: SafeResourceUrl | null = null;  // Archivo seleccionado para mostrar en el modal
   showEdit: boolean = false;
+<<<<<<< HEAD
+=======
+  isLoading: boolean = false; // Controlar el spinner de carga
+>>>>>>> develop
 
   currentObjectUrl: string | null = null; // Nueva propiedad para almacenar el Object URL original
 
@@ -33,7 +47,12 @@ export class FolderComponent implements OnInit, OnDestroy {
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private syncService: SyncService,
+<<<<<<< HEAD
     private sanitizer: DomSanitizer
+=======
+    private sanitizer: DomSanitizer,
+    private notificacionHelperService: NotificacionhelperService
+>>>>>>> develop
   ) {
     this.username = this.authService.getUsername();
   }
@@ -100,6 +119,10 @@ export class FolderComponent implements OnInit, OnDestroy {
   // Método para abrir modal
   openModal(file: string): void {
     this.selectedFileName = file;  // Guardamos el nombre del archivo seleccionado
+<<<<<<< HEAD
+=======
+    this.isLoading = true; // Mostrar el spinner de carga
+>>>>>>> develop
 
     const fileExtension = file.split('.').pop()?.toLowerCase();
     this.selectedFileExtension = fileExtension ?? null;  // Guardamos la extensión del archivo o null si no existe
@@ -117,14 +140,23 @@ export class FolderComponent implements OnInit, OnDestroy {
           const fileURL = URL.createObjectURL(imageBlob);  // Crear URL desde Blob
           this.currentObjectUrl = fileURL; // Almacenar el Object URL original
           this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Sanitizamos la URL
+<<<<<<< HEAD
         },
         (error) => {
           console.error('Error al cargar la imagen:', error);
+=======
+          this.isLoading = false; // Ocultar el spinner
+        },
+        (error) => {
+          console.error('Error al cargar la imagen:', error);
+          this.isLoading = false; // Ocultar el spinner
+>>>>>>> develop
         }
       );
     }
     // Si es un archivo Word
     else if (fileExtension === 'docx' || fileExtension === 'doc') {
+<<<<<<< HEAD
       this.usuarioService.getPdfPath(this.nombreCarpeta, file).subscribe(
         (pdfBlob) => {
           const fileURL = URL.createObjectURL(pdfBlob);  // Crear URL desde Blob
@@ -138,6 +170,29 @@ export class FolderComponent implements OnInit, OnDestroy {
       );
     } else {
       console.error('Formato de archivo no soportado:', fileExtension);
+=======
+      // Antes de asignar selectedFile, asignar null
+      this.selectedFile = null;
+
+      // Obtener la fecha actual como marca de tiempo
+      const timestamp = new Date().getTime();
+
+      this.usuarioService.getPdfPath(this.nombreCarpeta, file, timestamp).subscribe(
+        (pdfBlob) => {
+          const fileURL = URL.createObjectURL(pdfBlob);
+          this.currentObjectUrl = fileURL;
+          setTimeout(() => {
+            this.selectedFile = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);
+            this.showEdit = true;
+            this.isLoading = false; // Ocultar el spinner
+          }, 0);
+        },
+        (error) => {
+          console.error('Error al cargar el PDF:', error);
+          this.isLoading = false; // Ocultar el spinner
+        }
+      );
+>>>>>>> develop
     }
   }
 
@@ -148,6 +203,7 @@ export class FolderComponent implements OnInit, OnDestroy {
 
   // Método para eliminar una imagen
   deleteImagen(fileName: string) {
+<<<<<<< HEAD
     this.usuarioService.deleteImagen(this.nombreCarpeta, fileName).subscribe(
       (response) => {
         console.log('Imagen eliminada: ', response);
@@ -157,6 +213,49 @@ export class FolderComponent implements OnInit, OnDestroy {
         console.error('Error al eliminar la imagen: ', error);
       }
     );
+=======
+    const fileExtension = fileName.split('.').pop()?.toLowerCase();
+
+    if(fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
+      this.usuarioService.deleteImagen(this.nombreCarpeta, fileName).subscribe(
+        (response) => {
+          console.log('Imagen eliminada: ', response);
+          this.loadContenidoCarpeta();
+          this.syncService.initSyncCarpetas();
+  
+          // Crear y enviar la notificación después de eliminar la imagen
+          const mensajeNotificacion = `Imagen "${fileName}" eliminada de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
+        },
+        (error) => {
+          console.error('Error al eliminar la imagen: ', error);
+        }
+      );
+    } else if (fileExtension === 'docx' || fileExtension === 'doc') {
+      const formularioNombre = fileName;
+
+      this.usuarioService.deleteFormulario(this.nombreCarpeta, formularioNombre).subscribe(
+        (response) => {
+          this.loadContenidoCarpeta();
+          this.syncService.initSyncCarpetas();
+  
+          // Crear y enviar la notificación después de eliminar la imagen
+          const mensajeNotificacion = `Formulario "${fileName}" eliminado de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
+          
+        },
+        (error) => {
+          console.error('Error al eliminar el formulario: ', error);
+          this.loadContenidoCarpeta();
+          this.syncService.initSyncCarpetas();
+  
+          // Crear y enviar la notificación después de eliminar la imagen
+          const mensajeNotificacion = `Formulario "${fileName}" eliminado de la carpeta "${this.nombreCarpeta}" exitosamente.`;
+          this.notificacionHelperService.crearNotificacion(mensajeNotificacion);
+        }
+      );
+    }
+>>>>>>> develop
   }
 
   editDocument(file: any) {
@@ -177,6 +276,14 @@ export class FolderComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    window.history.back();
+    if (this.folderName) {
+      this.backClicked.emit();
+    } else {
+      this.router.navigate(['/menu']);
+    }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

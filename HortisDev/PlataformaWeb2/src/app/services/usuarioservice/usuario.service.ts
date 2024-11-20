@@ -39,7 +39,7 @@ export class UsuarioService {
   getImagePath(nombreCarpeta: string, fileName: string): Observable<Blob> {
     const request = `${apiUrl}/api/usuario/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}`;
 
-    return this.http.get(request, { responseType: 'blob' }); // Cambiamos a 'blob'
+    return this.http.get(request, { responseType: 'blob' });
   }
 
   // Método para eliminar carpeta y su contenido
@@ -56,9 +56,21 @@ export class UsuarioService {
     return this.http.delete(request);
   }
 
+  // Método para eliminar formulario
+  deleteFormulario(nombreCarpeta: String, formularioName: string): Observable<any> {
+    const request = `${apiUrl}/api/formulario/${this.username}/delete/${nombreCarpeta}/${formularioName}`;
+
+    return this.http.delete(request);
+  }
+
   // Método para obtener el PDF de un archivo Word
+<<<<<<< HEAD
   getPdfPath(nombreCarpeta: string, fileName: string): Observable<Blob> {
     const request = `${apiUrl}/api/convert/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/libreoffice`;
+=======
+  getPdfPath(nombreCarpeta: string, fileName: string, timestamp: number): Observable<Blob> {
+    const request = `${apiUrl}/api/convert/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/libreoffice?ts=${timestamp}`;
+>>>>>>> develop
     return this.http.get(request, { responseType: 'blob' }).pipe(
       catchError(error => {
         console.error('Error al obtener el PDF:', error);
@@ -66,6 +78,11 @@ export class UsuarioService {
       })
     );
   }
+<<<<<<< HEAD
 
 
+=======
+  
+  
+>>>>>>> develop
 }

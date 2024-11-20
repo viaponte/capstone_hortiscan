@@ -3,3 +3,29 @@
   font-size: 15px;
   padding-top: 12px;
 }
+
+ion-input {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-form {
+  position: relative; /* Permite posicionar elementos hijos relativamente */
+}
+
+ion-input {
+  width: 100%; 
+  padding-right: 45px; /* Asegura espacio para el ícono */
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+ion-icon {
+  position: absolute;
+  right: 10px; /* Ajusta el ícono a la derecha */
+  top: 50%;
+  transform: translateY(-50%); /* Centra verticalmente */
+  font-size: 20px;
+  color: #007bff;
+  cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+  z-index: 10; /* Asegura que el ícono esté por encima de otros elementos */
+  pointer-events: auto; /* Permite la interacción con el ícono */
+}

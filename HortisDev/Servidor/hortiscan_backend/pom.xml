@@ -16,7 +16,9 @@
   <description>Demo project for Spring Boot</description>
 
   <properties>
-    <java.version>22</java.version>
+    <java.version>21</java.version>
+    <sonar.organization>viaponte</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <dependencyManagement>
@@ -41,6 +43,7 @@
   </dependencyManagement>
 
   <dependencies>
+  
     <!-- Dependencias necesarias -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

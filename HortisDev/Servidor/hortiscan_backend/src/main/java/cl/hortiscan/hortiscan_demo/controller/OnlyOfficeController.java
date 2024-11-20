@@ -71,8 +71,16 @@ public class OnlyOfficeController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
       }
 
+<<<<<<< HEAD
       // Se genera la clave única
       String documentKey = this.generateDocumentKey(username, nombreCarpeta, fileName);
+=======
+      // Obtener el tiempo de última modificación del archivo
+      long fileLastModified = file.lastModified();
+
+      // Se genera la clave única
+      String documentKey = this.generateDocumentKey(username, nombreCarpeta, fileName, fileLastModified);
+>>>>>>> develop
 
       OnlyOfficeConfig config = new OnlyOfficeConfig();
       config.setDocumentType("text");
@@ -185,6 +193,12 @@ public class OnlyOfficeController {
       String authorizationHeader = request.getHeader("Authorization");
       String token = null;
 
+<<<<<<< HEAD
+=======
+      // Obtener la ruta original del archivo
+      Integer idUsuario = usuarioService.findIdByUsername(username);
+
+>>>>>>> develop
       if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
         token = authorizationHeader.substring(7);
       } else {
@@ -203,9 +217,12 @@ public class OnlyOfficeController {
       if (status == 2 || status == 3 || status == 6 || status == 7) {
         String downloadUri = (String) body.get("url");
 
+<<<<<<< HEAD
         // Obtener la ruta original del archivo
         Integer idUsuario = usuarioService.findIdByUsername(username);
 
+=======
+>>>>>>> develop
         // Construir la ruta del archivo
         String filePath = this.ROOT_DIRECTORY + "\\usuario_" + idUsuario + "\\" + nombreCarpeta + "\\" + fileName;
 
@@ -218,6 +235,18 @@ public class OnlyOfficeController {
         Files.write(path, fileBytes);
       }
 
+<<<<<<< HEAD
+=======
+      // Después de guardar el archivo, verificar que existe y obtener su tiempo de última modificación
+      Path filePath = Paths.get(this.ROOT_DIRECTORY + "\\usuario_" + idUsuario + "\\" + nombreCarpeta + "\\" + fileName);
+      if (Files.exists(filePath)) {
+          long lastModified = Files.getLastModifiedTime(filePath).toMillis();
+          System.out.println("Archivo guardado. Última modificación: " + lastModified);
+      } else {
+          System.out.println("El archivo no se encontró después de guardar.");
+      }
+
+>>>>>>> develop
       Map<String, Object> response = new HashMap<>();
       response.put("error", 0);
 
@@ -231,6 +260,33 @@ public class OnlyOfficeController {
     }
   }
 
+<<<<<<< HEAD
+=======
+  @GetMapping("/lastModified/{username}/{nombreCarpeta}/{fileName}")
+    public ResponseEntity<Map<String, Object>> getFileLastModified(
+        @PathVariable String username,
+        @PathVariable String nombreCarpeta,
+        @PathVariable String fileName) {
+        try {
+            Integer idUsuario = usuarioService.findIdByUsername(username);
+            String filePath = this.ROOT_DIRECTORY + "\\usuario_" + idUsuario + "\\" + nombreCarpeta + "\\" + fileName;
+            File file = new File(filePath);
+            if (!file.exists()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            long lastModified = file.lastModified();
+            Map<String, Object> response = new HashMap<>();
+            response.put("lastModified", lastModified);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+>>>>>>> develop
   // Método para obtener la extensión del archivo
   private String getFileExtension(String fileName) {
     int dotIndex = fileName.lastIndexOf('.');
@@ -241,7 +297,15 @@ public class OnlyOfficeController {
   }
 
   // Método para generar clave única
+<<<<<<< HEAD
   private String generateDocumentKey(String username, String nombreCarpeta, String fileName) {
     return UUID.nameUUIDFromBytes((username + "_" + nombreCarpeta + "_" + fileName).getBytes()).toString();
   }
+=======
+  private String generateDocumentKey(String username, String nombreCarpeta, String fileName, long fileLastModified) {
+    String keySource = username + "_" + nombreCarpeta + "_" + fileName + "_" + fileLastModified;
+    return UUID.nameUUIDFromBytes(keySource.getBytes()).toString();
+  }
+
+>>>>>>> develop
 }

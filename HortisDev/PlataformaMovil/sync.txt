@@ -1,0 +1,1 @@
+npx cap sync && ionic cap build android

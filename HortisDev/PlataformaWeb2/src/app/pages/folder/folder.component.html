@@ -1,4 +1,5 @@
 <app-header></app-header>
+<<<<<<< HEAD
 <main>
   <div class="caja">
     <div class=" d-flex justify-content-between">
@@ -14,29 +15,58 @@
       data-bs-smooth-scroll="true"
       class="container-folder d-flex justify-content-start grid gap-3 container text-center scrollspy-example bg-body-tertiary p-3 rounded-2"
       tabindex="0">
+=======
+<app-carousel></app-carousel> <!-- Componente del carrusel -->
+
+<div class="centered-box">
+  <div class="header-section d-flex justify-content-between align-items-center">
+    <h2>IMÁGENES Y DOCUMENTOS</h2>
+    <button type="button" class="create-folder-button" (click)="goBack()">Atrás</button>
+  </div>
+  <hr />
+
+  <!-- Contenedor de archivos dentro de la carpeta -->
+  <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+    data-bs-smooth-scroll="true" class="folder-scroll">
+
+    <div class="container-folder d-flex flex-wrap gap-3 justify-content-center text-center p-3 rounded-2">
+      <!-- Verificar si no hay archivos y mostrar mensaje -->
+      <div *ngIf="contenidoCarpeta.length === 0" class="no-files-message">
+        <p>NO SE ENCONTRARON ARCHIVOS</p>
+      </div>
+
+>>>>>>> develop
       <div class="folders" *ngFor="let file of contenidoCarpeta">
-        <div class="col">
-          <a class="folder-link ">
-            <!-- Mostrar una miniatura si es una imagen -->
+        <div class="folder-card">
+          <a class="folder-link">
+
+            <!-- Previsualización de imagen -->
             <img
               *ngIf="file.endsWith('.jpg') || file.endsWith('.png') || file.endsWith('.jpeg') || file.endsWith('.gif')"
               class="folder-icon" [src]="getImagePath(file)" alt="{{ file }}" (click)="openModal(file)"
               data-bs-toggle="modal" data-bs-target="#imageModal" />
 
-            <!-- Mostrar un ícono si es un archivo de Word -->
+            <!-- Previsualización de archivo Word -->
             <i *ngIf="file.endsWith('.docx') || file.endsWith('.doc')" class="bi bi-file-earmark-word"
               style="font-size: 50px; color: #007bff;" (click)="openModal(file)" data-bs-toggle="modal"
               data-bs-target="#imageModal"></i>
 
+<<<<<<< HEAD
             <p>{{ file }}</p>
             <hr>
+=======
+            <p class="folder-name">{{ file }}</p>
+            <hr />
+>>>>>>> develop
             <button (click)="deleteImagen(file)" class="btn btn-danger">Eliminar</button>
           </a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<<<<<<< HEAD
   <!-- Modal para visualizar imágenes o archivos PDF -->
   <div class="modal fade" *ngFor="let file of contenidoCarpeta" id="imageModal" tabindex="-1"
     aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -56,10 +86,40 @@
           <!-- Mostrar el PDF si es un archivo Word -->
           <iframe *ngIf="selectedFileExtension === 'docx' || selectedFileExtension === 'doc'" [src]="selectedFile"
             width="100%" height="600px"></iframe>
+=======
+<!-- Modal para visualizar imágenes o archivos PDF -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">{{ selectedFileName }}</h5>
+        <button class="btn btn-primary" *ngIf="showEdit" (click)="editDocument(selectedFileName)">Editar</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Spinner mientras se carga el archivo -->
+        <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 400px;">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+>>>>>>> develop
         </div>
+
+        <!-- Previsualización de imagen -->
+        <img
+          *ngIf="!isLoading && (selectedFileExtension === 'jpg' || selectedFileExtension === 'png' || selectedFileExtension === 'jpeg' || selectedFileExtension === 'gif')"
+          [src]="selectedFile" class="img-fluid" alt="Imagen" />
+
+        <!-- Previsualización de archivo Word -->
+        <iframe *ngIf="!isLoading && (selectedFileExtension === 'docx' || selectedFileExtension === 'doc')"
+          [src]="selectedFile" width="100%" height="600px"></iframe>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 
 
 </main>
+=======
+</div>
+>>>>>>> develop

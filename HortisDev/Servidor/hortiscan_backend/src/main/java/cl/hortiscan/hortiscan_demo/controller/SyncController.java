@@ -33,8 +33,9 @@ public class SyncController {
   @PostMapping("/sync-carpetas-imagenes")
   public ResponseEntity<String> syncCarpetasEImagenes() {
     try {
-      // Sincronizar carpetas y sus imágenes
+      // Obtener todas las carpetas y formularios de la BD
       List<Carpeta> carpetasBD = carpetaService.getAllCarpetas();
+      List<Formulario> formulariosBD = formularioService.getAllFormularios();
 
       for (Carpeta carpeta : carpetasBD) {
         String carpetaPath = ROOT_DIRECTORY + File.separator + "usuario_" + carpeta.getIdUsuario().getIdUsuario()
@@ -42,79 +43,79 @@ public class SyncController {
         File carpetaLocal = new File(carpetaPath);
 
         if (!carpetaLocal.exists()) {
-          // Eliminar la carpeta de la BD si no existe en el sistema de archivos
+          // Regla: Si la carpeta no existe en local, eliminarla de la BD junto con su
+          // contenido
           carpetaService.deleteCarpeta(carpeta.getIdCarpeta());
-          System.out.println("Eliminada carpeta en BD: " + carpeta.getNombreCarpeta());
-        } else {
-          System.out.println("Carpeta existe");
+          System.out.println("Eliminada carpeta en BD y su contenido: " + carpeta.getNombreCarpeta());
+          continue;
+        }
 
-          // Sincronizar imágenes asociadas a la carpeta
-          List<Imagen> imagenesBD = imagenService.getImagenesByCarpeta(carpeta.getIdCarpeta());
-          for (Imagen imagen : imagenesBD) {
-            File imagenLocal = new File(imagen.getRutaAlmacenamiento());
-            if (!imagenLocal.exists()) {
-              // Si la imagen no existe, eliminarla de la BD
-              imagenService.deleteImage(imagen.getIdImagen());
-              System.out.println("Eliminada imagen de BD: " + imagen.getRutaAlmacenamiento());
-            }
+        System.out.println("Carpeta existe: " + carpeta.getNombreCarpeta());
+
+        // Regla: Sincronizar imágenes asociadas a la carpeta
+        List<Imagen> imagenesBD = imagenService.getImagenesByCarpeta(carpeta.getIdCarpeta());
+        for (Imagen imagen : imagenesBD) {
+          File imagenLocal = new File(imagen.getRutaAlmacenamiento());
+          if (imagenLocal.exists()) {
+            // Imagen en local y BD, no pasa nada
+            System.out.println("Imagen existente en local y BD: " + imagen.getRutaAlmacenamiento());
+          } else {
+            // Imagen en BD pero no en local, eliminar el registro de la BD
+            imagenService.deleteImage(imagen.getIdImagen());
+            System.out.println("Eliminada imagen de BD: " + imagen.getRutaAlmacenamiento());
           }
+        }
 
-          // Verificar si hay imágenes locales que no están en la BD
-          File[] archivosLocal = carpetaLocal
-              .listFiles((dir, name) -> name.toLowerCase().endsWith(".png") || name.toLowerCase().endsWith(".jpg"));
-          if (archivosLocal != null) {
-            for (File archivoLocal : archivosLocal) {
-              String rutaArchivoBD = carpetaPath + File.separator + archivoLocal.getName();
-              Imagen imagenBD = imagenService.findByRutaAlmacenamiento(rutaArchivoBD);
+        // Verificar si hay imágenes locales que no están en la BD
+        File[] archivosLocal = carpetaLocal
+            .listFiles((dir, name) -> name.toLowerCase().endsWith(".png") || name.toLowerCase().endsWith(".jpg"));
+        if (archivosLocal != null) {
+          for (File archivoLocal : archivosLocal) {
+            String rutaArchivoBD = carpetaPath + File.separator + archivoLocal.getName();
+            Imagen imagenBD = imagenService.findByRutaAlmacenamiento(rutaArchivoBD);
 
-              if (imagenBD == null) {
-                // Eliminar imagen del sistema si no está en la BD
-                archivoLocal.delete();
-                System.out.println("Imagen eliminada del sistema: " + archivoLocal.getName());
-              } else {
-                System.out.println("Imagen existente en BD: " + archivoLocal.getName());
-              }
+            if (imagenBD == null) {
+              // Imagen en local pero no en BD, eliminar del sistema local
+              archivoLocal.delete();
+              System.out.println("Imagen eliminada del sistema: " + archivoLocal.getName());
             }
           }
         }
-      }
 
-      // Ahora sincronizar formularios y sus imágenes asociadas
-      List<Formulario> formulariosBD = formularioService.getAllFormularios();
-      for (Formulario formulario : formulariosBD) {
-        String formularioPath = ROOT_DIRECTORY + File.separator + "usuario_" + formulario.getIdUsuario().getIdUsuario()
-            + File.separator + "formularios" + File.separator + formulario.getNombreFormulario();
-        File formularioLocal = new File(formularioPath);
-
-        if (!formularioLocal.exists()) {
-          // Si el formulario no existe en el sistema, eliminarlo de la BD
-          formularioService.deleteFormulario(formulario.getIdFormulario());
-          System.out.println("Eliminado formulario de BD: " + formulario.getNombreFormulario());
-        } else {
-          // Sincronizar las imágenes asociadas al formulario
-          List<Imagen> imagenesBD = formulario.getImagenes();
-          for (Imagen imagen : imagenesBD) {
-            File imagenLocal = new File(imagen.getRutaAlmacenamiento());
-            if (!imagenLocal.exists()) {
-              // Si la imagen no existe, eliminarla de la BD
-              imagenService.deleteImage(imagen.getIdImagen());
-              System.out.println("Eliminada imagen de BD asociada al formulario: " + imagen.getRutaAlmacenamiento());
-            }
+        // Regla: Sincronizar formularios dentro de la carpeta
+        for (Formulario formulario : formulariosBD) {
+          // Verificar si el formulario pertenece al usuario de la carpeta
+          if (!formulario.getIdUsuario().getIdUsuario().equals(carpeta.getIdUsuario().getIdUsuario())) {
+            continue;
           }
 
-          // Verificar si hay imágenes locales que no están en la BD
-          File[] archivosLocal = formularioLocal
-              .listFiles((dir, name) -> name.toLowerCase().endsWith(".png") || name.toLowerCase().endsWith(".jpg"));
-          if (archivosLocal != null) {
-            for (File archivoLocal : archivosLocal) {
-              String rutaArchivoBD = formularioPath + File.separator + archivoLocal.getName();
-              Imagen imagenBD = imagenService.findByRutaAlmacenamiento(rutaArchivoBD);
+          // Construir la ruta completa del formulario dentro de la carpeta
+          String formularioPath = carpetaPath + File.separator + formulario.getNombreFormulario();
+          File formularioLocal = new File(formularioPath);
 
-              if (imagenBD == null) {
-                // Eliminar imagen del sistema si no está en la BD
-                archivoLocal.delete();
-                System.out.println("Imagen eliminada del sistema: " + archivoLocal.getName());
-              }
+          if (formularioLocal.exists()) {
+            // Formulario en local y BD, no pasa nada
+            System.out.println("Formulario existente en local y BD: " + formulario.getNombreFormulario());
+          } else {
+            // Formulario en BD pero no en local, eliminar el registro de la BD
+            formularioService.deleteFormulario(formulario.getIdFormulario());
+            System.out.println("Formulario eliminado de BD: " + formulario.getNombreFormulario());
+          }
+        }
+
+        // Verificar formularios locales que no están en la BD
+        File[] formulariosLocales = carpetaLocal.listFiles((dir, name) -> name.toLowerCase().endsWith(".docx"));
+        if (formulariosLocales != null) {
+          for (File formularioLocal : formulariosLocales) {
+            String rutaFormularioBD = carpetaPath + File.separator + formularioLocal.getName();
+            boolean formularioExisteEnBD = formulariosBD.stream()
+                .anyMatch(formulario -> formulario.getNombreFormulario().equals(formularioLocal.getName())
+                    && formulario.getIdUsuario().getIdUsuario().equals(carpeta.getIdUsuario().getIdUsuario()));
+
+            if (!formularioExisteEnBD) {
+              // Formulario en local pero no en BD, eliminar del sistema local
+              formularioLocal.delete();
+              System.out.println("Formulario eliminado del sistema local: " + formularioLocal.getName());
             }
           }
         }
@@ -126,5 +127,4 @@ public class SyncController {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error durante la sincronización");
     }
   }
-
 }
