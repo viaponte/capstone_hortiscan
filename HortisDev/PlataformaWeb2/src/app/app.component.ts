@@ -7,12 +7,11 @@ import { AuthService } from './services/authservice/authservice.service';
 import { HeaderComponent } from './shared/common/header/header.component';
 import { FooterComponent } from './shared/common/footer/footer.component';
 import { SyncService } from './services/syncservice/sync.service';
-import { SpinnerComponent } from "./shared/common/spinner/spinner.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, HttpClientModule, SpinnerComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, HttpClientModule],
   providers: [
   ],
   templateUrl: './app.component.html',
@@ -52,7 +51,9 @@ export class AppComponent implements OnInit {
       console.error('Error desde app.component.ts: ', error);
     }
     // Redirige al menú si el usuario ya está autenticado
-    if (!this.authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/menu']);  // Asegúrate de que esta ruta esté definida
+    } else {
       this.router.navigate(['/login'])
     }
   }

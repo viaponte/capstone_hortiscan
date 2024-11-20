@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.CacheControl;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -45,24 +44,6 @@ public class ConversionController {
         return ResponseEntity.status(404).body(null); // Archivo no encontrado
       }
 
-      // Esperar hasta que el archivo sea actualizado (hasta un tiempo máximo)
-      int maxWaitTime = 5000; // Tiempo máximo de espera en milisegundos
-      int waitedTime = 0;
-      int waitInterval = 500; // Intervalo de espera entre comprobaciones
-
-      while (waitedTime < maxWaitTime) {
-        long lastModified = Files.getLastModifiedTime(wordFilePath).toMillis();
-        long currentTime = System.currentTimeMillis();
-
-        if (currentTime - lastModified < 1000) { // Si el archivo fue modificado en el último segundo
-          break;
-        } else {
-          // Esperar y volver a comprobar
-          Thread.sleep(waitInterval);
-          waitedTime += waitInterval;
-        }
-      }
-
       ByteArrayOutputStream pdfOutputStream = new ByteArrayOutputStream();
       try (InputStream wordInputStream = Files.newInputStream(wordFilePath)) {
         wordToPdfLibreOfficeService.convertWordToPdf(wordInputStream, pdfOutputStream);
@@ -73,9 +54,6 @@ public class ConversionController {
       headers.setContentType(MediaType.APPLICATION_PDF);
       headers.setContentDisposition(
           ContentDisposition.inline().filename(fileName.replaceAll("\\.docx?$", ".pdf")).build());
-      headers.setCacheControl(CacheControl.noCache().mustRevalidate());
-      headers.setPragma("no-cache");
-      headers.setExpires(0);
 
       return ResponseEntity
           .ok()
@@ -88,5 +66,4 @@ public class ConversionController {
           .body(null);
     }
   }
-
 }

@@ -57,8 +57,8 @@ export class UsuarioService {
   }
 
   // Método para obtener el PDF de un archivo Word
-  getPdfPath(nombreCarpeta: string, fileName: string, timestamp: number): Observable<Blob> {
-    const request = `${apiUrl}/api/convert/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/libreoffice?ts=${timestamp}`;
+  getPdfPath(nombreCarpeta: string, fileName: string): Observable<Blob> {
+    const request = `${apiUrl}/api/convert/${this.username}/carpeta/${nombreCarpeta}/archivo/${fileName}/libreoffice`;
     return this.http.get(request, { responseType: 'blob' }).pipe(
       catchError(error => {
         console.error('Error al obtener el PDF:', error);
@@ -66,6 +66,6 @@ export class UsuarioService {
       })
     );
   }
-  
-  
+
+
 }
