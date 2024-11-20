@@ -6,7 +6,6 @@ import { map, catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/authservice/authservice.service';
 import { ReloadService } from 'src/app/services/reloadservice/reload.service';
 import { UsuarioService } from 'src/app/services/usuarioservice/usuario.service';
-import { OcrService } from '../../services/ocrservice/ocr.service';
 import { HttpClient } from '@angular/common/http';
 import { DocumentScanner, ScanDocumentResponseStatus } from 'capacitor-document-scanner';
 import { Capacitor } from '@capacitor/core';
@@ -30,7 +29,6 @@ export class FolderContentPage implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private ocrService: OcrService,
     private route: ActivatedRoute,
     private navCtrl: NavController,
     private usuarioService: UsuarioService,
@@ -55,32 +53,18 @@ export class FolderContentPage implements OnInit {
     });
   }
 
-
- 
-  
-
   // Método para cargar las imágenes en miniatura
   loadImages() {
     const imageObservables = this.contenidoCarpeta.map(file =>
       this.usuarioService.getImagePath(this.folderName, file).pipe(
-        map((imageBlob) => {
-          // Convertir el Blob en una URL antes de almacenarlo
-          const imageUrl = URL.createObjectURL(imageBlob);
-          return { fileName: file, imageUrl };
-        }),
-        catchError(error => {
-          console.error(`Error al cargar la imagen ${file}:`, error);
-          return throwError(() => error);
-        })
+        map(imageUrl => ({ fileName: file, imageUrl }))
       )
     );
 
     forkJoin(imageObservables).subscribe(images => {
       images.forEach(img => {
-        this.imagenesMap[img.fileName] = img.imageUrl; // Guardamos la URL en lugar del Blob
+        this.imagenesMap[img.fileName] = img.imageUrl;
       });
-    }, error => {
-      console.error('Error al cargar las imágenes:', error);
     });
   }
 
@@ -88,7 +72,6 @@ export class FolderContentPage implements OnInit {
   openModal(file: string): void {
     this.selectedFile = this.imagenesMap[file];
   }
-
 
   async scanDocument() {
     try {
@@ -158,7 +141,7 @@ export class FolderContentPage implements OnInit {
       alert('Error al escanear documento: ' + error);
     }
   }
-
+  
   // Método para subir la imagen al backend
   private async uploadImageToBackend(file: File) {
     try {

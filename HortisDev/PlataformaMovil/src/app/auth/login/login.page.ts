@@ -49,9 +49,13 @@ export class LoginPage {
 
   normalizeUsername(event: Event) {
     const input = event.target as HTMLInputElement;
-    input.value = input.value.toLowerCase().replace(/[^a-z]/g, ''); // Solo caracteres a-z
-    this.username = input.value;
+    let value = input.value.toLowerCase().replace(/[^a-z]/g, ''); // Solo caracteres a-z
+    if (value.length > 10) {
+      value = value.substring(0, 10); // Limitar a 10 caracteres
+    }
+    this.username = value;
   }
+  
 
   validatePasswordInput(event: Event) {
     const input = event.target as HTMLInputElement;

@@ -32,7 +32,7 @@
             {{ notificacion.mensajeNotificacion }} <br>
             <small>{{ notificacion.fechaNotificacion | date:'dd, MMMM yyyy, HH:mm' }}</small>
           </ion-label>
-          <ion-button (click)="eliminarNotificacion(notificacion.idNotificacion)">Eliminar</ion-button>
+          <ion-button class="button-noti" (click)="eliminarNotificacion(notificacion.idNotificacion)">Eliminar</ion-button>
         </ion-item>
       </ion-list>
     </ion-content>

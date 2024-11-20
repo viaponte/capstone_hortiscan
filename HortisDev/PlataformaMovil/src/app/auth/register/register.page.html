@@ -8,55 +8,82 @@
         <ion-text>Nombre de Usuario</ion-text>
       </div>
       <div class="input-form">
-        <ion-input class="input-font" type="text" id="username" name="username" formControlName="username" required
-          [ngClass]="{
-            'is-invalid': newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched
-          }"></ion-input>
-      </div>
-      <div class="text-danger">
-        <ion-text color="danger" *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched">El
-          nombre de usuario es requerido</ion-text>
-      </div>
-
-      <!-- <div class="title-input"><ion-text>Correo Electrico</ion-text></div>
-      <div class="input-form">
-        <ion-input type="email" formControlName="email" required [ngClass]="{
-              'is-invalid': newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched
-            }">
+        <ion-input class="input-font" type="text" id="username" name="username" formControlName="username"
+          (input)="normalizeUsername($event)" minlength="5" maxlength="10" required [ngClass]="{
+      'is-invalid': newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched
+    }">
         </ion-input>
       </div>
-      <div class="text-danger" *ngIf="newUserForm.get('email')?.invalid && newUserForm.get('email')?.touched">
-        <ion-text *ngIf="newUserForm.get('email')?.errors?.['required']" class="error-text">El correo electrónico es
-          requerido</ion-text>
-        <ion-text *ngIf="newUserForm.get('email')?.errors?.['email']" class="error-text">El formato del correo no es
-          válido</ion-text>
-      </div> -->
+      <div class="text-danger">
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('username')?.hasError('required') && newUserForm.get('username')?.touched">
+          El nombre de usuario es requerido
+        </ion-text>
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('username')?.hasError('minlength') && newUserForm.get('username')?.touched">
+          El nombre de usuario debe tener al menos 5 caracteres
+        </ion-text>
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('username')?.hasError('maxlength') && newUserForm.get('username')?.touched">
+          El nombre de usuario no puede exceder 10 caracteres
+        </ion-text>
+      </div>
 
       <!-- Campo de Contraseña -->
       <div class="title-input">
         <ion-text>Contraseña</ion-text>
       </div>
       <div class="input-form">
-        <ion-input class="input-font" type="password" id="password" name="password" formControlName="password" required
-          [ngClass]="{
-            'is-invalid': newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched
-          }"></ion-input>
+        <ion-input class="input-font" [type]="isPasswordVisible ? 'text' : 'password'" id="password" name="password"
+          formControlName="password" minlength="5" maxlength="10" required [ngClass]="{
+      'is-invalid': newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched
+    }">
+        </ion-input>
+        <ion-icon [name]="isPasswordVisible ? 'eye-off' : 'eye'" (click)="togglePasswordVisibility()"></ion-icon>
+      </div>
+      <div class="text-danger">
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('password')?.hasError('required') && newUserForm.get('password')?.touched">
+          La contraseña es requerida
+        </ion-text>
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('password')?.hasError('minlength') && newUserForm.get('password')?.touched">
+          La contraseña debe tener al menos 5 caracteres
+        </ion-text>
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('password')?.hasError('maxlength') && newUserForm.get('password')?.touched">
+          La contraseña no puede exceder 10 caracteres
+        </ion-text>
       </div>
 
       <!-- Campo de Confirmar Contraseña -->
       <div class="title-input">
-        <ion-text>Confirmar contraseña</ion-text>
+        <ion-text>Confirmar Contraseña</ion-text>
       </div>
       <div class="input-form">
-        <ion-input class="input-font" type="password" formControlName="confirmPassword" [ngClass]="{
-              'is-invalid': newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched
-            }"></ion-input>
+        <ion-input class="input-font" [type]="isConfirmPasswordVisible ? 'text' : 'password'" id="confirmPassword"
+          name="confirmPassword" formControlName="confirmPassword" minlength="5" maxlength="10" required [ngClass]="{
+      'is-invalid': newUserForm.get('confirmPassword')?.invalid && newUserForm.get('confirmPassword')?.touched
+    }">
+        </ion-input>
+        <ion-icon [name]="isConfirmPasswordVisible ? 'eye-off' : 'eye'"
+          (click)="toggleConfirmPasswordVisibility()"></ion-icon>
       </div>
       <div class="text-danger">
         <ion-text color="danger"
-          *ngIf="newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched">Las
-          contraseñas no coinciden</ion-text>
+          *ngIf="newUserForm.get('confirmPassword')?.hasError('required') && newUserForm.get('confirmPassword')?.touched">
+          Confirmar contraseña es requerido
+        </ion-text>
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('confirmPassword')?.hasError('minlength') && newUserForm.get('confirmPassword')?.touched">
+          Confirmar contraseña debe tener al menos 5 caracteres
+        </ion-text>
+        <ion-text color="danger"
+          *ngIf="newUserForm.get('confirmPassword')?.hasError('maxlength') && newUserForm.get('confirmPassword')?.touched">
+          Confirmar contraseña no puede exceder 10 caracteres
+        </ion-text>
       </div>
+
       <div>
         <p class="error-text"></p>
       </div>
