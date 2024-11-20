@@ -5,7 +5,7 @@ from docx import Document
 from argparse import ArgumentParser
 
 # Configurar credenciales de Google Vision
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'src/scripts/decisive-window-440821-u1-5647a7e60c65.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'src/scripts/decisive-window-440821-u1-d5ac7bf5e7a4.json'
 
 # Crear cliente de Vision
 client = vision.ImageAnnotatorClient()
