@@ -13,7 +13,7 @@
     "update-ip": "bash src/environments/update-ip.sh",
     "build-ip": "npm run update-ip && ionic build",
     "build-android": "npm run update-ip && ionic capacitor build android",
-    "build-prod": "npm run update-ip && ionic build --prod"
+    "build-prod": "ionic build --prod && npx cap sync && ionic cap build android"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +26,7 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@capacitor-community/file-opener": "^1.0.5",
-    "@capacitor/android": "^5.7.8",
+    "@capacitor/android": "5.7.8",
     "@capacitor/app": "^5.0.8",
     "@capacitor/camera": "^5.0.10",
     "@capacitor/cli": "^5.7.8",

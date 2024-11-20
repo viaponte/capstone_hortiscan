@@ -15,12 +15,16 @@
           name="username" 
           [(ngModel)]="username" 
           required
+          minlength="5" 
+          maxlength="10"
           #usernameInput="ngModel"
           (input)="normalizeUsername($event)" />
 
         <!-- Mensaje de error de validación -->
         <div class="text-danger" *ngIf="usernameInput.invalid && usernameInput.touched">
-          El nombre de usuario es requerido.
+          <span *ngIf="usernameInput.errors?.['required']">El nombre de usuario es requerido.</span>
+          <span *ngIf="usernameInput.errors?.['minlength']">Debe tener al menos 5 caracteres.</span>
+          <span *ngIf="usernameInput.errors?.['maxlength']">Debe tener como máximo 10 caracteres.</span>
         </div>
 
         <!-- Input de Contraseña -->
