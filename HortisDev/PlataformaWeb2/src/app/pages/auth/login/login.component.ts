@@ -17,8 +17,8 @@ import { CarouselComponent } from "../../../shared/common/carousel/carousel.comp
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = 'lucas'; 
-  password: string = 'lucas';
+  username: string = ''; 
+  password: string = '';
   isPasswordVisible: boolean = false;  // Variable para controlar la visibilidad de la contraseña
 
   constructor(private router: Router, private authService: AuthService, private syncService: SyncService) {}

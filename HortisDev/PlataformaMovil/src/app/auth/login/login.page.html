@@ -16,7 +16,7 @@
         [(ngModel)]="username" 
         required 
         minlength="5" 
-        maxlength="10"
+        maxlength="32"
         #usernameInput="ngModel" 
         (input)="normalizeUsername($event)">
       </ion-input>
@@ -26,7 +26,7 @@
         <ion-text color="danger" *ngIf="usernameInput.invalid && usernameInput.touched">
           <span *ngIf="usernameInput.errors?.['required']">El nombre de usuario es requerido.</span>
           <span *ngIf="usernameInput.errors?.['minlength']">Debe tener al menos 5 caracteres.</span>
-          <span *ngIf="usernameInput.errors?.['maxlength']">Debe tener como máximo 10 caracteres.</span>
+          <span *ngIf="usernameInput.errors?.['maxlength']">Debe tener como máximo 32 caracteres.</span>
         </ion-text>
         
       </div>
@@ -41,8 +41,8 @@
           name="password" 
           [(ngModel)]="password" 
           required 
-          minlength="5" 
-          maxlength="10"
+          minlength="7" 
+          maxlength="32"
           #passwordInput="ngModel"
           (input)="validatePasswordInput($event)" 
           (paste)="preventInvalidPaste($event)">
@@ -56,8 +56,8 @@
       <div class="text-danger">
         <ion-text color="danger" *ngIf="passwordInput.invalid && passwordInput.touched">
           <span *ngIf="passwordInput.errors?.['required']">La contraseña es requerida.</span>
-          <span *ngIf="passwordInput.errors?.['minlength']">Debe tener al menos 5 caracteres.</span>
-          <span *ngIf="passwordInput.errors?.['maxlength']">Debe tener como máximo 10 caracteres.</span>
+          <span *ngIf="passwordInput.errors?.['minlength']">Debe tener al menos 7 caracteres.</span>
+          <span *ngIf="passwordInput.errors?.['maxlength']">Debe tener como máximo 32 caracteres.</span>
         </ion-text>
       </div>
       <ion-button expand="block" type="submit" class="design-button" [disabled]="loginForm.invalid">Entrar</ion-button>

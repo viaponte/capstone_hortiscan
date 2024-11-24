@@ -18,10 +18,10 @@ export class RegisterComponent {
   isConfirmPasswordVisible: boolean = false; // Visibilidad de confirmar contraseña
 
   newUserForm = new FormGroup({
-    username: new FormControl('newuser2', Validators.required),
+    username: new FormControl('', Validators.required),
       // email: new FormControl('', Validators.required),
-    password: new FormControl('newuser2', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('newuser2', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    confirmPassword: new FormControl('', Validators.required),
   }, { validators: this.passwordsMatchValidator() });
 
   constructor(private router: Router, private authService: AuthService) { }

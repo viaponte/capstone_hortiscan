@@ -17,12 +17,25 @@
             formControlName="username"
             (input)="normalizeUsername($event)"
             required
+            minlength="7" 
+            maxlength="32"
             [ngClass]="{
               'is-invalid': newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched
             }"
           />
-          <div class="text-danger" *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched">
-            <strong>El nombre de usuario es requerido</strong>
+          <div class="text-danger">
+            <span color="danger"
+              *ngIf="newUserForm.get('username')?.hasError('required') && newUserForm.get('username')?.touched">
+              El nombre de usuario es requerido
+            </span>
+            <span color="danger"
+              *ngIf="newUserForm.get('username')?.hasError('minlength') && newUserForm.get('username')?.touched">
+              El nombre de usuario debe tener al menos 7 caracteres
+            </span>
+            <span color="danger"
+              *ngIf="newUserForm.get('username')?.hasError('maxlength') && newUserForm.get('username')?.touched">
+              El nombre de usuario no puede exceder 32 caracteres
+            </span>
           </div>
         </div>
 
@@ -37,6 +50,8 @@
             (keydown)="validatePassword($event)"
             (paste)="preventInvalidPaste($event)"
             required
+            minlength="7" 
+            maxlength="32"
             [ngClass]="{
               'is-invalid': newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched
             }"
@@ -46,6 +61,20 @@
              [class.fa-eye]="!isPasswordVisible" 
              [class.fa-eye-slash]="isPasswordVisible" 
              (click)="togglePasswordVisibility()"></i>
+        </div>
+        <div class="text-danger">
+          <span color="danger"
+            *ngIf="newUserForm.get('password')?.hasError('required') && newUserForm.get('password')?.touched">
+            La contraseña es requerida
+          </span>
+          <span color="danger"
+            *ngIf="newUserForm.get('password')?.hasError('minlength') && newUserForm.get('password')?.touched">
+            La contraseña debe tener al menos 7 caracteres
+          </span>
+          <span color="danger"
+            *ngIf="newUserForm.get('password')?.hasError('maxlength') && newUserForm.get('password')?.touched">
+            La contraseña no puede exceder 32 caracteres
+          </span>
         </div>
 
         <!-- Campo de Confirmar Contraseña -->
@@ -59,6 +88,8 @@
             (keydown)="validatePassword($event)"
             (paste)="preventInvalidPaste($event)"
             required
+            minlength="7" 
+            maxlength="32"
             [ngClass]="{
               'is-invalid': newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched
             }"
@@ -68,6 +99,20 @@
              [class.fa-eye]="!isConfirmPasswordVisible" 
              [class.fa-eye-slash]="isConfirmPasswordVisible" 
              (click)="toggleConfirmPasswordVisibility()"></i>
+        </div>
+        <div class="text-danger">
+          <span color="danger"
+            *ngIf="newUserForm.get('confirmPassword')?.hasError('required') && newUserForm.get('confirmPassword')?.touched">
+            Confirmar contraseña es requerido
+          </span>
+          <span color="danger"
+            *ngIf="newUserForm.get('confirmPassword')?.hasError('minlength') && newUserForm.get('confirmPassword')?.touched">
+            Confirmar contraseña debe tener al menos 7 caracteres
+          </span>
+          <span color="danger"
+            *ngIf="newUserForm.get('confirmPassword')?.hasError('maxlength') && newUserForm.get('confirmPassword')?.touched">
+            Confirmar contraseña no puede exceder 32 caracteres
+          </span>
         </div>
         <div class="text-danger" *ngIf="newUserForm.hasError('passwordsMismatch') && newUserForm.get('confirmPassword')?.touched">
           <strong>Las contraseñas no coinciden</strong>

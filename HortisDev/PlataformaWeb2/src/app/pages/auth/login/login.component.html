@@ -16,7 +16,7 @@
           [(ngModel)]="username" 
           required
           minlength="5" 
-          maxlength="10"
+          maxlength="32"
           #usernameInput="ngModel"
           (input)="normalizeUsername($event)" />
 
@@ -36,6 +36,8 @@
             name="password" 
             [(ngModel)]="password" 
             required
+            minlength="7" 
+            maxlength="32"
             #passwordInput="ngModel"
             (keydown)="validatePassword($event)"
             (paste)="preventInvalidPaste($event)" />
@@ -47,9 +49,10 @@
              (click)="togglePasswordVisibility()"></i>
         </div>
 
-        <!-- Mensaje de error de validación -->
         <div class="text-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
-          La contraseña es requerida.
+          <span *ngIf="passwordInput.errors?.['required']">La contraseña es requerida.</span>
+          <span *ngIf="passwordInput.errors?.['minlength']">Debe tener al menos 7 caracteres.</span>
+          <span *ngIf="passwordInput.errors?.['maxlength']">Debe tener como máximo 32 caracteres..</span>
         </div>
 
         <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
