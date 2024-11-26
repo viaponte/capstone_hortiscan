@@ -16,8 +16,8 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  username: string = 'lucas';
-  password: string = 'lucas';
+  username: string = 'usuariociren';
+  password: string = 'usuariociren';
   isPasswordVisible: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
@@ -51,7 +51,7 @@ export class LoginPage {
     const input = event.target as HTMLInputElement;
     let value = input.value.toLowerCase().replace(/[^a-z]/g, ''); // Solo caracteres a-z
     if (value.length > 10) {
-      value = value.substring(0, 10); // Limitar a 10 caracteres
+      value = value.substring(0, 32); // Limitar a 10 caracteres
     }
     this.username = value;
   }

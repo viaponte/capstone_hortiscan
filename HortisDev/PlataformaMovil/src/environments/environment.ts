@@ -6,8 +6,8 @@ import { ipLocal } from "./ip-config";
 
 export const environment = {
   production: false,
-  // apiUrl: `http://${ ipLocal }:8080`
-  apiUrl: `https://nest-scroll-beneficial-montreal.trycloudflare.com`
+  apiUrl: `http://${ ipLocal }:8080`
+  // apiUrl: `https://nest-scroll-beneficial-montreal.trycloudflare.com`
 };
 
 /*
