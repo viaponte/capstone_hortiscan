@@ -1,0 +1,1000 @@
+Prueba 1: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 2: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 3: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 4: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 5: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 6: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 7: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 8: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 9: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 10: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 11: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 12: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 13: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 14: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 15: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 16: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 17: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 18: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 19: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 20: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 21: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 22: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 23: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 24: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 25: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 26: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 27: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 28: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 29: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 30: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 31: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 32: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 33: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 34: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 35: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 36: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 37: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 38: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 39: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 40: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 41: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 42: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 43: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 44: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 45: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 46: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 47: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 48: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 49: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 50: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 51: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 52: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 53: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 54: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 55: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 56: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 57: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 58: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 59: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 60: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 61: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 62: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 63: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 64: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 65: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 66: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 67: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 68: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 69: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 70: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 71: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 72: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 73: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 74: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 75: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 76: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 77: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 78: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 79: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 80: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 81: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 82: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 83: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 84: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 85: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 86: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 87: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 88: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 89: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 90: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 91: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 92: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 93: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 94: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 95: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 96: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 97: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 98: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 99: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 100: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 101: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 102: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 103: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 104: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 105: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 106: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 107: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 108: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 109: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 110: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 111: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 112: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 113: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 114: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 115: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 116: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 117: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 118: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 119: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 120: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 121: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 122: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 123: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 124: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 125: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 126: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 127: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 128: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 129: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 130: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 131: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 132: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 133: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 134: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 135: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 136: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 137: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 138: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 139: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 140: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 141: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 142: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 143: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 144: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 145: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 146: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 147: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 148: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 149: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 150: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 151: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 152: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 153: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 154: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 155: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 156: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 157: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 158: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 159: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 160: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 161: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 162: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 163: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 164: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 165: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 166: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 167: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 168: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 169: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 170: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 171: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 172: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 173: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 174: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 175: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 176: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 177: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 178: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 179: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 180: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 181: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 182: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 183: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 184: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 185: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 186: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 187: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 188: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 189: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 190: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 191: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 192: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 193: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 194: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 195: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 196: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 197: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 198: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 199: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 200: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 201: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 202: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 203: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 204: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 205: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 206: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 207: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 208: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 209: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 210: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 211: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 212: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 213: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 214: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 215: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 216: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 217: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 218: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 219: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 220: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 221: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 222: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 223: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 224: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 225: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 226: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 227: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 228: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 229: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 230: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 231: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 232: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 233: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 234: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 235: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 236: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 237: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 238: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 239: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 240: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 241: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 242: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 243: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 244: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 245: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 246: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 247: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 248: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 249: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 250: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 251: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 252: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 253: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 254: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 255: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 256: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 257: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 258: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 259: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 260: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 261: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 262: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 263: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 264: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 265: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 266: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 267: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 268: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 269: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 270: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 271: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 272: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 273: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 274: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 275: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 276: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 277: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 278: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 279: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 280: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 281: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 282: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 283: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 284: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 285: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 286: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 287: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 288: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 289: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 290: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 291: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 292: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 293: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 294: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 295: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 296: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 297: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 298: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 299: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 300: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 301: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 302: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 303: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 304: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 305: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 306: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 307: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 308: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 309: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 310: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 311: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 312: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 313: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 314: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 315: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 316: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 317: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 318: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 319: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 320: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 321: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 322: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 323: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 324: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 325: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 326: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 327: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 328: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 329: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 330: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 331: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 332: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 333: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 334: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 335: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 336: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 337: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 338: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 339: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 340: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 341: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 342: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 343: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 344: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 345: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 346: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 347: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 348: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 349: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 350: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 351: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 352: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 353: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 354: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 355: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 356: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 357: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 358: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 359: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 360: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 361: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 362: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 363: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 364: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 365: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 366: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 367: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 368: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 369: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 370: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 371: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 372: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 373: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 374: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 375: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 376: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 377: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 378: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 379: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 380: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 381: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 382: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 383: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 384: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 385: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 386: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 387: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 388: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 389: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 390: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 391: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 392: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 393: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 394: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 395: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 396: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 397: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 398: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 399: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 400: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 401: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 402: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 403: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 404: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 405: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 406: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 407: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 408: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 409: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 410: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 411: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 412: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 413: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 414: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 415: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 416: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 417: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 418: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 419: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 420: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 421: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 422: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 423: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 424: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 425: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 426: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 427: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 428: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 429: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 430: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 431: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 432: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 433: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 434: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 435: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 436: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 437: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 438: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 439: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 440: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 441: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 442: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 443: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 444: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 445: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 446: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 447: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 448: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 449: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 450: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 451: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 452: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 453: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 454: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 455: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 456: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 457: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 458: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 459: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 460: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 461: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 462: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 463: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 464: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 465: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 466: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 467: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 468: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 469: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 470: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 471: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 472: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 473: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 474: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 475: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 476: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 477: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 478: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 479: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 480: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 481: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 482: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 483: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 484: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 485: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 486: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 487: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 488: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 489: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 490: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 491: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 492: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 493: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 494: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 495: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 496: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 497: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 498: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 499: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 500: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 501: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 502: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 503: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 504: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 505: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 506: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 507: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 508: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 509: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 510: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 511: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 512: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 513: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 514: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 515: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 516: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 517: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 518: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 519: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 520: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 521: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 522: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 523: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 524: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 525: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 526: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 527: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 528: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 529: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 530: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 531: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 532: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 533: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 534: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 535: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 536: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 537: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 538: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 539: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 540: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 541: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 542: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 543: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 544: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 545: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 546: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 547: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 548: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 549: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 550: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 551: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 552: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 553: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 554: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 555: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 556: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 557: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 558: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 559: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 560: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 561: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 562: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 563: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 564: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 565: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 566: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 567: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 568: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 569: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 570: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 571: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 572: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 573: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 574: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 575: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 576: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 577: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 578: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 579: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 580: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 581: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 582: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 583: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 584: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 585: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 586: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 587: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 588: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 589: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 590: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 591: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 592: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 593: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 594: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 595: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 596: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 597: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 598: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 599: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 600: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 601: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 602: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 603: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 604: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 605: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 606: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 607: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 608: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 609: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 610: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 611: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 612: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 613: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 614: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 615: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 616: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 617: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 618: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 619: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 620: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 621: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 622: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 623: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 624: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 625: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 626: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 627: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 628: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 629: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 630: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 631: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 632: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 633: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 634: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 635: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 636: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 637: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 638: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 639: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 640: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 641: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 642: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 643: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 644: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 645: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 646: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 647: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 648: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 649: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 650: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 651: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 652: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 653: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 654: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 655: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 656: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 657: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 658: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 659: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 660: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 661: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 662: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 663: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 664: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 665: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 666: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 667: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 668: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 669: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 670: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 671: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 672: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 673: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 674: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 675: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 676: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 677: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 678: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 679: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 680: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 681: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 682: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 683: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 684: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 685: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 686: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 687: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 688: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 689: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 690: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 691: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 692: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 693: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 694: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 695: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 696: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 697: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 698: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 699: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 700: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 701: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 702: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 703: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 704: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 705: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 706: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 707: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 708: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 709: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 710: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 711: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 712: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 713: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 714: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 715: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 716: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 717: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 718: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 719: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 720: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 721: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 722: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 723: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 724: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 725: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 726: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 727: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 728: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 729: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 730: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 731: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 732: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 733: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 734: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 735: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 736: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 737: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 738: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 739: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 740: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 741: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 742: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 743: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 744: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 745: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 746: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 747: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 748: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 749: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 750: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 751: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 752: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 753: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 754: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 755: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 756: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 757: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 758: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 759: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 760: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 761: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 762: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 763: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 764: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 765: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 766: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 767: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 768: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 769: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 770: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 771: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 772: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 773: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 774: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 775: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 776: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 777: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 778: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 779: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 780: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 781: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 782: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 783: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 784: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 785: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 786: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 787: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 788: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 789: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 790: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 791: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 792: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 793: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 794: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 795: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 796: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 797: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 798: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 799: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 800: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 801: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 802: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 803: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 804: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 805: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 806: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 807: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 808: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 809: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 810: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 811: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 812: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 813: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 814: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 815: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 816: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 817: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 818: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 819: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 820: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 821: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 822: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 823: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 824: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 825: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 826: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 827: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 828: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 829: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 830: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 831: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 832: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 833: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 834: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 835: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 836: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 837: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 838: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 839: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 840: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 841: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 842: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 843: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 844: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 845: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 846: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 847: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 848: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 849: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 850: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 851: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 852: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 853: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 854: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 855: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 856: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 857: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 858: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 859: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 860: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 861: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 862: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 863: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 864: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 865: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 866: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 867: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 868: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 869: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 870: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 871: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 872: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 873: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 874: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 875: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 876: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 877: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 878: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 879: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 880: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 881: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 882: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 883: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 884: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 885: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 886: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 887: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 888: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 889: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 890: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 891: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 892: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 893: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 894: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 895: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 896: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 897: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 898: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 899: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 900: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 901: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 902: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 903: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 904: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 905: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 906: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 907: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 908: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 909: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 910: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 911: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 912: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 913: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 914: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 915: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 916: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 917: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 918: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 919: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 920: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 921: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 922: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 923: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 924: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 925: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 926: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 927: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 928: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 929: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 930: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 931: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 932: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 933: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 934: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 935: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 936: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 937: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 938: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 939: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 940: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 941: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 942: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 943: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 944: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 945: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 946: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 947: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 948: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 949: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 950: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 951: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 952: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 953: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 954: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 955: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 956: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 957: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 958: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 959: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 960: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 961: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 962: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 963: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 964: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 965: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 966: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 967: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 968: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 969: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 970: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 971: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 972: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 973: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 974: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 975: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 976: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 977: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 978: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 979: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 980: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 981: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 982: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 983: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 984: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 985: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 986: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 987: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 988: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 989: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 990: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 991: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 992: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 993: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 994: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 995: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 996: Validar que el endpoint '/api/auth/login' retorne un JWT válido con credenciales correctas.
+Prueba 997: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 998: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 999: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.
+Prueba 1000: Validar que el botón 'Crear Carpeta' en Angular muestre un error si el nombre está vacío.

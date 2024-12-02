@@ -7,14 +7,23 @@ import { AuthService } from 'src/app/services/authservice/authservice.service';
 import { ReloadService } from 'src/app/services/reloadservice/reload.service';
 import { UsuarioService } from 'src/app/services/usuarioservice/usuario.service';
 import { HttpClient } from '@angular/common/http';
-import { DocumentScanner, ScanDocumentResponseStatus } from 'capacitor-document-scanner';
+import {
+  DocumentScanner,
+  ScanDocumentResponseStatus,
+} from 'capacitor-document-scanner';
 import { Capacitor } from '@capacitor/core';
 <<<<<<< HEAD
 =======
 import { NotificacionService } from 'src/app/services/notificacionservice/notificacion.service'; // Asegúrate de que la ruta sea correcta
 import { NotificacionDTO } from '../../models/NotificacionDTO';
+<<<<<<< HEAD
 >>>>>>> develop
 
+=======
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import { FileOpener } from '@capacitor-community/file-opener';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+>>>>>>> cambios_qa
 
 @Component({
   selector: 'app-folder-content',
@@ -31,8 +40,13 @@ export class FolderContentPage implements OnInit {
   contenidoCarpeta: string[] = []; // Variable para almacenar el contenido de la carpeta
   imagenesMap: { [key: string]: string } = {}; // Mapa para almacenar las URL de las imágenes
   selectedFile: string | null = null; // Archivo seleccionado para mostrar en el modal
-  username: string | null = '';  // Variable para almacenar el nombre de usuario
+  username: string | null = ''; // Variable para almacenar el nombre de usuario
   selectedDocxContent: string | null = null; // Variable para almacenar el contenido del archivo .docx
+
+  pdfSrc: string | ArrayBuffer | Blob | Uint8Array | URL | { range: any; } | null = null;
+  selectedFileName: string | null = null;
+  isImage: boolean = false;
+  isModalOpen: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -45,8 +59,13 @@ export class FolderContentPage implements OnInit {
     private cdr: ChangeDetectorRef
 =======
     private cdr: ChangeDetectorRef,
+<<<<<<< HEAD
     private notificacionService: NotificacionService // Inyección del servicio de notificaciones
 >>>>>>> develop
+=======
+    private notificacionService: NotificacionService,
+    private sanitizer: DomSanitizer
+>>>>>>> cambios_qa
   ) {
     this.username = this.authService.getUsername();
   }
@@ -56,7 +75,7 @@ export class FolderContentPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.folderName = params.get('nombreCarpeta')!;
       if (this.username) {
         this.loadContenidoCarpeta();
@@ -66,22 +85,53 @@ export class FolderContentPage implements OnInit {
 
   // Método para cargar las imágenes en miniatura
   loadImages() {
-    const imageObservables = this.contenidoCarpeta.map(file =>
-      this.usuarioService.getImagePath(this.folderName, file).pipe(
-        map(imageUrl => ({ fileName: file, imageUrl }))
-      )
+    const imageObservables = this.contenidoCarpeta.map((file) =>
+      this.usuarioService
+        .getImagePath(this.folderName, file)
+        .pipe(map((imageUrl) => ({ fileName: file, imageUrl })))
     );
 
-    forkJoin(imageObservables).subscribe(images => {
-      images.forEach(img => {
+    forkJoin(imageObservables).subscribe((images) => {
+      images.forEach((img) => {
         this.imagenesMap[img.fileName] = img.imageUrl;
       });
     });
   }
 
   // Método para abrir modal
-  openModal(file: string): void {
-    this.selectedFile = this.imagenesMap[file];
+  async openModal(file: string): Promise<void> {
+    this.selectedFileName = file;
+
+    const fileExtension = file.split('.').pop()?.toLowerCase();
+
+    if (fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
+      this.selectedFile = this.imagenesMap[file];
+      this.isImage = true;
+      this.isModalOpen = true;
+    } else if (fileExtension === 'docx' || fileExtension === 'doc') {
+      try {
+        const timestamp = new Date().getTime();
+        const pdfBlob = await this.usuarioService.getPdfPath(this.folderName, file, timestamp).toPromise();
+
+        if (!pdfBlob) {
+          console.error('No se obtuvo el archivo PDF desde el servidor.');
+          return;
+        }
+
+        this.pdfSrc = pdfBlob;
+        this.isImage = false;
+        this.isModalOpen = true;
+      } catch (error) {
+        console.error('Error al cargar el PDF:', error);
+      }
+    }
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.selectedFile = null;
+    this.pdfSrc = null;
+    this.selectedFileName = null;
   }
 
   async scanDocument() {
@@ -93,7 +143,10 @@ export class FolderContentPage implements OnInit {
         croppedImageQuality: 100,
       });
 
-      if (status === ScanDocumentResponseStatus.Success && scannedImages?.length) {
+      if (
+        status === ScanDocumentResponseStatus.Success &&
+        scannedImages?.length
+      ) {
         console.log(`Se escanearon ${scannedImages.length} imágenes`);
 
         // Iterar sobre todas las imágenes escaneadas
@@ -102,12 +155,16 @@ export class FolderContentPage implements OnInit {
           console.log('URL de la imagen escaneada:', scannedImageUrl);
 
           // Mostrar la imagen en la UI si el elemento existe
-          const scannedImage = document.getElementById('scannedImage') as HTMLImageElement;
+          const scannedImage = document.getElementById(
+            'scannedImage'
+          ) as HTMLImageElement;
           if (scannedImage) {
             scannedImage.src = scannedImageUrl;
             scannedImage.style.display = 'block';
           } else {
-            console.error('Elemento con id "scannedImage" no encontrado en el DOM.');
+            console.error(
+              'Elemento con id "scannedImage" no encontrado en el DOM.'
+            );
           }
 
           // Descargar la imagen y convertirla a Blob
@@ -121,7 +178,9 @@ export class FolderContentPage implements OnInit {
           }
 
           // Crear un objeto File con el Blob
-          const file = new File([blob], `${new Date().getTime()}.jpeg`, { type: blob.type });
+          const file = new File([blob], `${new Date().getTime()}.jpeg`, {
+            type: blob.type,
+          });
           console.log('Archivo creado:', file);
 
           // Subir cada imagen al backend
@@ -155,11 +214,13 @@ export class FolderContentPage implements OnInit {
       alert('Error al escanear documento: ' + error);
     }
   }
-  
+
   // Método para subir la imagen al backend
   private async uploadImageToBackend(file: File) {
     try {
-      const response = await this.usuarioService.uploadImage(file, this.folderName).toPromise();
+      const response = await this.usuarioService
+        .uploadImage(file, this.folderName)
+        .toPromise();
       console.log('Imagen escaneada subida correctamente:', response);
       this.loadContenidoCarpeta(); // Recargar contenido
     } catch (error) {
@@ -186,15 +247,17 @@ export class FolderContentPage implements OnInit {
   loadContenidoCarpeta() {
     const username = this.authService.getUsername();
     if (username) {
-      this.usuarioService.getCarpetaContenido(username, this.folderName).subscribe(
-        (response) => {
-          this.contenidoCarpeta = response;
-          this.loadImages();
-        },
-        (error) => {
-          console.error('Error al cargar el contenido de la carpeta:', error);
-        }
-      );
+      this.usuarioService
+        .getCarpetaContenido(username, this.folderName)
+        .subscribe(
+          (response) => {
+            this.contenidoCarpeta = response;
+            this.loadImages();
+          },
+          (error) => {
+            console.error('Error al cargar el contenido de la carpeta:', error);
+          }
+        );
     } else {
       console.error('No se ha encontrado el nombre de usuario.');
     }
@@ -206,13 +269,22 @@ export class FolderContentPage implements OnInit {
     const fileExtension = fileName.split('.').pop()?.toLowerCase();
 
     // Para imágenes
-    if (fileExtension === 'jpg' || fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'gif') {
+    if (
+      fileExtension === 'jpg' ||
+      fileExtension === 'png' ||
+      fileExtension === 'jpeg' ||
+      fileExtension === 'gif'
+    ) {
       this.usuarioService.deleteImagen(this.folderName, fileName).subscribe(
         (response) => {
           console.log('Imagen eliminada: ', response);
           // Actualizar el estado de contenidoCarpeta directamente, eliminando la imagen
-          this.contenidoCarpeta = this.contenidoCarpeta.filter(file => file !== fileName);
-          this.showNotification(`Imagen "${fileName}" eliminada de la carpeta "${this.folderName}" exitosamente.`);
+          this.contenidoCarpeta = this.contenidoCarpeta.filter(
+            (file) => file !== fileName
+          );
+          this.showNotification(
+            `Imagen "${fileName}" eliminada de la carpeta "${this.folderName}" exitosamente.`
+          );
         },
         (error) => {
           console.error('Error al eliminar la imagen: ', error);
@@ -224,8 +296,12 @@ export class FolderContentPage implements OnInit {
         (response) => {
           console.log('Formulario eliminado: ', response);
           // Actualizar el estado de contenidoCarpeta directamente, eliminando el formulario
-          this.contenidoCarpeta = this.contenidoCarpeta.filter(file => file !== fileName);
-          this.showNotification(`Formulario "${fileName}" eliminado de la carpeta "${this.folderName}" exitosamente.`);
+          this.contenidoCarpeta = this.contenidoCarpeta.filter(
+            (file) => file !== fileName
+          );
+          this.showNotification(
+            `Formulario "${fileName}" eliminado de la carpeta "${this.folderName}" exitosamente.`
+          );
         },
         (error) => {
           console.error('Error al eliminar el formulario: ', error);
@@ -233,7 +309,6 @@ export class FolderContentPage implements OnInit {
       );
     }
   }
-
 
   // Método para mostrar notificación
   showNotification(message: string) {
@@ -258,8 +333,12 @@ export class FolderContentPage implements OnInit {
     );
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> develop
 }
+=======
+}
+>>>>>>> cambios_qa

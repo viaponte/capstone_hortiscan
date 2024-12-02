@@ -10,9 +10,9 @@ import { CommonModule } from '@angular/common';
 })
 export class CarouselComponent implements OnInit {
   images: string[] = [
-    'assets/campo_1.jpg',
-    'assets/campo_2.jpg',
-    'assets/campo_3.jpg',
+    'assets/campo_1.webp',
+    'assets/campo_2.webp',
+    'assets/campo_3.webp',
   ]; // Rutas de las imágenes
   currentImageIndex: number = 0;
 
@@ -23,7 +23,7 @@ export class CarouselComponent implements OnInit {
   startCarousel(): void {
     setInterval(() => {
       this.nextImage();
-    }, 5000); // Cambia cada 5 segundos
+    }, 15000); // Cambia cada 5 segundos
   }
 
   nextImage(): void {

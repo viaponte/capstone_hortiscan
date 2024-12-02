@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLogin();
+    // this.isLogin();
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),

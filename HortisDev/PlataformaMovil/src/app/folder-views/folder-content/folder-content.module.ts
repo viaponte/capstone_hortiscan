@@ -8,6 +8,7 @@ import { FolderContentPageRoutingModule } from './folder-content-routing.module'
 
 import { FolderContentPage } from './folder-content.page';
 import { HeaderComponent } from '../../shared/header/header.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderComponent } from '../../shared/header/header.component';
     FormsModule,
     IonicModule,
     FolderContentPageRoutingModule,
-    HeaderComponent
+    HeaderComponent,
+    NgxExtendedPdfViewerModule
   ],
   declarations: [FolderContentPage]
 })
