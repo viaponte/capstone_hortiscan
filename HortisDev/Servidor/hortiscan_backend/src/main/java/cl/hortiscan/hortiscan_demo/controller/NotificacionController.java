@@ -1,7 +1,5 @@
 package cl.hortiscan.hortiscan_demo.controller;
 
-<<<<<<< HEAD
-=======
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -12,45 +10,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
->>>>>>> develop
 import cl.hortiscan.hortiscan_demo.model.dto.NotificacionDTO;
 import cl.hortiscan.hortiscan_demo.model.entity.Notificacion;
 import cl.hortiscan.hortiscan_demo.model.entity.Usuario;
 import cl.hortiscan.hortiscan_demo.model.service.NotificacionService;
 import cl.hortiscan.hortiscan_demo.model.service.UsuarioService;
 
-<<<<<<< HEAD
-=======
 // import org.hibernate.mapping.Map;
->>>>>>> develop
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@RestController
-@RequestMapping("/api/notificaciones")
-public class NotificacionController {
-    private final UsuarioService usuarioService;
-
-    @Autowired
-    private NotificacionService notificacionService;
-
-    public NotificacionController(NotificacionService notificacionService, UsuarioService usuarioService) {
-        this.notificacionService = notificacionService;
-        this.usuarioService = usuarioService;
-    }
-
-    @PostMapping("/{username}")
-    public ResponseEntity<?> crearNotificacion(@RequestBody NotificacionDTO notificacionDTO) {
-        try {
-            // Obtener el usuario por su idUsuario desde el DTO
-            Usuario usuario = usuarioService.findUsuarioById(notificacionDTO.getIdUsuario());
-            if (usuario == null) {
-=======
 import java.util.List; // Para el tipo List
 import java.util.stream.Collectors; // Para Collectors
 
@@ -126,7 +97,6 @@ public class NotificacionController {
             // Obtener el id del usuario por su username
             Integer idUsuario = usuarioService.findIdByUsername(username);
             if (idUsuario == null) {
->>>>>>> develop
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
             }
     
@@ -134,22 +104,15 @@ public class NotificacionController {
             Notificacion notificacion = new Notificacion();
             notificacion.setMensajeNotificacion(notificacionDTO.getMensajeNotificacion());
             notificacion.setFechaNotificacion(notificacionDTO.getFechaNotificacion());
-<<<<<<< HEAD
-            notificacion.setUsuario(usuario);  // Asociamos el usuario encontrado
-=======
             
             // Aquí se establece directamente el ID del usuario en la notificación
             Usuario usuario = new Usuario();
             usuario.setIdUsuario(idUsuario);
             notificacion.setUsuario(usuario);
->>>>>>> develop
     
             // Guardar la notificación en la base de datos
             Notificacion savedNotificacion = notificacionService.save(notificacion);
     
-<<<<<<< HEAD
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedNotificacion);
-=======
             // Mapear a NotificacionDTO para evitar enviar las relaciones anidadas
             NotificacionDTO responseDTO = new NotificacionDTO();
             responseDTO.setIdNotificacion(savedNotificacion.getIdNotificacion());
@@ -158,15 +121,9 @@ public class NotificacionController {
             responseDTO.setFechaNotificacion(savedNotificacion.getFechaNotificacion());
     
             return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
->>>>>>> develop
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear la notificación");
         }
     }
     
-<<<<<<< HEAD
-
 }
-=======
-}
->>>>>>> develop

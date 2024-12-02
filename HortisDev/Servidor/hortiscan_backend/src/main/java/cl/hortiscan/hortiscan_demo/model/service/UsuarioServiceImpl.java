@@ -43,12 +43,6 @@ public class UsuarioServiceImpl implements UsuarioService {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
-<<<<<<< HEAD
-  @Autowired
-  private NotificacionService notificacionService;
-
-=======
->>>>>>> develop
   private final String ROOT_DIRECTORY = "C:\\folderToUsers";
 
   @Override
@@ -73,15 +67,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     // Valida o crea carpeta por id del usuario
     validateOrCreateFolder(usuarioGuardado.getIdUsuario());
 
-<<<<<<< HEAD
-    // Crea la notificación después de registrar al usuario
-    NotificacionDTO notificacionDTO = new NotificacionDTO();
-    notificacionDTO.setIdUsuario(usuarioGuardado.getIdUsuario());
-    notificacionDTO.setMensajeNotificacion("Bienvenido, " + username + "! Su cuenta ha sido creada.");
-    notificacionService.saveNotificacion(notificacionDTO); // Guarda la notificación
-
-=======
->>>>>>> develop
     return new UsuarioDTO(usuarioGuardado.getIdUsuario(), usuarioGuardado.getUsername(), null);
   }
 

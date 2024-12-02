@@ -79,7 +79,7 @@ public class ImagenController {
       // Aquí añadimos el procesamiento OCR después de guardar el archivo
       String outputWordPath = userFolder + File.separator + fileName + ".docx";
 
-      String pythonScriptPath = "src/scripts/vision.py"; // Cambia esta ruta según la ubicación de tu script Python
+      String pythonScriptPath = "src/scripts/ocr_script.py"; // Cambia esta ruta según la ubicación de tu script Python
       ProcessBuilder processBuilder = new ProcessBuilder(
           "python",
           pythonScriptPath,
